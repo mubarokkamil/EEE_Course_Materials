@@ -18,6 +18,11 @@ const DRIVE_DATA = {
               "url": "materials/digital-signal-processing-i/Fast_Fourier_Transform.pdf"
             }
           ]
+        },
+        {
+          "id": "analog-to-digital-conversion-adc",
+          "name": "Analog to Digital Conversion (ADC)",
+          "files": []
         }
       ],
       "files": [
