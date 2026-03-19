@@ -22,7 +22,14 @@ const DRIVE_DATA = {
         {
           "id": "analog-to-digital-conversion-adc",
           "name": "Analog to Digital Conversion (ADC)",
-          "files": []
+          "files": [
+            {
+              "id": "f1773899040534",
+              "name": "ADC Full Process",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/Analog to Digital Conversion.pdf"
+            }
+          ]
         }
       ],
       "files": [
