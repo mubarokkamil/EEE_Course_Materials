@@ -2,51 +2,6 @@
 const DRIVE_DATA = {
   "courses": [
     {
-      "id": "circuit-analysis",
-      "name": "Circuit Analysis",
-      "code": "EEE 101",
-      "desc": "KVL, KCL, Thevenin, Norton, AC/DC circuits and network theorems.",
-      "files": [],
-      "topics": [
-        {
-          "id": "kvl-kcl",
-          "name": "KVL & KCL",
-          "files": [
-            {
-              "id": "f1",
-              "name": "KVL_KCL_Notes.pdf",
-              "type": "pdf",
-              "url": "materials/circuit-analysis/KVL_KCL_Notes.pdf"
-            },
-            {
-              "id": "f2",
-              "name": "Practice Problems.pdf",
-              "type": "pdf",
-              "url": "materials/circuit-analysis/Practice_Problems.pdf"
-            }
-          ]
-        },
-        {
-          "id": "thevenin-norton",
-          "name": "Thevenin & Norton",
-          "files": [
-            {
-              "id": "f3",
-              "name": "Thevenin_Norton.pdf",
-              "type": "pdf",
-              "url": "materials/circuit-analysis/Thevenin_Norton.pdf"
-            },
-            {
-              "id": "f4",
-              "name": "thevenin_solver.py",
-              "type": "code",
-              "url": "materials/circuit-analysis/thevenin_solver.py"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "electronics",
       "name": "Electronics",
       "code": "EEE 201",
