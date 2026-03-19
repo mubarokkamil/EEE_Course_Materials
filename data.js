@@ -10,7 +10,14 @@ const DRIVE_DATA = {
         {
           "id": "adc",
           "name": "ADC",
-          "files": []
+          "files": [
+            {
+              "id": "f1773895035067",
+              "name": "ADC",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/Analog to Digital Conversion.pdf"
+            }
+          ]
         }
       ],
       "files": [
