@@ -10,7 +10,14 @@ const DRIVE_DATA = {
         {
           "id": "fast-fourier-transform-fft",
           "name": "Fast Fourier Transform (FFT)",
-          "files": []
+          "files": [
+            {
+              "id": "f1773898957515",
+              "name": "Fast Fourier Transform (FFT)",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/Fast_Fourier_Transform.pdf"
+            }
+          ]
         }
       ],
       "files": [
