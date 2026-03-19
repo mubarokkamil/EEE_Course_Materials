@@ -6,7 +6,13 @@ const DRIVE_DATA = {
       "name": "Digital Signal Processing I",
       "code": "EEE 0714 3131",
       "desc": "",
-      "topics": [],
+      "topics": [
+        {
+          "id": "adc",
+          "name": "ADC",
+          "files": []
+        }
+      ],
       "files": [
         {
           "id": "f1773894967646",
