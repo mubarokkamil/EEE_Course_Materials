@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — EEE Course Materials</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="login-page">
+    <div class="login-card">
+
+      <div class="login-card-header">
+        <div class="login-lock-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <h2 class="login-card-title">Admin Login</h2>
+        <p class="login-card-sub">EEE Course Materials</p>
+      </div>
+
+      <div class="login-card-body">
+        <div class="field-group">
+          <label>GitHub Username</label>
+          <input type="text" id="input-user" placeholder="mubarokkamil" autocomplete="off"/>
+        </div>
+        <div class="field-group">
+          <label>Repository Name</label>
+          <input type="text" id="input-repo" placeholder="EEE_Course_Materials" value="EEE_Course_Materials" autocomplete="off"/>
+        </div>
+        <div class="field-group">
+          <label>
+            Personal Access Token
+            <a href="https://github.com/settings/tokens/new?description=EEE+Admin&scopes=repo" target="_blank" class="hint-link">Get one →</a>
+          </label>
+          <input type="password" id="input-pat" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off"/>
+        </div>
+
+        <button onclick="doLogin()" class="btn-login">Sign in</button>
+        <p class="login-error hidden" id="login-error"></p>
+      </div>
+
+      <div class="login-card-footer">
+        <a href="../" class="login-back">← Back to site</a>
+        <span class="login-note">Token is never stored</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="admin-screen" class="hidden page">
+    <header>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <h1>Admin</h1>
+        <div style="display:flex;gap:16px;align-items:center;">
+          <span class="session-info" id="session-info"></span>
+          <a href="../" class="btn-text" style="font-size:13px;">← View site</a>
+          <button class="btn-text" onclick="doLogout()" style="font-size:13px;color:#cf222e;">Logout</button>
+        </div>
+      </div>
+      <hr/>
+    </header>
+
+    <div id="status-bar" class="status-bar hidden"></div>
+
+    <div id="admin-body">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;">
+        <div class="section-heading" style="margin:0;">Courses</div>
+        <button class="btn-primary btn-sm" onclick="showModal('course')">+ New Course</button>
+      </div>
+      <div id="courses-panel"></div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal-backdrop hidden" onclick="closeModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <span id="modal-title">—</span>
+        <button onclick="closeModal()" class="overlay-close">✕</button>
+      </div>
+      <div id="modal-body" class="modal-content"></div>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast"><span id="toast-msg"></span></div>
+
+  <script src="../data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
