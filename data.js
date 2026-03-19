@@ -22,7 +22,14 @@ const DRIVE_DATA = {
       "code": "EEE 0713 3125",
       "desc": "",
       "topics": [],
-      "files": []
+      "files": [
+        {
+          "id": "f1773897523832",
+          "name": "Newton-Raphson Load Flow",
+          "type": "pdf",
+          "url": "materials/power-system-i/Newton_Raphson_Guide.pdf"
+        }
+      ]
     }
   ]
 };
