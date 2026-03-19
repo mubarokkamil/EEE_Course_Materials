@@ -12,7 +12,6 @@
   <!-- LOGIN SCREEN -->
   <div id="login-screen" class="login-page">
     <div class="login-card">
-
       <div class="login-card-header">
         <div class="login-lock-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -23,7 +22,6 @@
         <h2 class="login-card-title">Admin Login</h2>
         <p class="login-card-sub">EEE Course Materials</p>
       </div>
-
       <div class="login-card-body">
         <div class="field-group">
           <label>GitHub Username</label>
@@ -40,16 +38,13 @@
           </label>
           <input type="password" id="input-pat" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off"/>
         </div>
-
         <button onclick="doLogin()" class="btn-login">Sign in</button>
         <p class="login-error hidden" id="login-error"></p>
       </div>
-
       <div class="login-card-footer">
         <a href="../" class="login-back">← Back to site</a>
         <span class="login-note">Token is never stored</span>
       </div>
-
     </div>
   </div>
 
@@ -61,6 +56,7 @@
         <div style="display:flex;gap:16px;align-items:center;">
           <span class="session-info" id="session-info"></span>
           <a href="../" class="btn-text" style="font-size:13px;">← View site</a>
+          <button id="save-btn" class="btn-save" onclick="saveToGitHub()">Save to GitHub</button>
           <button class="btn-text" onclick="doLogout()" style="font-size:13px;color:#cf222e;">Logout</button>
         </div>
       </div>
@@ -94,10 +90,7 @@
   <script>
     const s = document.createElement('script');
     s.src = '../data.js?v=' + Date.now();
-    s.onload = () => {
-      // Now data.js is loaded, safe to init admin
-      initAdmin();
-    };
+    s.onload = () => { initAdmin(); };
     document.head.appendChild(s);
   </script>
   <script src="admin.js"></script>

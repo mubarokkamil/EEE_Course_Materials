@@ -95,7 +95,6 @@
   color: #8c959f;
 }
 
-/* ── Keep old .login-box for nothing — remove it ── */
 .login-box { display: none; }
 .login-desc { display: none; }
 .login-actions { display: none; }
@@ -179,7 +178,6 @@
   transition: background .15s;
 }
 .btn-primary:hover { background: #116329; }
-
 .btn-primary.btn-sm { padding: 5px 12px; font-size: 13px; }
 
 .btn-secondary {
@@ -220,6 +218,32 @@
   padding: 0;
 }
 .btn-text:hover { color: #0969da; text-decoration: underline; }
+
+/* ── Save button ── */
+.btn-save {
+  background: #1a7f37;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s;
+}
+.btn-save:hover { background: #116329; }
+
+.btn-save-dirty {
+  background: #9a6700 !important;
+  animation: pulse-save 2s ease infinite;
+}
+.btn-save-dirty:hover { background: #7d5300 !important; }
+
+@keyframes pulse-save {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.75; }
+}
 
 /* ── Session info ── */
 .session-info {
@@ -263,7 +287,6 @@
   cursor: pointer;
   user-select: none;
 }
-
 .course-block-header:hover { background: #eef1f4; }
 
 .course-block-title {
@@ -283,9 +306,7 @@
   align-items: center;
 }
 
-.course-block-body {
-  padding: 12px 14px;
-}
+.course-block-body { padding: 12px 14px; }
 
 /* ── Topics inside course ── */
 .topic-block {
@@ -330,7 +351,7 @@
 .files-table .f-name { font-weight: 500; color: #24292f; }
 .files-table .f-url  { color: #57606a; font-size: 12px; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-/* ── Add-topic row ── */
+/* ── Add row ── */
 .add-row {
   display: flex;
   align-items: center;
@@ -383,7 +404,7 @@
   padding-top: 4px;
 }
 
-/* ── File upload area ── */
+/* ── Upload ── */
 .upload-hint {
   font-size: 11px;
   color: #57606a;

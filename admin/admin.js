@@ -4,6 +4,9 @@ let S = { pat: null, user: null, repo: null };
 // Working data copy — populated after data.js loads
 let D = { courses: [] };
 
+// Track unsaved changes
+let hasUnsaved = false;
+
 function initAdmin() {
   D = JSON.parse(JSON.stringify(DRIVE_DATA));
 }
@@ -29,6 +32,7 @@ function doLogin() {
 }
 
 function doLogout() {
+  if (hasUnsaved && !confirm('You have unsaved changes. Logout anyway?')) return;
   S = { pat: null, user: null, repo: null };
   document.getElementById('admin-screen').classList.add('hidden');
   document.getElementById('login-screen').classList.remove('hidden');
@@ -38,6 +42,21 @@ function doLogout() {
 document.getElementById('input-pat').addEventListener('keydown', e => {
   if (e.key === 'Enter') doLogin();
 });
+
+// ── Unsaved indicator ──────────────────────────────────────────
+function markUnsaved() {
+  hasUnsaved = true;
+  const btn = document.getElementById('save-btn');
+  btn.textContent = 'Save to GitHub ●';
+  btn.classList.add('btn-save-dirty');
+}
+
+function markSaved() {
+  hasUnsaved = false;
+  const btn = document.getElementById('save-btn');
+  btn.textContent = 'Save to GitHub';
+  btn.classList.remove('btn-save-dirty');
+}
 
 // ── Render admin ───────────────────────────────────────────────
 function renderAdmin() {
@@ -75,12 +94,10 @@ function renderAdmin() {
       </div>
       <div class="course-block-body" id="course-body-${course.id}" style="display:none;">
         <div id="topics-${course.id}"></div>
-
         <div class="add-row" style="margin-top:6px;gap:8px;">
           <button class="btn-secondary btn-sm" onclick="showModal('topic','${course.id}')">+ Add Topic</button>
           <button class="btn-secondary btn-sm" onclick="showModal('file','${course.id}','__direct__')">+ Add File directly</button>
         </div>
-
         <div id="direct-files-${course.id}">
           ${renderDirectFiles(course)}
         </div>
@@ -152,7 +169,7 @@ function toggleTopic(courseId, topicId) {
 
 function renderFileRows(topic) {
   if (!topic.files || !topic.files.length) {
-    return `<tr><td colspan="3" style="color:#57606a;font-size:13px;padding:6px 0;">No files yet.</td></tr>`;
+    return `<tr><td colspan="4" style="color:#57606a;font-size:13px;padding:6px 0;">No files yet.</td></tr>`;
   }
   return topic.files.map(f => `
     <tr>
@@ -225,7 +242,7 @@ function showModal(type, ...args) {
       <div class="field-group"><label>Display Name</label>
         <input id="m-name" class="form-input" placeholder="e.g. Lecture Notes Week 1"/>
       </div>
-      <div id="upload-wrap" class="field-group"><label>Upload File <span style="font-weight:400;color:#57606a;">(pushed to GitHub)</span></label>
+      <div id="upload-wrap" class="field-group"><label>Upload File <span style="font-weight:400;color:#57606a;">(pushed to GitHub on Save)</span></label>
         <input type="file" id="m-file" onchange="onFileSelect()"/>
         <span class="upload-hint">Supported: PDF, images, code files, docs</span>
       </div>
@@ -272,7 +289,7 @@ function onFileSelect() {
   document.getElementById('m-url').value = `materials/${courseId}/${file.name}`;
 }
 
-// ── CRUD ───────────────────────────────────────────────────────
+// ── CRUD — all local only, no auto-push ────────────────────────
 function saveCourse() {
   const name     = document.getElementById('m-name').value.trim();
   const code     = document.getElementById('m-code')?.value.trim() || '';
@@ -285,16 +302,16 @@ function saveCourse() {
     const c = D.courses.find(c => c.id === courseId);
     c.name = name; c.code = code; c.desc = desc;
   } else {
-    D.courses.push({ id: slug(name), name, code, desc, topics: [] });
+    D.courses.push({ id: slug(name), name, code, desc, files: [], topics: [] });
   }
 
-  closeModal(); renderAdmin(); pushData();
+  closeModal(); renderAdmin(); markUnsaved();
 }
 
 function deleteCourse(courseId) {
   if (!confirm('Delete this course and ALL its topics and files?')) return;
   D.courses = D.courses.filter(c => c.id !== courseId);
-  renderAdmin(); pushData();
+  renderAdmin(); markUnsaved();
 }
 
 function saveTopic() {
@@ -313,28 +330,27 @@ function saveTopic() {
   }
 
   closeModal(); renderAdmin();
-  // Re-open the course
   setTimeout(() => {
     const body = document.getElementById(`course-body-${courseId}`);
     if (body) body.style.display = 'block';
   }, 10);
-  pushData();
+  markUnsaved();
 }
 
 function deleteTopic(courseId, topicId) {
   if (!confirm('Delete this topic and all its files?')) return;
-  const course   = D.courses.find(c => c.id === courseId);
-  course.topics  = course.topics.filter(t => t.id !== topicId);
-  renderAdmin(); pushData();
+  const course  = D.courses.find(c => c.id === courseId);
+  course.topics = course.topics.filter(t => t.id !== topicId);
+  renderAdmin(); markUnsaved();
 }
 
 async function saveFile() {
-  const name     = document.getElementById('m-name').value.trim();
-  const type     = document.getElementById('m-type').value;
-  const manualUrl= document.getElementById('m-url').value.trim();
-  const courseId = modalCtx.args[0];
-  const topicId  = modalCtx.args[1];  // '__direct__' means add to course directly
-  const fileEl   = document.getElementById('m-file');
+  const name      = document.getElementById('m-name').value.trim();
+  const type      = document.getElementById('m-type').value;
+  const manualUrl = document.getElementById('m-url').value.trim();
+  const courseId  = modalCtx.args[0];
+  const topicId   = modalCtx.args[1];
+  const fileEl    = document.getElementById('m-file');
 
   if (!name) { alert('Display name required.'); return; }
 
@@ -371,7 +387,16 @@ async function saveFile() {
       if (tb) tb.style.display = 'block';
     }
   }, 10);
-  pushData();
+  markUnsaved();
+}
+
+function deleteFile(topicId, fileId) {
+  if (!confirm('Remove this file?')) return;
+  for (const course of D.courses) {
+    const topic = (course.topics||[]).find(t => t.id === topicId);
+    if (topic) { topic.files = topic.files.filter(f => f.id !== fileId); break; }
+  }
+  renderAdmin(); markUnsaved();
 }
 
 function deleteDirectFile(courseId, fileId) {
@@ -383,20 +408,35 @@ function deleteDirectFile(courseId, fileId) {
     const cb = document.getElementById(`course-body-${courseId}`);
     if (cb) cb.style.display = 'block';
   }, 10);
-  pushData();
+  markUnsaved();
+}
+
+// ── Save button — single commit for all changes ────────────────
+async function saveToGitHub() {
+  if (!S.pat) {
+    alert('No GitHub token set. Please logout and login again.');
+    return;
+  }
+  if (!hasUnsaved) {
+    showToast('No unsaved changes.');
+    return;
+  }
+  await pushData();
 }
 
 // ── GitHub API ─────────────────────────────────────────────────
 async function pushData() {
-  if (!S.pat) { showToast('Changes saved locally. Set a GitHub token to push.'); return; }
-
-  setStatus('info', '<span class="spin">⟳</span> Pushing to GitHub…');
+  setStatus('info', '<span class="spin">⟳</span> Saving to GitHub…');
 
   const content = `// Auto-managed by Admin panel.\nconst DRIVE_DATA = ${JSON.stringify(D, null, 2)};\n`;
   const ok = await putFile('data.js', content, 'Admin: update course data');
 
-  if (ok) setStatus('success', '✓ Saved & pushed to GitHub successfully.');
-  else    setStatus('error', '✗ Push failed. Check your token and try again.');
+  if (ok) {
+    setStatus('success', '✓ All changes saved to GitHub in one commit.');
+    markSaved();
+  } else {
+    setStatus('error', '✗ Push failed. Check your token and try again.');
+  }
 }
 
 async function uploadFile(file, repoPath) {
@@ -470,4 +510,8 @@ function slug(s) {
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
+});
+
+window.addEventListener('beforeunload', e => {
+  if (hasUnsaved) { e.preventDefault(); e.returnValue = ''; }
 });
