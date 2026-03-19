@@ -12,22 +12,58 @@ function initAdmin() {
 }
 
 // ── Login ──────────────────────────────────────────────────────
-function doLogin() {
+async function doLogin() {
   const pat  = document.getElementById('input-pat').value.trim();
   const user = document.getElementById('input-user').value.trim();
   const repo = document.getElementById('input-repo').value.trim();
   const err  = document.getElementById('login-error');
+  const btn  = document.querySelector('.btn-login');
 
   if (!pat || !user || !repo) {
     err.textContent = 'Please fill in all fields.';
     err.classList.remove('hidden'); return;
   }
 
-  S = { pat, user, repo };
+  // Verify PAT against GitHub API before allowing access
+  btn.textContent = 'Verifying…';
+  btn.disabled = true;
   err.classList.add('hidden');
+
+  try {
+    const res = await fetch(`https://api.github.com/repos/${user}/${repo}`, {
+      headers: {
+        'Authorization': `token ${pat}`,
+        'Accept': 'application/vnd.github.v3+json',
+      }
+    });
+
+    if (res.status === 401) {
+      err.textContent = '✗ Invalid token. Check your Personal Access Token.';
+      err.classList.remove('hidden');
+      btn.textContent = 'Sign in'; btn.disabled = false; return;
+    }
+    if (res.status === 404) {
+      err.textContent = '✗ Repository not found. Check username and repo name.';
+      err.classList.remove('hidden');
+      btn.textContent = 'Sign in'; btn.disabled = false; return;
+    }
+    if (!res.ok) {
+      err.textContent = `✗ GitHub error (${res.status}). Try again.`;
+      err.classList.remove('hidden');
+      btn.textContent = 'Sign in'; btn.disabled = false; return;
+    }
+  } catch (e) {
+    err.textContent = '✗ Network error. Check your internet connection.';
+    err.classList.remove('hidden');
+    btn.textContent = 'Sign in'; btn.disabled = false; return;
+  }
+
+  // Verified — allow access
+  S = { pat, user, repo };
   document.getElementById('login-screen').classList.add('hidden');
   document.getElementById('admin-screen').classList.remove('hidden');
   document.getElementById('session-info').textContent = `${user}/${repo}`;
+  btn.textContent = 'Sign in'; btn.disabled = false;
   renderAdmin();
 }
 
@@ -40,6 +76,9 @@ function doLogout() {
 }
 
 document.getElementById('input-pat').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+document.getElementById('input-repo').addEventListener('keydown', e => {
   if (e.key === 'Enter') doLogin();
 });
 
@@ -413,30 +452,18 @@ function deleteDirectFile(courseId, fileId) {
 
 // ── Save button — single commit for all changes ────────────────
 async function saveToGitHub() {
-  if (!S.pat) {
-    alert('No GitHub token set. Please logout and login again.');
-    return;
-  }
-  if (!hasUnsaved) {
-    showToast('No unsaved changes.');
-    return;
-  }
+  if (!S.pat) { alert('No GitHub token set. Please logout and login again.'); return; }
+  if (!hasUnsaved) { showToast('No unsaved changes.'); return; }
   await pushData();
 }
 
 // ── GitHub API ─────────────────────────────────────────────────
 async function pushData() {
   setStatus('info', '<span class="spin">⟳</span> Saving to GitHub…');
-
   const content = `// Auto-managed by Admin panel.\nconst DRIVE_DATA = ${JSON.stringify(D, null, 2)};\n`;
   const ok = await putFile('data.js', content, 'Admin: update course data');
-
-  if (ok) {
-    setStatus('success', '✓ All changes saved to GitHub in one commit.');
-    markSaved();
-  } else {
-    setStatus('error', '✗ Push failed. Check your token and try again.');
-  }
+  if (ok) { setStatus('success', '✓ All changes saved to GitHub in one commit.'); markSaved(); }
+  else      setStatus('error', '✗ Push failed. Check your token and try again.');
 }
 
 async function uploadFile(file, repoPath) {
@@ -456,10 +483,7 @@ async function uploadFile(file, repoPath) {
 async function putFile(path, textContent, message, base64Content) {
   try {
     const sha = await getSha(path);
-    const body = {
-      message,
-      content: base64Content || btoa(unescape(encodeURIComponent(textContent))),
-    };
+    const body = { message, content: base64Content || btoa(unescape(encodeURIComponent(textContent))) };
     if (sha) body.sha = sha;
     const res = await ghFetch(`contents/${path}`, 'PUT', body);
     return res.ok;
@@ -508,9 +532,7 @@ function slug(s) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 }
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 window.addEventListener('beforeunload', e => {
   if (hasUnsaved) { e.preventDefault(); e.returnValue = ''; }
