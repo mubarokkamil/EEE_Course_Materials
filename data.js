@@ -7,7 +7,14 @@ const DRIVE_DATA = {
       "code": "EEE 0714 3131",
       "desc": "",
       "topics": [],
-      "files": []
+      "files": [
+        {
+          "id": "f1773894784574",
+          "name": "Analog to Digital Conversion (ADC)",
+          "type": "pdf",
+          "url": "materials/digital-signal-processing-i/Analog to Digital Conversion.pdf"
+        }
+      ]
     }
   ]
 };
