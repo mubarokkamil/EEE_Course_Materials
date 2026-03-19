@@ -44,14 +44,7 @@ const DRIVE_DATA = {
           ]
         }
       ],
-      "files": [
-        {
-          "id": "f1773897718885",
-          "name": "Convolution",
-          "type": "pdf",
-          "url": "materials/digital-signal-processing-i/Convolution.pdf"
-        }
-      ]
+      "files": []
     },
     {
       "id": "power-system-i",
