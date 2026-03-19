@@ -51,15 +51,21 @@ const DRIVE_DATA = {
       "name": "Power System I",
       "code": "EEE 0713 3125",
       "desc": "",
-      "topics": [],
-      "files": [
+      "topics": [
         {
-          "id": "f1773897523832",
-          "name": "Newton-Raphson Load Flow",
-          "type": "pdf",
-          "url": "materials/power-system-i/Newton_Raphson_Guide.pdf"
+          "id": "newton-raphson-load-flow",
+          "name": "Newton-Raphson Load Flow Analysis",
+          "files": [
+            {
+              "id": "f1773905257807",
+              "name": "Newton-Raphson Load Flow Full Procedure",
+              "type": "pdf",
+              "url": "materials/power-system-i/Newton_Raphson_Guide.pdf"
+            }
+          ]
         }
-      ]
+      ],
+      "files": []
     }
   ]
 };
