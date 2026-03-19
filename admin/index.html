@@ -94,7 +94,10 @@
   <script>
     const s = document.createElement('script');
     s.src = '../data.js?v=' + Date.now();
-    s.onload = () => { /* data ready */ };
+    s.onload = () => {
+      // Now data.js is loaded, safe to init admin
+      initAdmin();
+    };
     document.head.appendChild(s);
   </script>
   <script src="admin.js"></script>

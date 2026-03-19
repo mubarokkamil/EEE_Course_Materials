@@ -1,8 +1,12 @@
 // Session state — PAT never written to disk/localStorage
 let S = { pat: null, user: null, repo: null };
 
-// Working data copy
-let D = JSON.parse(JSON.stringify(DRIVE_DATA));
+// Working data copy — populated after data.js loads
+let D = { courses: [] };
+
+function initAdmin() {
+  D = JSON.parse(JSON.stringify(DRIVE_DATA));
+}
 
 // ── Login ──────────────────────────────────────────────────────
 function doLogin() {
