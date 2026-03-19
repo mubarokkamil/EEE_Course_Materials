@@ -25,11 +25,8 @@
     </header>
 
     <main id="main-content">
-      <!-- root: course list -->
       <div id="view-root"></div>
-      <!-- inside course: topic list -->
       <div id="view-course" class="hidden"></div>
-      <!-- inside topic: file list -->
       <div id="view-topic" class="hidden"></div>
     </main>
 
@@ -37,20 +34,6 @@
       <hr/>
     </footer>
 
-  </div>
-
-  <!-- File preview overlay -->
-  <div id="overlay" class="overlay hidden" onclick="closeOverlay()">
-    <div class="overlay-box" onclick="event.stopPropagation()">
-      <div class="overlay-header">
-        <span id="overlay-title"></span>
-        <div style="display:flex;gap:8px;align-items:center;">
-          <a id="overlay-open" href="#" target="_blank" class="overlay-open-btn">Open ↗</a>
-          <button onclick="closeOverlay()" class="overlay-close">✕</button>
-        </div>
-      </div>
-      <div id="overlay-body" class="overlay-body"></div>
-    </div>
   </div>
 
   <script>

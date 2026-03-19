@@ -55,7 +55,6 @@ function renderCourse() {
   const topics      = course.topics || [];
   const directFiles = course.files  || [];
 
-  // Topics section
   const topicsHtml = topics.length ? `
     <table class="item-table">
       <thead><tr><th>Topic</th><th>Files</th></tr></thead>
@@ -68,7 +67,6 @@ function renderCourse() {
       </tbody>
     </table>` : '';
 
-  // Direct files section
   const directHtml = directFiles.length ? `
     <div class="section-subheading" style="margin-top:20px;">Files</div>
     <table class="item-table">
@@ -130,60 +128,7 @@ function nav(...ids) {
   window.scrollTo(0, 0);
 }
 
-function breadcrumb(items) {
-  const parts = items.map((item, i) => {
-    const isLast = i === items.length - 1;
-    if (isLast) return `<span class="current">${item.label}</span>`;
-    return `<a onclick="${item.action ? item.action.toString().replace(/"/g,"'") : ''}">${item.label}</a>`;
-  });
-  const withSeps = parts.flatMap((p, i) => i < parts.length - 1 ? [p, '<span class="sep">/</span>'] : [p]);
-  return `<div class="breadcrumb">${withSeps.join('')}</div>`;
-}
-
-// ── File preview ─────────────────────────────────────────────────
+// ── Open file directly in new tab ───────────────────────────────
 function openFile(file) {
-  const overlay = document.getElementById('overlay');
-  const title   = document.getElementById('overlay-title');
-  const body    = document.getElementById('overlay-body');
-  const openBtn = document.getElementById('overlay-open');
-
-  title.textContent = file.name;
-  openBtn.href = file.url;
-  body.innerHTML = '';
-
-  const isExternal = file.url.startsWith('http');
-  const resolvedUrl = isExternal ? file.url : file.url;
-
-  if (file.type === 'pdf') {
-    body.innerHTML = `<iframe src="${resolvedUrl}" title="${file.name}"></iframe>`;
-  } else if (file.type === 'image') {
-    body.innerHTML = `<img src="${resolvedUrl}" alt="${file.name}" style="max-width:100%;object-fit:contain;background:#fff;"/>`;
-  } else if (file.type === 'link') {
-    body.innerHTML = `
-      <div class="overlay-link-box">
-        <p>${file.url}</p>
-        <a href="${file.url}" target="_blank" rel="noopener">Open Link</a>
-      </div>`;
-  } else if (file.type === 'code') {
-    body.innerHTML = `<pre>Loading…</pre>`;
-    fetch(resolvedUrl)
-      .then(r => r.text())
-      .then(t => body.querySelector('pre').textContent = t)
-      .catch(() => body.querySelector('pre').textContent = '// Could not load. Click "Open ↗" to view on GitHub.');
-  } else {
-    body.innerHTML = `
-      <div class="overlay-link-box">
-        <p>${file.name}</p>
-        <a href="${resolvedUrl}" target="_blank" rel="noopener">Open File</a>
-      </div>`;
-  }
-
-  overlay.classList.remove('hidden');
+  window.open(file.url, '_blank', 'noopener');
 }
-
-function closeOverlay() {
-  document.getElementById('overlay').classList.add('hidden');
-  document.getElementById('overlay-body').innerHTML = '';
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
