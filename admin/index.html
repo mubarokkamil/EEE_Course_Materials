@@ -91,7 +91,12 @@
 
   <div class="toast hidden" id="toast"><span id="toast-msg"></span></div>
 
-  <script src="../data.js"></script>
+  <script>
+    const s = document.createElement('script');
+    s.src = '../data.js?v=' + Date.now();
+    s.onload = () => { /* data ready */ };
+    document.head.appendChild(s);
+  </script>
   <script src="admin.js"></script>
 </body>
 </html>

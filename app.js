@@ -1,6 +1,6 @@
 let path = []; // [] = root | [courseId] = course | [courseId, topicId] = topic
 
-document.addEventListener('DOMContentLoaded', render);
+// render() is called by index.html after data.js loads dynamically
 
 function render() {
   document.getElementById('view-root').classList.add('hidden');

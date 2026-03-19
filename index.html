@@ -53,7 +53,13 @@
     </div>
   </div>
 
-  <script src="data.js"></script>
+  <script>
+    // Load data.js fresh every time (no browser cache)
+    const s = document.createElement('script');
+    s.src = 'data.js?v=' + Date.now();
+    s.onload = () => { render(); };
+    document.head.appendChild(s);
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
