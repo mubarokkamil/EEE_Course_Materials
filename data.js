@@ -30,6 +30,11 @@ const DRIVE_DATA = {
               "url": "materials/digital-signal-processing-i/Analog to Digital Conversion.pdf"
             }
           ]
+        },
+        {
+          "id": "convolution",
+          "name": "Convolution",
+          "files": []
         }
       ],
       "files": [
