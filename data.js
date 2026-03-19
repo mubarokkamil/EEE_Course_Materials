@@ -15,6 +15,14 @@ const DRIVE_DATA = {
           "url": "materials/digital-signal-processing-i/Analog to Digital Conversion.pdf"
         }
       ]
+    },
+    {
+      "id": "power-system-i",
+      "name": "Power System I",
+      "code": "EEE 0713 3125",
+      "desc": "",
+      "topics": [],
+      "files": []
     }
   ]
 };
