@@ -41,45 +41,6 @@ const DRIVE_DATA = {
       ]
     },
     {
-      "id": "signals-systems",
-      "name": "Signals & Systems",
-      "code": "EEE 301",
-      "desc": "Fourier series, Laplace transform, Z-transform and system analysis.",
-      "files": [],
-      "topics": [
-        {
-          "id": "fourier",
-          "name": "Fourier Series & Transform",
-          "files": [
-            {
-              "id": "f8",
-              "name": "Fourier_Notes.pdf",
-              "type": "pdf",
-              "url": "materials/signals/Fourier_Notes.pdf"
-            }
-          ]
-        },
-        {
-          "id": "laplace",
-          "name": "Laplace Transform",
-          "files": [
-            {
-              "id": "f9",
-              "name": "Laplace_Table.pdf",
-              "type": "pdf",
-              "url": "materials/signals/Laplace_Table.pdf"
-            },
-            {
-              "id": "f10",
-              "name": "laplace_examples.py",
-              "type": "code",
-              "url": "materials/signals/laplace_examples.py"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "digital-signal-processing-i",
       "name": "Digital Signal Processing I",
       "code": "EEE 0714 3131",
