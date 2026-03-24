@@ -74,9 +74,9 @@ const DRIVE_DATA = {
       "desc": "",
       "files": [
         {
-          "id": "f1774329352419",
+          "id": "f1774329534231",
           "name": "EEE 22",
-          "type": "pdf",
+          "type": "link",
           "url": "https://drive.google.com/drive/folders/1FW0rtpxPJqAdPjMDgrwIJG96VwlXpX0a"
         }
       ],
