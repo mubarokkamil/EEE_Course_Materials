@@ -66,6 +66,21 @@ const DRIVE_DATA = {
         }
       ],
       "files": []
+    },
+    {
+      "id": "important-drive-link",
+      "name": "SUST EEE 22 Drive link",
+      "code": "",
+      "desc": "",
+      "files": [
+        {
+          "id": "f1774329352419",
+          "name": "EEE 22",
+          "type": "pdf",
+          "url": "https://drive.google.com/drive/folders/1FW0rtpxPJqAdPjMDgrwIJG96VwlXpX0a"
+        }
+      ],
+      "topics": []
     }
   ]
 };
