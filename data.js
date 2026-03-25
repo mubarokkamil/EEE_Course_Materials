@@ -42,6 +42,30 @@ const DRIVE_DATA = {
               "url": "materials/digital-signal-processing-i/Convolution.pdf"
             }
           ]
+        },
+        {
+          "id": "dual-tone-multi-frequency-dtmf",
+          "name": "Dual-Tone Multi-Frequency (DTMF)",
+          "files": [
+            {
+              "id": "f1774466118186",
+              "name": "DTMF Basics",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/DTMF_Basics.pdf"
+            },
+            {
+              "id": "f1774466176752",
+              "name": "GOERTZEL ALGORITHM",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/GOERTZEL_ALGORITHM.pdf"
+            },
+            {
+              "id": "f1774466228690",
+              "name": "DTMF Detection using Goertzel Algorithm",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/DTMF_Detection_using_Goertzel_Algorithm.pdf"
+            }
+          ]
         }
       ],
       "files": []
