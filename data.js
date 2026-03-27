@@ -72,8 +72,8 @@ const DRIVE_DATA = {
           "name": "Frequency Shift Keying (FSK)",
           "files": [
             {
-              "id": "f1774613913536",
-              "name": "FSK_Study_Notes.html",
+              "id": "f1774615261883",
+              "name": "Frequency Shift Keying (FSK)",
               "type": "link",
               "url": "materials/digital-signal-processing-i/FSK_Study_Notes.html"
             }
