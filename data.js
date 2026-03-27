@@ -66,6 +66,18 @@ const DRIVE_DATA = {
               "url": "materials/digital-signal-processing-i/DTMF_Detection_using_Goertzel_Algorithm.pdf"
             }
           ]
+        },
+        {
+          "id": "frequency-shift-keying-fsk",
+          "name": "Frequency Shift Keying (FSK)",
+          "files": [
+            {
+              "id": "f1774613913536",
+              "name": "FSK_Study_Notes.html",
+              "type": "link",
+              "url": "materials/digital-signal-processing-i/FSK_Study_Notes.html"
+            }
+          ]
         }
       ],
       "files": []
