@@ -117,6 +117,27 @@ const DRIVE_DATA = {
         }
       ],
       "topics": []
+    },
+    {
+      "id": "ipe",
+      "name": "IPE",
+      "code": "IPE 0413 3105E",
+      "desc": "",
+      "files": [
+        {
+          "id": "f1774795712742",
+          "name": "1_Managerial Functions",
+          "type": "pdf",
+          "url": "materials/ipe/1_Managerial Functions.pdf"
+        },
+        {
+          "id": "f1774795753581",
+          "name": "2_Evolution of Management & Development of Organization Theories",
+          "type": "pdf",
+          "url": "materials/ipe/2_Evolution of Management & Development of Organization Theories.pdf"
+        }
+      ],
+      "topics": []
     }
   ]
 };
