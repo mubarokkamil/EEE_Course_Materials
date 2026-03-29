@@ -125,34 +125,34 @@ const DRIVE_DATA = {
       "desc": "",
       "files": [
         {
-          "id": "f1774795712742",
+          "id": "f1774803695335",
           "name": "1_Managerial Functions",
-          "type": "pdf",
-          "url": "materials/ipe/1_Managerial Functions.pdf"
+          "type": "link",
+          "url": "materials/ipe/1_Mgt Functions.html"
         },
         {
-          "id": "f1774795753581",
+          "id": "f1774803735249",
           "name": "2_Evolution of Management & Development of Organization Theories",
-          "type": "pdf",
-          "url": "materials/ipe/2_Evolution of Management & Development of Organization Theories.pdf"
+          "type": "link",
+          "url": "materials/ipe/2_Evolution_Development_of_Org_Theory_Notes.html"
         },
         {
-          "id": "f1774796286812",
-          "name": "3_Organization Structure &  Types",
-          "type": "pdf",
-          "url": "materials/ipe/3_Organization Structure &  Types.pdf"
+          "id": "f1774803771364",
+          "name": "3_Organization Structure & Types",
+          "type": "link",
+          "url": "materials/ipe/3_Organization_Structure_Notes.html"
         },
         {
-          "id": "f1774796315532",
+          "id": "f1774803805761",
           "name": "4_Personnel Management",
-          "type": "pdf",
-          "url": "materials/ipe/4_Personnel Management.pdf"
+          "type": "link",
+          "url": "materials/ipe/4_Personnel_Management_Notes.html"
         },
         {
-          "id": "f1774796337235",
+          "id": "f1774803834523",
           "name": "5_Marketing Management",
-          "type": "pdf",
-          "url": "materials/ipe/5_Marketing Management.pdf"
+          "type": "link",
+          "url": "materials/ipe/5_Marketing_Management_Notes.html"
         }
       ],
       "topics": [
