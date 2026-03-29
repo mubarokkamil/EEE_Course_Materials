@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2_Evolution_Development_of_Org_Theory_Notes.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="part-ii-evolution-of-management--development-of-organization-theories">Part (ii): Evolution of Management &amp; Development of Organization Theories</h1>
+<h2 id="overview-the-big-picture">Overview: The Big Picture</h2>
+<p>Management thinking did not appear overnight. It evolved over centuries as people tried to answer one question: <strong>&quot;What is the best way to run an organization?&quot;</strong> Each era produced a new school of thought, and each one built on — or reacted against — the previous one.</p>
+<p>The four major phases of management thought are:</p>
+<ul>
+<li><strong>Early Management Thought</strong> (Ancient wisdom applied to organizations)</li>
+<li><strong>Classical Perspective</strong> (Scientific, Bureaucratic, Administrative — early 1900s)</li>
+<li><strong>Behavioral Perspective</strong> (Human-focused — mid 1900s)</li>
+<li><strong>Contemporary Perspectives</strong> (Systems, Contingency, TQM, Learning Org — modern era)</li>
+</ul>
+<hr>
+<h2 id="1-early-management-thought">1. Early Management Thought</h2>
+<p>Before formal management theory existed, thinkers from different fields laid the groundwork. Three key contributors stand out.</p>
+<h3 id="a-sun-tzu--the-art-of-war-management-strategy">A. Sun Tzu — <em>The Art of War</em> (Management Strategy)</h3>
+<p><strong>Period:</strong> 4th century BC</p>
+<p>Sun Tzu's famous phrase sums it all up: <strong>&quot;The marketplace is a battlefield.&quot;</strong> He wrote about military strategy, but his principles translate directly into business management.</p>
+<table>
+<thead>
+<tr>
+<th>The Art of War (Military)</th>
+<th>The Art of Management (Business)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fight for the enemy's supply wagons</td>
+<td>Compete for resources against all other organizations</td>
+</tr>
+<tr>
+<td>Capture supplies using overwhelming force</td>
+<td>Make only what creates overwhelming value</td>
+</tr>
+<tr>
+<td>Reward the first who capture them</td>
+<td>Reward those who discover new value</td>
+</tr>
+<tr>
+<td>Change their banners and flags</td>
+<td>Buy what you need and re-label/brand it</td>
+</tr>
+<tr>
+<td>Mix them into your supply line</td>
+<td>Mix internal and external products to increase value</td>
+</tr>
+<tr>
+<td>Keep soldiers strong by providing for them</td>
+<td>Retain employees by being successful</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Lesson for Exam:</strong> Sun Tzu's contribution is the concept of <strong>competitive strategy</strong> — knowing your competitors, conserving resources, and outmaneuvering rivals. This is exactly what Apple does against Samsung, or Grameenphone does against Robi — they compete for the same customers (resources) in a marketplace that is indeed a battlefield.</p>
+<hr>
+<h3 id="b-niccol%C3%B2-machiavelli--the-prince-leadership">B. Niccolò Machiavelli — <em>The Prince</em> (Leadership)</h3>
+<p>Machiavelli wrote about how a ruler (leader) should acquire, maintain, and use power. His ideas about <strong>leadership strategy, power, and political realism</strong> influenced management thinking about how leaders should handle authority and resistance within organizations.</p>
+<hr>
+<h3 id="c-adam-smith--the-wealth-of-nations-division-of-labor">C. Adam Smith — <em>The Wealth of Nations</em> (Division of Labor)</h3>
+<p>Adam Smith introduced the concept of <strong>division of labor</strong> — breaking a complex task into smaller, specialized parts assigned to different workers. This massively increases efficiency.</p>
+<p>For example, in a transformer manufacturing plant: instead of one engineer doing everything (winding, insulation, testing, assembly), different workers specialize in each step. Output per person increases dramatically. This idea directly led to the factory system and later to Taylor's Scientific Management.</p>
+<hr>
+<h2 id="2-classical-perspective">2. Classical Perspective</h2>
+<p>The Classical Perspective emerged during the Industrial Revolution when factories needed systematic ways to manage large numbers of workers. It has three branches.</p>
+<h3 id="a-scientific-management--frederick-w-taylor">A. Scientific Management — Frederick W. Taylor</h3>
+<p><strong>Definition:</strong> Scientific management seeks to increase productivity and make work easier by carefully studying work procedures and determining the best methods for performing particular tasks.</p>
+<p>Taylor's goal was simple: find the <strong>&quot;one best way&quot;</strong> to do any job. He used a <strong>stopwatch</strong> to time workers and ran <strong>time and motion studies</strong> — carefully observing each movement in a task to eliminate wasted effort. These studies led to his famous four principles.</p>
+<h4 id="taylors-four-principles-of-scientific-management">Taylor's Four Principles of Scientific Management:</h4>
+<ol>
+<li><strong>Scientifically study each part of a task</strong> and develop the best method of performing it.</li>
+<li><strong>Carefully select workers and train them</strong> to perform the task using the scientifically developed method.</li>
+<li><strong>Cooperate fully with workers</strong> to ensure they use the proper method.</li>
+<li><strong>Divide work and responsibility</strong> — management plans using scientific principles, workers execute the work accordingly.</li>
+</ol>
+<p><strong>Real-World Example:</strong>
+At a Walton refrigerator assembly line in Gazipur, Taylor's approach means: instead of each worker assembling a full fridge from scratch, engineers time-study the process and establish that the most efficient method is: Worker A installs the compressor (40 sec), Worker B attaches the coils (35 sec), Worker C fits the door seals (30 sec). Everyone is trained in their specific method. Output per shift doubles. This is Scientific Management in action.</p>
+<p>At Amazon's massive fulfillment centers, every worker movement is tracked and optimized using time-motion principles — exactly what Taylor proposed.</p>
+<p><strong>Limitation to Note:</strong> Taylor focused purely on physical efficiency. He treated workers like machines and ignored psychological/social needs. This is why the Behavioral Perspective later emerged as a correction.</p>
+<hr>
+<h3 id="b-bureaucratic-management--max-weber">B. Bureaucratic Management — Max Weber</h3>
+<p>Weber developed the concept of an <strong>ideal bureaucracy</strong> — a perfectly rational, rule-based organizational structure that removes personal bias and inefficiency.</p>
+<h4 id="key-characteristics-of-webers-ideal-bureaucracy">Key Characteristics of Weber's Ideal Bureaucracy:</h4>
+<ol>
+<li><strong>Specialization of labor</strong> — Each person has a clearly defined job role and expertise.</li>
+<li><strong>Formal rules and procedures</strong> — Written rules govern all decisions; nothing is left to personal discretion.</li>
+<li><strong>Impersonality</strong> — Rules apply equally to everyone; no favoritism, no personal relationships influencing decisions.</li>
+<li><strong>Well-defined hierarchy</strong> — Clear chain of command; everyone knows who reports to whom.</li>
+<li><strong>Career advancement based on merit</strong> — Promotions are based on qualifications and performance, not personal connections.</li>
+</ol>
+<p><strong>Real-World Example:</strong>
+BPDB (Bangladesh Power Development Board) or any government organization in Bangladesh operates as a bureaucracy: there are formal SOPs (Standard Operating Procedures) for everything, a clear hierarchy from the Chairman down to Junior Engineers, and official rules for procurement. The goal is consistency and fairness. Similarly, a large company like IBM has formal HR policies, defined job descriptions, and promotion criteria based on performance reviews — all Weberian bureaucracy.</p>
+<p><strong>Why it matters:</strong> Weber's model brought <strong>predictability and fairness</strong> to organizations. However, too much bureaucracy can make organizations <strong>slow and rigid</strong> — which is why modern companies like Google try to minimize unnecessary bureaucratic layers.</p>
+<hr>
+<h3 id="c-administrative-management--henri-fayol">C. Administrative Management — Henri Fayol</h3>
+<p>While Taylor focused on the shop floor (workers), Fayol focused on the <strong>top management level</strong>. He was the first to describe management as a process consisting of distinct functions (Planning, Organizing, Commanding, Coordinating, Controlling). He also gave us <strong>14 universal principles</strong> that all managers should apply.</p>
+<h4 id="fayols-14-principles-of-management">Fayol's 14 Principles of Management:</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principle</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Division of Work</strong></td>
+<td>Specialization increases efficiency</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Authority</strong></td>
+<td>Managers have the right to give orders; with authority comes responsibility</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Discipline</strong></td>
+<td>Employees must follow rules; managers must enforce them fairly</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Unity of Command</strong></td>
+<td>Each employee should receive orders from only ONE superior</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Unity of Direction</strong></td>
+<td>One plan for one group of activities with one objective</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Subordination of Individual Interest to General Interest</strong></td>
+<td>Company interest comes before personal interest</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Remuneration</strong></td>
+<td>Workers must be paid fairly for their services</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Centralization</strong></td>
+<td>Degree to which decision-making is concentrated at top levels</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Scalar Chain</strong></td>
+<td>Clear line of authority from top to bottom (the hierarchy)</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Order</strong></td>
+<td>Right person in the right place, right material in the right place</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Equity</strong></td>
+<td>Managers must treat employees with kindness and justice</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>Stability and Tenure</strong></td>
+<td>Reducing employee turnover leads to better performance</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>Initiative</strong></td>
+<td>Employees should be encouraged to take initiative within the rules</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>Esprit de Corps</strong></td>
+<td>Team spirit and unity should be promoted within the organization</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Principles to Remember for Exam:</strong></p>
+<p><strong>Unity of Command</strong> — In an EEE project at BPDB, a Junior Engineer should report to only one Sub-Divisional Engineer. If two managers give conflicting orders, work stops. Violation of this principle causes confusion and conflict.</p>
+<p><strong>Scalar Chain</strong> — This is the formal chain of command. In PGCB, communication should flow: Board of Directors → MD → Chief Engineer → Senior Engineer → Junior Engineer. Fayol said you can use a &quot;gangplank&quot; (shortcut) for urgent communication, but the hierarchy must be respected for formal matters.</p>
+<p><strong>Esprit de Corps</strong> — This means building team spirit. Google's open office culture, team lunches, and collaborative projects are designed to build esprit de corps. At a Bangladeshi garment factory or power plant, team bonding ensures workers coordinate well during emergencies.</p>
+<p><strong>Division of Work</strong> — This is Adam Smith's division of labor applied at the management level. At Samsung's semiconductor fab, the Design team, Manufacturing team, and Testing team each specialize — Fayol formalized this as a management principle.</p>
+<hr>
+<h2 id="3-behavioral-perspective">3. Behavioral Perspective</h2>
+<p><strong>Definition:</strong> The behavioral approach to management is a management approach that emphasizes increasing organizational success by focusing on <strong>human variables</strong> within the organization.</p>
+<p>The Classical school treated workers as machines. The Behavioral school recognized that workers are human beings with emotions, social needs, and psychological motivations. This shift began with a famous experiment.</p>
+<h3 id="a-the-hawthorne-studies-1924%E2%80%931932">A. The Hawthorne Studies (1924–1932)</h3>
+<p><strong>Location:</strong> Western Electric Company's plant near Chicago.</p>
+<p><strong>What happened:</strong> Researchers initially studied how physical conditions (lighting, temperature) affect worker productivity. They changed the lighting for one group. Productivity went up. They changed it back. Productivity went up again. They tried different work schedules. Productivity kept rising regardless of what they changed.</p>
+<p><strong>The Discovery — Hawthorne Effect:</strong></p>
+<blockquote>
+<p>The discovery that paying special attention to employees motivates them to put greater effort into their jobs.</p>
+</blockquote>
+<p>More formally: <strong>Change of any kind increases productivity</strong> because workers feel noticed and valued.</p>
+<p><strong>Two key conclusions from the Hawthorne Studies:</strong></p>
+<ol>
+<li>Productivity rose because workers worked harder <strong>when they received attention</strong>.</li>
+<li>Factors <strong>other than the physical environment</strong> affected worker productivity — specifically, <strong>psychological and social conditions and effective supervision</strong>.</li>
+</ol>
+<p><strong>Real-World Example:</strong>
+A BPDB maintenance team is given a new supervisor who holds weekly check-ins and praises good work. Even without any salary increase or new equipment, the team's fault-repair time improves. The supervisor's attention and recognition is the Hawthorne Effect at work. Similarly, Google's famous &quot;20% time&quot; policy (allowing engineers to spend 20% of their time on personal projects) functions partly through the Hawthorne effect — engineers feel trusted and valued, so overall productivity increases.</p>
+<hr>
+<h3 id="b-human-relations-approach--abraham-maslow-hierarchy-of-needs">B. Human Relations Approach — Abraham Maslow (Hierarchy of Needs)</h3>
+<p>Maslow argued that <strong>all people have five basic types of needs</strong>, arranged in a hierarchy. People fulfill lower-level needs first before seeking to satisfy higher-level needs. One set of needs must be met before the next is pursued.</p>
+<p>The <strong>Hierarchy of Needs</strong> (bottom to top):</p>
+<pre class="hljs"><code><div>        [Self-Actualization]   ← Highest: Growth, creativity, reaching full potential
+       [Need for Self-Esteem]  ← Recognition, status, achievement
+      [Need for Social Relations] ← Belonging, friendship, teamwork
+        [Need for Security]    ← Job security, safety, insurance
+          [Physical Needs]     ← Salary, food, shelter (the most basic)
+</div></code></pre>
+<h4 id="applying-maslows-theory-to-management">Applying Maslow's Theory to Management:</h4>
+<p><strong>1. Physical Needs (Physiological):</strong>
+Addressed through wages, salary, and safe physical working conditions. If a BPDB lineman is not paid his salary for 3 months, no amount of team-building will motivate him — this base need is unmet.</p>
+<p><strong>2. Safety/Security Needs:</strong>
+Addressed by providing insurance, retirement benefits, and job security. Also means keeping workers safe from physical, psychological, or financial harm. At any electrical substation, proper PPE (Personal Protective Equipment), arc flash protection, and job security assurances address this level.</p>
+<p><strong>3. Social Needs:</strong>
+Addressed by providing a work environment in which colleagues interact — company lunch rooms, team events, open workspaces. At Meta or Google, the open campus design with common areas is deliberately designed to fulfill social needs. At a Bangladeshi factory, workers from the same village working together form social bonds that increase retention.</p>
+<p><strong>4. Status Needs (Esteem):</strong>
+Addressed by providing visible signs of recognition — job titles, private offices, designated parking spaces, awards, and promotions. When an engineer at PGCB is promoted from Junior Engineer to Sub-Divisional Engineer and gets a new office and vehicle, his esteem needs are being met. Apple's employee badge colors and internal titles serve the same purpose.</p>
+<p><strong>5. Self-Actualization (Self-Fulfillment):</strong>
+Addressed by providing opportunities to be creative at work and by including employees in decision-making. Tesla's engineers are encouraged to design novel EV solutions; Google engineers can propose new products. At a Bangladeshi startup like Shajgoj or Chaldal, senior developers who get to architect entire systems from scratch are experiencing self-actualization.</p>
+<p><strong>Key Exam Point:</strong> The hierarchy means a manager cannot skip levels. Offering &quot;creative work opportunities&quot; to a worker who cannot pay his rent (physical need unmet) will have zero motivational effect.</p>
+<hr>
+<h3 id="c-human-relations-approach--douglas-mcgregor-theory-x-and-theory-y">C. Human Relations Approach — Douglas McGregor (Theory X and Theory Y)</h3>
+<p>McGregor proposed that managers hold one of two fundamentally different sets of assumptions about their workers, and their management style reflects these assumptions.</p>
+<h4 id="theory-x-negative-perspective-on-human-behavior">Theory X (Negative Perspective on Human Behavior):</h4>
+<p>Leaders and managers who hold Theory X assumptions <strong>believe that employees are inherently lazy and lack ambition.</strong></p>
+<ul>
+<li>Workers dislike work and will avoid it if possible.</li>
+<li>They must be controlled, directed, and threatened with punishment to get them to work.</li>
+<li>They prefer to be directed and avoid responsibility.</li>
+</ul>
+<p><strong>Management Style Result:</strong> Strict supervision, micromanagement, authoritarian control, detailed rules, punishment for mistakes.</p>
+<p><strong>Real-World Example:</strong> A factory supervisor who stands over workers watching every move, clocking their toilet breaks, and docking pay for any slowdown operates under Theory X assumptions. Some traditional Bangladeshi garment factories historically operated this way. Elon Musk's return-to-office mandate at X (formerly Twitter) in 2022, requiring 80+ hour weeks, reflects Theory X assumptions.</p>
+<h4 id="theory-y-positive-perspective-on-human-behavior">Theory Y (Positive Perspective on Human Behavior):</h4>
+<p>Leaders and managers who hold Theory Y assumptions <strong>believe that most employees do not dislike work and want to make useful contributions to the organization.</strong></p>
+<ul>
+<li>Work is as natural as rest or play.</li>
+<li>Employees will exercise self-direction if they are committed to the objectives.</li>
+<li>They seek responsibility and can be creative in solving problems.</li>
+<li>Commitment to goals comes from the rewards associated with achieving them.</li>
+</ul>
+<p><strong>Management Style Result:</strong> Participative management, delegation, trust, autonomy, creative freedom.</p>
+<p><strong>Real-World Example:</strong> Google's management philosophy — flexible hours, remote work options, letting engineers propose projects, 20% time for personal projects — is a perfect Theory Y approach. Grameenphone's employee empowerment programs where team leaders can make decisions without approval from above reflects Theory Y thinking.</p>
+<p><strong>Quick Comparison Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Theory X</th>
+<th>Theory Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>View of workers</td>
+<td>Lazy, irresponsible</td>
+<td>Motivated, responsible</td>
+</tr>
+<tr>
+<td>Management style</td>
+<td>Authoritarian, controlling</td>
+<td>Participative, trusting</td>
+</tr>
+<tr>
+<td>Motivation method</td>
+<td>Fear, punishment</td>
+<td>Opportunity, recognition</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>Traditional factory floor</td>
+<td>Google, tech startups</td>
+</tr>
+<tr>
+<td>Perspective</td>
+<td>Negative</td>
+<td>Positive</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-contemporary-management-perspectives">4. Contemporary Management Perspectives</h2>
+<p>As the world became more complex, a single &quot;correct&quot; theory of management became impossible. Contemporary perspectives acknowledge this complexity. There are four major frameworks.</p>
+<h3 id="a-systems-theory">A. Systems Theory</h3>
+<p><strong>Definition:</strong> Views the organization as a <strong>system of interrelated parts</strong> that function in a holistic way to achieve a common purpose.</p>
+<p>The key idea is that you cannot manage one part of an organization in isolation — every department affects every other department. Changes in one part create ripple effects throughout.</p>
+<h4 id="four-key-systems-theory-concepts">Four Key Systems Theory Concepts:</h4>
+<p><strong>1. Open and Closed Systems:</strong></p>
+<ul>
+<li>An <strong>open system</strong> interacts with its environment — it takes inputs from outside (raw materials, people, money) and releases outputs (products, waste, services). Most real organizations are open systems.</li>
+<li>A <strong>closed system</strong> does not interact with its environment. Purely theoretical — no real organization is fully closed.</li>
+<li>For example, PGCB (Power Grid Company of Bangladesh) is an open system: it takes inputs (electricity from power plants, fuel, engineers) and releases outputs (transmitted power) while being affected by external factors (monsoon floods, government policy, fuel prices).</li>
+</ul>
+<p><strong>2. Subsystems:</strong>
+Organizations are made up of smaller, interdependent subsystems. For example, in a Samsung semiconductor plant, the Design subsystem, Manufacturing subsystem, Quality Control subsystem, and Sales subsystem all work together. If the Manufacturing subsystem fails (machine breakdown), it affects the Sales subsystem (delivery delays).</p>
+<p><strong>3. Synergy:</strong>
+The whole is greater than the sum of its parts. When subsystems work together effectively, the combined output exceeds what each part could produce independently. The formula: 1 + 1 &gt; 2. At a power plant, the combined output of Engineering, Operations, and Maintenance teams working in sync is far greater than each team working in isolation.</p>
+<p><strong>4. Equifinality:</strong>
+<strong>Different initial states (starting points) can lead to similar end states (results).</strong> There are multiple paths to the same goal. Two power plants — one using coal, one using gas — can both achieve the goal of supplying 500 MW to the national grid. Two companies — Apple starting from computers and Meta starting from social media — both ended up as dominant tech platforms. There is no single &quot;correct&quot; path.</p>
+<p><strong>Why Systems Theory matters for management:</strong> A manager must understand that decisions in one department impact others. A Chief Engineer at BPDB who cuts the maintenance budget (to save money) may cause a feeder failure three months later — the financial decision has a technical ripple effect. Systems Theory teaches this interconnectedness.</p>
+<hr>
+<h3 id="b-contingency-theory">B. Contingency Theory</h3>
+<p><strong>Definition:</strong> This theory states that there is <strong>no &quot;one best way&quot; to manage an organization.</strong> The most effective management approach depends on the specific situation (the contingencies).</p>
+<p>Two reasons why there is no universal best practice:</p>
+<ol>
+<li>What works for one organization may not work for another.</li>
+<li>Situational characteristics (contingencies) differ — size, technology, environment, workforce, industry.</li>
+</ol>
+<p>Therefore, <strong>managers need to understand the key contingencies that determine the most effective management practices in a given situation.</strong></p>
+<p><strong>Real-World Examples:</strong></p>
+<ul>
+<li>Taylor's Scientific Management works well for a repetitive manufacturing line (Walton fridge assembly). It does NOT work for a software development team at a Bangladeshi tech startup like Pathao, where creativity and flexibility are needed.</li>
+<li>Google's flat, autonomous management style works perfectly for highly educated, self-motivated engineers. The same style in a power plant operational room — where strict protocols and chain-of-command are critical for safety — would be dangerous.</li>
+<li>A startup with 10 people needs almost no formal structure. The same 10-person management style applied to BPDB with 30,000 employees would create chaos. The contingency changes: size, risk, complexity.</li>
+</ul>
+<p><strong>Key Exam Statement:</strong> Contingency Theory is the direct opposite of Taylor's &quot;one best way.&quot; Taylor said there IS one best method for every task. Contingency Theory says it DEPENDS on the situation.</p>
+<hr>
+<h3 id="c-total-quality-management-tqm">C. Total Quality Management (TQM)</h3>
+<p><strong>Definition:</strong> An organization-wide approach that focuses on <strong>quality as an overarching goal.</strong> The basis of this approach is the understanding that <strong>all employees and organizational units should be working harmoniously to satisfy the customer.</strong></p>
+<p>TQM is not just a quality control department's job — it is everyone's responsibility. From the CEO to the factory floor worker, every person and every process must contribute to maintaining and improving quality.</p>
+<p><strong>Core ideas of TQM:</strong></p>
+<ul>
+<li>Quality is defined by the customer — if the customer is not satisfied, quality has not been achieved.</li>
+<li>Quality must be built into processes, not just inspected at the end.</li>
+<li>Continuous improvement (the Japanese concept of <strong>Kaizen</strong>) is central.</li>
+<li>Everyone in the organization is responsible for quality.</li>
+</ul>
+<p><strong>Real-World Examples:</strong></p>
+<ul>
+<li><strong>Toyota</strong> is the most famous example of TQM — their Toyota Production System emphasizes zero defects, continuous improvement, and every worker having the power to stop the production line if a quality issue is detected.</li>
+<li><strong>Walton</strong> achieving international quality certifications (ISO 9001) for their refrigerators means they have implemented TQM principles: standardized processes, regular audits, customer feedback loops, and cross-departmental quality goals.</li>
+<li>At <strong>PGCB</strong>, TQM would mean that every engineer, technician, and manager — not just the quality assurance department — works to ensure reliable power transmission. System reliability (measured by SAIDI/SAIFI indicators) becomes a company-wide quality goal.</li>
+</ul>
+<hr>
+<h3 id="d-the-learning-organization">D. The Learning Organization</h3>
+<p><strong>Definition:</strong> The management approach based on an organization <strong>anticipating change faster than its counterparts</strong> to have an advantage in the market over its competitors.</p>
+<p>A Learning Organization does not wait for change to force adaptation — it proactively builds the capacity to learn, adapt, and innovate continuously. The competitive advantage comes from being better at learning than competitors.</p>
+<h4 id="two-ways-organizations-can-learn">Two Ways Organizations Can Learn:</h4>
+<p><strong>1. Experimental Learning (Learning from Within):</strong>
+The organization tries new ideas internally, evaluates results, and incorporates lessons into future practice. This is learning from your own experience — trial and error, pilot projects, R&amp;D.
+For example, Grameenphone experimenting with new network technologies (5G rollout in limited areas first, then expanding based on feedback) is experimental learning.</p>
+<p><strong>2. External Learning (Learning from Outside):</strong>
+The organization learns by studying competitors, customers, industry trends, research publications, and benchmarking against best practices worldwide.
+For example, Walton studying how LG and Samsung design their inverter ACs and then incorporating those insights into their own product line is external learning.</p>
+<p><strong>Real-World Examples:</strong></p>
+<ul>
+<li><strong>Google</strong> is the classic Learning Organization: it runs thousands of internal experiments (Google's A/B testing culture), learns from failed products (Google Glass, Google+), and continuously adapts.</li>
+<li><strong>Amazon</strong> constantly experiments with new logistics approaches, pricing algorithms, and product categories. Jeff Bezos famously said Amazon's willingness to be misunderstood for years while experimenting is central to their success.</li>
+<li>A <strong>Bangladeshi RMG (Ready-Made Garment) factory</strong> that sends managers to visit Korean and Turkish factories to learn lean manufacturing techniques, and then implements those techniques at home, is practicing external learning.</li>
+</ul>
+<p><strong>Why the Learning Organization matters:</strong> In a fast-changing world (new technologies, new competitors, new customer expectations), the organization that learns fastest survives. A power company that does not learn about smart grid technology, renewable energy integration, or SCADA upgrades will become obsolete — even if it was efficient under the old system.</p>
+<hr>
+<h2 id="summary-the-evolution-at-a-glance">Summary: The Evolution at a Glance</h2>
+<table>
+<thead>
+<tr>
+<th>Era</th>
+<th>School</th>
+<th>Key Thinker(s)</th>
+<th>Core Focus</th>
+<th>Key Idea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ancient</td>
+<td>Early Management Thought</td>
+<td>Sun Tzu, Machiavelli, Adam Smith</td>
+<td>Strategy, leadership, work design</td>
+<td>Marketplace is a battlefield; division of labor</td>
+</tr>
+<tr>
+<td>Early 1900s</td>
+<td>Classical — Scientific</td>
+<td>F.W. Taylor</td>
+<td>Worker efficiency</td>
+<td>One best way; time &amp; motion studies</td>
+</tr>
+<tr>
+<td>Early 1900s</td>
+<td>Classical — Bureaucratic</td>
+<td>Max Weber</td>
+<td>Organizational structure</td>
+<td>Rules, hierarchy, merit-based advancement</td>
+</tr>
+<tr>
+<td>Early 1900s</td>
+<td>Classical — Administrative</td>
+<td>Henri Fayol</td>
+<td>Management functions &amp; principles</td>
+<td>14 principles; Planning, Organizing, Leading, Controlling</td>
+</tr>
+<tr>
+<td>Mid 1900s</td>
+<td>Behavioral</td>
+<td>Mayo, Maslow, McGregor</td>
+<td>Human motivation</td>
+<td>Hawthorne effect; hierarchy of needs; Theory X/Y</td>
+</tr>
+<tr>
+<td>Modern</td>
+<td>Contemporary — Systems</td>
+<td>Ludwig von Bertalanffy</td>
+<td>Interconnectedness</td>
+<td>Organization as a system; synergy; equifinality</td>
+</tr>
+<tr>
+<td>Modern</td>
+<td>Contemporary — Contingency</td>
+<td>Various</td>
+<td>Situational management</td>
+<td>No one best way; depends on context</td>
+</tr>
+<tr>
+<td>Modern</td>
+<td>Contemporary — TQM</td>
+<td>Deming, Juran</td>
+<td>Quality everywhere</td>
+<td>Everyone responsible for quality; customer satisfaction</td>
+</tr>
+<tr>
+<td>Modern</td>
+<td>Contemporary — Learning Org</td>
+<td>Senge</td>
+<td>Continuous adaptation</td>
+<td>Anticipate change; experimental and external learning</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
