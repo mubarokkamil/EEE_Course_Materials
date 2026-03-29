@@ -135,6 +135,24 @@ const DRIVE_DATA = {
           "name": "2_Evolution of Management & Development of Organization Theories",
           "type": "pdf",
           "url": "materials/ipe/2_Evolution of Management & Development of Organization Theories.pdf"
+        },
+        {
+          "id": "f1774796286812",
+          "name": "3_Organization Structure &  Types",
+          "type": "pdf",
+          "url": "materials/ipe/3_Organization Structure &  Types.pdf"
+        },
+        {
+          "id": "f1774796315532",
+          "name": "4_Personnel Management",
+          "type": "pdf",
+          "url": "materials/ipe/4_Personnel Management.pdf"
+        },
+        {
+          "id": "f1774796337235",
+          "name": "5_Marketing Management",
+          "type": "pdf",
+          "url": "materials/ipe/5_Marketing Management.pdf"
         }
       ],
       "topics": []
