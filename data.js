@@ -155,7 +155,20 @@ const DRIVE_DATA = {
           "url": "materials/ipe/5_Marketing Management.pdf"
         }
       ],
-      "topics": []
+      "topics": [
+        {
+          "id": "important-questions-for-quiz",
+          "name": "Important Questions for Quiz",
+          "files": [
+            {
+              "id": "f1774797456259",
+              "name": "Quiz Suggestions",
+              "type": "link",
+              "url": "materials/ipe/Exam_Question_Bank_Full.html"
+            }
+          ]
+        }
+      ]
     }
   ]
 };
