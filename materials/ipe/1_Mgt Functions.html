@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>1_Mgt Functions.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="1-what-is-an-organization">1. What is an Organization?</h2>
+<p>The Concept: An organization isn't just a building; it’s a group of people working together in a structured way to achieve a goal.</p>
+<p>EEE Explanation: Think of the Power Grid Company of Bangladesh (PGCB).</p>
+<ul>
+<li>Structure: It’s not a mob of people. They have engineers, technicians, and accountants.</li>
+<li>Goal: To transmit electricity reliably across the country.</li>
+<li>Strategy: Deciding whether to build a new substation in Sylhet or upgrade lines in Dhaka.</li>
+</ul>
+<h2 id="2-management">2. Management:</h2>
+<p>The Concept: You have inputs (resources) and you want outputs (goals). Management is the process of converting inputs to outputs efficiently.</p>
+<h2 id="3-resources">3. Resources :</h2>
+<p>EEE Explanation: Imagine you are a Project Manager setting up a solar power plant.</p>
+<ul>
+<li>
+<p>People: Your engineers and laborers.
+<em>Real World</em>: You need skilled winding technicians and EEE graduates who understand electromagnetic induction. If you hire unskilled labor to save money, the transformers will blow up.</p>
+</li>
+<li>
+<p>Money: The budget from the investor.</p>
+</li>
+<li>
+<p>Time: The deadline (must finish before summer load shedding).</p>
+</li>
+<li>
+<p>Work Procedures: The circuit design and installation protocols.</p>
+</li>
+<li>
+<p>Energy: Need electricity to run the machine and cranes</p>
+</li>
+<li>
+<p>Materials: Solar panels, inverters, cables.</p>
+</li>
+<li>
+<p>Equipment: Machines, Testing kits</p>
+</li>
+</ul>
+<h3 id="another-real-world-example-for-an-eee-student">Another Real-World Example for an EEE Student:</h3>
+<p>Imagine you are the Lead Engineer tasked with setting up a PCB (Printed Circuit Board) Assembly Line for a new smartphone.</p>
+<p>Management: You don't just throw components on a table. You consciously shape the assembly line so it produces 1,000 boards a day. If a machine breaks, you continuously adjust the plan.</p>
+<p>The 7 Resources in your Assembly Line:</p>
+<ul>
+<li>
+<p>People: Your technicians who operate the SMT (Surface Mount Technology) machines.</p>
+</li>
+<li>
+<p>Money: The $50,000 budget for components and salaries.</p>
+</li>
+<li>
+<p>Time: You must deliver the first batch in 30 days.</p>
+</li>
+<li>
+<p>Work Procedures: The &quot;Soldering Standards&quot; (like IPC-A-610) and the specific code for the pick-and-place robot.</p>
+</li>
+<li>
+<p>Energy: The 3-phase power supply required to run the heavy industrial ovens.</p>
+</li>
+<li>
+<p>Materials: The copper-clad boards, solder paste, microchips, and resistors.</p>
+</li>
+<li>
+<p>Equipment: The reflow oven, the oscilloscope for testing, and the robotic arms.</p>
+</li>
+</ul>
+<h2 id="4-the-goals-the-outputs">4. The Goals (The Outputs):</h2>
+<p>The slide lists what we are trying to achieve. It is NOT just profit. As an engineer, you have multiple targets.</p>
+<ul>
+<li>Profit Levels / Cost Levels:
+<ul>
+<li>Real World: You want to sell the transformer for 5 Lakh Taka, but make it for 3 Lakh Taka. You are managing to maximize that gap (Profit).</li>
+</ul>
+</li>
+<li>Maintenance or Growth of Financial Strength:
+<ul>
+<li>Real World: The company shouldn't go bankrupt after one project. You need to make enough money to buy better machines next year (Growth).</li>
+</ul>
+</li>
+<li>Quality Standards:
+<ul>
+<li>Real World (Crucial for EEE): The transformer must handle 11kV without overheating. If you save money but the quality is bad, the transformer explodes, and your company loses its reputation.</li>
+</ul>
+</li>
+<li>Employee Improvement:
+<ul>
+<li>Real World: Did your junior engineers learn something new? A good manager ensures his team gets better skills (e.g., learning to use new simulation software).</li>
+</ul>
+</li>
+<li>Professional Obligations:
+<ul>
+<li>Real World: As an engineer, you follow codes (like BNBC or IEEE standards). You have a duty not to design dangerous products.</li>
+</ul>
+</li>
+<li>Societal Concerns:
+<ul>
+<li>Real World: Is your factory dumping toxic oil into the river? Are you wasting electricity? Management today must focus on being &quot;Green&quot; and socially responsible.</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-the-5-functions-of-management">5. The 5 Functions of Management:</h2>
+<ul>
+<li>
+<p>Planning: Deciding what to do and how to do it.</p>
+</li>
+<li>
+<p>Organizing: Setting up the structure and assigning tasks.</p>
+</li>
+<li>
+<p>Staffing: Getting the right people for the right jobs.</p>
+</li>
+<li>
+<p>Directing (Leading): Guiding and motivating people to work.</p>
+</li>
+<li>
+<p>Controlling: Checking if everything is going according to plan and fixing errors</p>
+</li>
+</ul>
+<h2 id="6-organizational-performance">6. Organizational Performance</h2>
+<p>A measure of how efficiently and effectively managers are
+using organizational resources to satisfy customers and
+achieve goals.</p>
+<ul>
+<li>Efficiency – A measure of how well or productively resources are used to achieve a goal.
+(Doing things right !)</li>
+<li>Effectiveness– A measure of the appropriateness of the goals an organization is pursuing and
+the degree to which they are achieved. (Doing the right thing !)</li>
+</ul>
+<h3 id="real-world-scenario">Real-World Scenario:</h3>
+<ol>
+<li>High Efficiency, Low Effectiveness: You build a perfect, high-quality DVD player in 2024 very cheaply. Result: You fail because nobody wants DVD players anymore.</li>
+<li>Low Efficiency, High Effectiveness: You build an amazing electric vehicle that everyone wants, but your factory is disorganized, and it costs 500 Crore Taka to make one car. Result: You go bankrupt.</li>
+<li>High/High ( The Goal): Walton manufacturing a fridge that people want (Effective) at a cost that is lower than competitors (Efficient).</li>
+</ol>
+<h3 id="efficiency-effectiveness-and-performance-in-an-organization">Efficiency, Effectiveness, and Performance in an Organization:</h3>
+<p>Let’s use a real-world Bangladeshi Tech/Electronics example for each quadrant so you never forget.</p>
+<ul>
+<li>Quadrant 1: High Efficiency / High Effectiveness (Top Right - The Gold Standard)
+<ul>
+<li>Definition: You are making the product people want, and you are doing it cheaply/quickly.</li>
+<li>Real World Example: Walton LED Lights.
+<ul>
+<li>Effective: People in Bangladesh need bright, energy-saving lights. Walton provides that.</li>
+<li>Efficient: Walton manufactures them in their own factory in Gazipur using automated machines, keeping the cost very low (150-200 Taka).</li>
+</ul>
+</li>
+<li>Result: High profit, happy customers.</li>
+</ul>
+</li>
+<li>Quadrant 2: High Efficiency / Low Effectiveness (Top Left - &quot;The Smart Fool&quot;)
+<ul>
+<li>Definition: You are really good at working, but you are working on the wrong goal.</li>
+<li>Real World Example: Manufacturing 2G Modems in 2026.
+Imagine you have a factory that makes USB 2G modems. Your machines are perfect, your workers are fast, and you make the modems for only 50 Taka each (High Efficiency).
+But... nobody wants 2G anymore. Everyone uses 4G/5G WiFi.</li>
+<li>Result: You have a warehouse full of cheap products that nobody buys. You fail.</li>
+</ul>
+</li>
+<li>Quadrant 3: Low Efficiency / High Effectiveness (Bottom Right - &quot;Expensive Success&quot;)
+<ul>
+<li>Definition: You are making the right product, but you are wasting resources to do it.</li>
+<li>Real World Example: Government Power Plant Projects (Sometimes).
+<ul>
+<li>Effective: The goal is to stop load-shedding. The plant eventually produces electricity, which the country needs desperately.</li>
+<li>Low Efficiency: The project was supposed to cost 1,000 Crore Taka and take 2 years. Instead, due to bad management, it cost 3,000 Crore Taka and took 5 years.</li>
+</ul>
+</li>
+<li>Result: The lights are on (Goal met), but the electricity cost per unit is very high because of the waste.</li>
+</ul>
+</li>
+<li>Quadrant 4: Low Efficiency / Low Effectiveness (Bottom Left - &quot;The Disaster&quot;)
+<ul>
+<li>Definition: You are making a product nobody wants, and you are doing it badly/expensively.</li>
+<li>Real World Example: Teletalk’s &quot;Bornomala&quot; SIM (Hypothetical scenario).<br>
+Imagine if Teletalk decided to launch a SIM card that only works in one district (Ineffective - customers want nationwide coverage).<br>
+And their system is always down, so they can't even activate the SIMs fast enough (Inefficient).</li>
+<li>Result: The company shuts down</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-the-management-process--managerial-functions">7. The Management Process- Managerial Functions</h2>
+<p>FOUR Functions of Management:</p>
+<ul>
+<li>PLANNING</li>
+<li>ORGANIZING</li>
+<li>LEADING</li>
+<li>CONTROLLING</li>
+</ul>
+<h3 id="real-world-example">Real World Example:</h3>
+<p>The management process consists of four interrelated activities:</p>
+<ul>
+<li>Planning: Setting the destination. (e.g., An EEE student deciding to build a Line Follower Robot for a competition).</li>
+<li>Organizing: Gathering the parts. (e.g., Assigning one friend to code Arduino, another to design the circuit, and buying the sensors).</li>
+<li>Leading: Driving the team. (e.g., Encouraging the coder when the code creates errors and keeping the team focused).</li>
+<li>Controlling: Checking the result. (e.g., Testing the robot on the track. If it goes off-line, adjusting the PID sensor sensitivity).&quot;</li>
+</ul>
+<h3 id="planning">PLANNING:</h3>
+<p>Identifying goals and deciding how to achieve them. It happens before any action is taken.<br>
+The planning function determines how effective and efficient the organization is, and determines the strategy of the organization.</p>
+<h4 id="three-steps-in-the-planning-process">Three Steps in the Planning Process:</h4>
+<ul>
+<li>Deciding which goals to pursue.</li>
+<li>Deciding what courses of action to adopt.</li>
+<li>Deciding how to allocate resources</li>
+</ul>
+<h3 id="organizing">ORGANIZING:</h3>
+<p>Structuring working relationships in a way that allows organizational members to work together to achieve organizational goals.</p>
+<p>Creating organizational structure:</p>
+<ul>
+<li>Grouping employees into departments according to the tasks performed.</li>
+<li>Laying out lines of authority and responsibility for organizational
+members.</li>
+</ul>
+<p><em>Example: Your EEE Scenario:</em><br>
+You have 50 people. You can't just shout &quot;Work!&quot;</p>
+<ul>
+<li>Grouping: You create teams based on tasks:
+<ul>
+<li>Civil Team: Builds the foundation.</li>
+<li>Testing Team: Checks the relay protection and insulation resistance.</li>
+<li>Line Team: Connects the overhead conductors.</li>
+</ul>
+</li>
+<li>Authority: You decide that the Junior Engineer is in charge of the Testing Team. If a relay fails, the technician reports to the Junior Engineer, not directly to you. This is the Structure.</li>
+</ul>
+<h3 id="leading">LEADING:</h3>
+<p>Getting people to actually do the work willingly and well. This is about psychology and motivation.<br>
+Leadership involves using power, influence, vision,
+persuasion, and communication skills.<br>
+The outcome of leadership is highly motivated and
+committed organizational members</p>
+<p>Your EEE Scenario:<br>
+It’s 38°C outside, and your technicians are tired. They want to stop working.</p>
+<ul>
+<li>Vision: You gather them and say, &quot;Guys, if we finish this connection today, 50 villages will get electricity for Eid. Let's make that happen.&quot;</li>
+</ul>
+<h3 id="controlling">CONTROLLING:</h3>
+<p>Checking if things are going according to the Plan. If not, fix it.</p>
+<h2 id="8types-of-manager">8.TYPES OF MANAGER:</h2>
+<ol>
+<li>
+<p>First-Line Managers (The &quot;Front Line&quot;):<br>
+These are the managers at the lowest level of the hierarchy. They don't manage other managers; they manage the non-managerial employees (the people actually doing the technical work).</p>
+<ul>
+<li>
+<p>Focus: Day-to-day operations.</p>
+</li>
+<li>
+<p>Goal: Ensure the daily &quot;output&quot; is met.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Middle Managers (The &quot;Bridge&quot;):<br>
+Supervise first-line managers. Are responsible to find the best way to use departmental resources to achieve goals. These managers sit in the middle. They receive broad strategies from the top and turn them into specific plans for the first-line managers. They are responsible for departments (like Engineering, HR, or Marketing).</p>
+<ul>
+<li>
+<p>Focus: How to use departmental resources (money, people, equipment) most efficiently.</p>
+</li>
+<li>
+<p>Goal: To optimize their specific department to meet company goals.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Top Managers (The &quot;Visionaries&quot;):<br>
+These are the people at the very top (CEO, CTO, COO). They are responsible for the entire organization, not just one department.</p>
+<ul>
+<li>
+<p>Focus: Long-term goals (3–5 years into the future) and the &quot;Big Picture.&quot;</p>
+</li>
+<li>
+<p>Goal: Ensure the whole company survives and grows in a competitive market.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="real-world-explanation-for-an-eee-student">Real-World Explanation for an EEE Student:</h3>
+<p>Let’s look at a large electronics company like Intel or Samsung:</p>
+<ol>
+<li>
+<p>First-Line Manager (The Shift Supervisor):<br>
+Imagine a supervisor in the Wafer Fabrication Cleanroom. They manage the technicians who operate the lithography machines. If a machine throws an error code at 2:00 PM, the First-Line manager is the one who ensures it gets fixed immediately so the day's production target isn't missed.</p>
+</li>
+<li>
+<p>Middle Manager (The Head of the Semiconductor Division):<br>
+This person doesn't worry about one machine breaking. They look at the entire division. They decide: &quot;We need to upgrade our manufacturing process from 7nm to 5nm. How much budget do I need to allocate for new equipment this year?&quot; They coordinate between the R&amp;D team and the production team.</p>
+</li>
+<li>
+<p>Top Manager (The CEO/CTO):<br>
+The CTO doesn't care about a 5nm vs 7nm machine today. They are looking at the world: &quot;In 5 years, AI will be everywhere. We need to pivot our entire company strategy to focus on AI-specialized chips instead of just mobile processors.&quot; They make the decision to build a new $20 billion factory in a different country.</p>
+</li>
+</ol>
+<p>As you move up the pyramid, the number of managers decreases, but their level of responsibility and the &quot;time horizon&quot; of their decisions increase.</p>
+<h2 id="9-relative-amount-of-time-that-managers-spend-on-the-four-managerial-functions">9. Relative Amount of Time That Managers Spend on the Four Managerial Functions:</h2>
+<ul>
+<li>Top Managers spend most time in Planning
+<ul>
+<li>Why? Because a mistake in planning at the top destroys the company.</li>
+</ul>
+</li>
+<li>First-Line Managers spend most time Leading (Dark Blue).
+<ul>
+<li>Why? Because they deal with the workers directly. If a technician is sad or angry, the machine stops. The First-Line manager must motivate them.</li>
+</ul>
+</li>
+</ul>
+<h2 id="10-it-and-managerial-roles-and-skills">10. IT AND MANAGERIAL ROLES AND SKILLS:</h2>
+<h3 id="it-information-technology--management">IT (Information Technology) &amp; Management:</h3>
+<p>IT helps managers adopt a cross-departmental view.</p>
+<ul>
+<li>EEE Example:<br>
+SCADA (Supervisory Control and Data Acquisition).
+In the past, a manager had to call 10 substations to ask &quot;What is the voltage?&quot;
+Now, the Chief Engineer sits in Dhaka, looks at a Smart Grid Dashboard (IT), and sees the voltage of the entire country instantly. This allows him to make faster, better decisions.</li>
+</ul>
+<h3 id="managerial-roles-mintzberg">Managerial Roles (Mintzberg):</h3>
+<p>Henry Mintzberg said managers don't just &quot;Plan&quot; or &quot;Lead.&quot; They act out specific Roles:</p>
+<ul>
+<li>Decisional: Making choices.</li>
+<li>Informational: Processing data.</li>
+<li>Interpersonal: Dealing with people.</li>
+</ul>
+<h4 id="decisional-rules">DECISIONAL RULES:</h4>
+<ol>
+<li>Entrepreneur (The Innovator):</li>
+</ol>
+<ul>
+<li>Deciding which new projects to initiate and invest resources in.</li>
+<li>What it means: You look for ways to improve the organization. You don't just &quot;maintain&quot; the system; you upgrade it.</li>
+<li>EEE Real-World Example:
+<ul>
+<li>Imagine you are a Superintending Engineer at DPDC (Dhaka Power Distribution Company).
+You realize that manual meter reading is causing huge losses due to corruption.</li>
+<li>Your Decision: You initiate a project to replace 500,000 old meters with Smart Pre-paid Meters.
+Why? You are acting like an entrepreneur within the government company, investing resources to get better returns later.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>The Disturbance Handler (The Firefighter):</li>
+</ol>
+<ul>
+<li>Managing an unexpected event or crisis.</li>
+<li>Real-World EEE Example:
+<ul>
+<li>Think of the National Grid Failure that happened in October 2022.
+The engineers at the NLDC (National Load Dispatch Center) in Rampura were not &quot;Planning&quot; or &quot;Organizing&quot; at that moment. They were Disturbance Handlers.
+<ul>
+<li>The Crisis: The frequency dropped, and the whole country went dark.</li>
+<li>Your Decision: You have to decide immediately: &quot;Do I cut the connection to the western grid? Do I restart the Ashuganj plant first or the Ghorashal plant?&quot;
+If you freeze, the grid stays down. You must manage the chaos.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>The Resource Allocator (The Divider):</li>
+</ol>
+<ul>
+<li>Assigning resources between functions and divisions; setting budgets.</li>
+<li>What it really means: You never have enough money, men, or time. You must decide who gets the limited supply.</li>
+<li>Real-World EEE Example:
+<ul>
+<li>Load Shedding is the classic example of Resource Allocation in Bangladesh.
+You are the Shift In-Charge at a substation.</li>
+<li>The Resource: You have 10 MW of electricity coming in from the grid.</li>
+<li>The Demand: The residential area needs 8 MW, and the industrial zone needs 6 MW. Total demand = 14 MW. You only have 10 MW.</li>
+<li>Your Decision: You decide to cut power to the residential area for 1 hour to keep the factories running. You &quot;allocated&quot; the resource based on priority.</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>The Negotiator (The Deal Maker):</li>
+</ol>
+<ul>
+<li>Reaching agreements between other managers, unions, customers, or shareholders.</li>
+<li>What it really means: You have to bargain to protect your organization's interests.</li>
+<li>Real-World EEE Example:
+You are a Project Manager for Summit Power. You need to build a transmission tower in a village in Comilla.
+<ul>
+<li>The Conflict: The local farmer refuses to let you put the tower on his land. He wants 10 Lakh Taka compensation. Your budget is 5 Lakh.</li>
+<li>Your Decision: You sit with him, drink tea, and negotiate. Maybe you offer 6 Lakh and a job for his son as a security guard.
+Why is this Management? Because if you fail to negotiate, the power line is never built, and the project fails.</li>
+</ul>
+</li>
+</ul>
+<h4 id="informational-roles">Informational Roles:</h4>
+<p>As a manager, you are the Information Hub or the &quot;Router&quot; of the organization. You receive data, process it, and transmit it.</p>
+<ol>
+<li>Monitor:<br>
+Analyzing information from both the internal and external environment.</li>
+</ol>
+<ul>
+<li>Real-World EEE Example:
+<ul>
+<li>Imagine you are a Manager at Grameenphone (GP) in the Network Division.</li>
+<li>Internal Monitoring: You check the dashboard (Network Management System) to see if the servers in Chittagong are overheating.</li>
+<li>External Monitoring: You read the newspaper or check the BTRC website. Did the Government just increase the tax on optical fiber imports?</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>Disseminator:<br>
+Transmitting information to influence the attitudes and behavior of employees.</li>
+</ol>
+<ul>
+<li>The Concept: You take the info you found as a Monitor and share it with your team inside the company. You are &quot;filtering and forwarding.&quot;</li>
+<li>Real-World EEE Example:<br>
+You (the GP Manager) saw the BTRC tax hike news (from the Monitor step).
+Now, you call a meeting with your Junior Engineers.
+<ul>
+<li>The Action: You tell them: &quot;Guys, the tax on fiber went up. We cannot lay 50km of cable this month. We have to redesign the network to use microwave links instead.&quot;</li>
+<li>Why? You are disseminating (spreading) crucial facts so your team doesn't waste money planning a fiber route that is now too expensive.</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>Spokesperson:<br>
+Using information to positively influence the way people in and out of the organization respond to it.</li>
+</ol>
+<ul>
+<li>The Concept: You represent your team to the outside world. You are the &quot;Face&quot; of the department.</li>
+<li>Real-World EEE Example:<br>
+A massive network outage happens in Sylhet during a flood. Customers are angry; they are posting on Facebook that GP is useless.
+<ul>
+<li>The Action: You, as the Regional Head, go on a local TV channel or issue a press release.</li>
+<li>The Speech: &quot;Our towers are submerged, but our engineers are working on boats to fix the generators. We will restore 3G within 4 hours.&quot;</li>
+<li>Why? You are speaking on behalf of the organization to calm the public and protect the company's reputation.</li>
+</ul>
+</li>
+</ul>
+<h4 id="disseminator-vs-spokesperson">Disseminator vs. Spokesperson:</h4>
+<ul>
+<li>Disseminator:<br>
+Information flows form You
+→Your Employees (Inside).
+<ul>
+<li>Example: Telling your technician to wear safety gloves.</li>
+</ul>
+</li>
+<li>Spokesperson: Information flows from You
+→The Public / Bosses / Government (Outside).
+<ul>
+<li>Example: Telling the Ministry of Power that your plant is running efficiently.</li>
+</ul>
+</li>
+</ul>
+<h4 id="interpersonal-role">INTERPERSONAL ROLE:</h4>
+<p>Roles that managers assume to provide direction and
+supervision to both employees and the organization as a
+whole:</p>
+<ol>
+<li>Figurehead (The Symbol / The &quot;Face&quot;):<br>
+Symbolizing the organization’s mission and what it is seeking to achieve. Performing ceremonial and legal duties.</li>
+</ol>
+<ul>
+<li>What it really means: You are the &quot;Flag&quot; of the department. You represent authority and dignity. It involves duties that are not technical but are necessary for status and culture.</li>
+<li>Real-World EEE Example:
+<ul>
+<li>The Milad Mahfil: In Bangladesh, before commissioning a new 132kV Substation, the Project Director attends a Milad Mahfil and cuts the ribbon.</li>
+<li>Why? He isn't checking the voltage (Technical). He isn't deciding the budget (Decisional). He is there to show that &quot;The Authority is present and blesses this work.&quot;</li>
+<li>Legal Duty: Signing the &quot;Electrical Safety Certificate&quot; for a factory. You are putting your name and status on the line as the legal authority.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>Leader (The Motivator / The Coach):<br>
+Training, counseling, and mentoring high employee performance.</li>
+</ol>
+<ul>
+<li>Real-World EEE Example:
+Imagine you are a Sub-Divisional Engineer (SDE) at BPDB.
+<ul>
+<li>The Situation: It is Eid holiday. A storm hits, and lines are down. Your linemen want to go home to their families.</li>
+<li>Your Action: You go to the site, buy them food, pat them on the back, and say, &quot;Brothers, let's fix this feeder so the whole town can celebrate Eid with lights. Then we go home.&quot;</li>
+<li>Mentoring: A fresh graduate joins your team and accidentally shorts a circuit. You don't fire him. You explain why it happened (Arc Flash) and teach him safety protocols. That is Leading.</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>Liaison (The Bridge / The Networker):<br>
+Linking and coordinating the activities of people and groups both inside and outside the organization.</li>
+</ol>
+<ul>
+<li>What it really means: You are the &quot;Human Connector.&quot; You build a network of contacts to get things done. You connect your team to others.</li>
+<li>Real-World EEE Example:
+<ul>
+<li>Internal Liaison: You are the Electrical Manager at a Textile Factory. The Production Manager (Mechanical/IPE) wants to run machines 24/7. You need 2 hours to service the transformer. You meet with him to agree on a time slot. You are bridging two departments.</li>
+<li>External Liaison: You are a Plant Manager at a Gas Turbine Power Plant (like Ashuganj). You need gas pressure. You build a relationship with the manager at Titas Gas. You call him personally: &quot;Brother, increase the pressure slightly, my turbine is tripping.&quot;</li>
+</ul>
+</li>
+<li>Note: This is different from &quot;Spokesperson.&quot; Spokesperson is making a speech. Liaison is building a relationship/coordination.</li>
+</ul>
+<h2 id="11-managerial-skills">11. Managerial Skills:</h2>
+<ol>
+<li>Technical Skills (The &quot;Hands-On&quot; Knowledge):<br>
+The specific knowledge and techniques required to perform an organizational role.<br>
+It’s the ability to use tools, software, and engineering principles.</li>
+</ol>
+<ul>
+<li>Real-World Scenario:<br>
+You join Energypac as a Junior Engineer.
+<ul>
+<li>Your boss says: &quot;Design a 11kV/440V distribution transformer.&quot;</li>
+<li>You use your knowledge of Electromagnetic Induction, Core Loss calculation, and AutoCAD to draw the design.</li>
+<li>If you don't know how to calculate the turns ratio, you have Zero Technical Skill. You get fired.</li>
+</ul>
+</li>
+<li>Note: This skill is most important for First-Line Managers (Juniors).</li>
+</ul>
+<ol start="2">
+<li>Human Skills (The &quot;People&quot; Power):<br>
+The ability to understand, alter, lead, and control the behavior of other individuals and groups.</li>
+</ol>
+<ul>
+<li>EEE Explanation: Engineering is not done alone. You work in teams. If you are a genius at circuit design but you shout at your technicians, they will sabotage your project.</li>
+<li>Real-World Scenario:
+<ul>
+<li>You are a Sub-Divisional Engineer (SDE) at BPDB (PDB) in Sylhet.</li>
+<li>It is July, extremely hot, and a feeder trips. The local people are angry and surrounding your office. Your linemen are scared.</li>
+<li>The Skill: You go out, speak calmly to the public (&quot;We are working on it, please give us 1 hour&quot;), and you encourage your linemen (&quot;Don't worry, I am with you, let's fix the jumper safely&quot;).</li>
+</ul>
+</li>
+<li>Note: This skill is Equally Important at ALL levels of management.</li>
+</ul>
+<ol start="3">
+<li>Conceptual Skills:<br>
+The ability to analyze and diagnose a situation and distinguish between cause and effect.</li>
+</ol>
+<ul>
+<li>Real-World Scenario:
+<ul>
+<li>You are now the Chief Engineer or MD of PGCB (Power Grid Company of Bangladesh).</li>
+<li>The Problem: The demand for electricity in Dhaka is growing by 10% every year.</li>
+<li>The Decision: Do we build more gas power plants? Or do we import electricity from India via HVDC (High Voltage Direct Current)? Or do we build the Rooppur Nuclear Plant?</li>
+<li>The Skill: You aren't calculating the resistance of a wire (Technical). You are analyzing Economics, Politics, Environmental impact, and Long-term Technology trends. You realize that Gas is running out, so you decide to push for Nuclear. That is Conceptual Skill.</li>
+</ul>
+</li>
+<li>Note: This skill is most important for Top Managers.</li>
+</ul>
+<h4 id="skill-types-needed-by-managerial-level">Skill Types Needed by Managerial Level:</h4>
+<ul>
+<li>Top Managers (High Conceptual, Low Technical)</li>
+<li>Middle Managers (Balanced Skills)</li>
+<li>First-Line Managers (High Technical, Low Conceptual)</li>
+<li>The &quot;Constant&quot; Skill: Human Skills</li>
+</ul>
+<h2 id="12-challenges-for-management-in-a-global-environment">12. Challenges for Management in a Global Environment:</h2>
+<ol>
+<li>Increasing Number of Global Organizations.</li>
+<li>Building a Competitive Advantage.</li>
+<li>Maintaining Ethical Standards.</li>
+<li>Managing a Diverse Workforce.</li>
+<li>Utilizing IT and E-commerce.</li>
+</ol>
+<h4 id="real-world-explanation-for-an-eee-student">Real-World Explanation for an EEE Student:</h4>
+<p>Imagine you are a manager at a Solar Inverter Manufacturing Plant in Bangladesh.</p>
+<ul>
+<li>
+<p>Global Organizations: You aren't just competing with other local brands. You are competing with massive Chinese companies that can produce inverters very cheaply. You have to manage your resources perfectly to survive.</p>
+</li>
+<li>
+<p>Building a Competitive Advantage: To win, you need to offer something they don't. Maybe your inverters are designed specifically to handle the high humidity and heat of the local climate better than the global ones. This &quot;technical edge&quot; is your Competitive Advantage.</p>
+</li>
+<li>
+<p>Maintaining Ethical Standards: Suppose a supplier offers you cheaper capacitors that look good but are prone to leaking after two years. As a manager, you face an Ethical Challenge: do you save money now (high efficiency) or maintain the quality and safety of your product (ethical responsibility)?.</p>
+</li>
+<li>
+<p>Managing a Diverse Workforce: Your design team might include a young Gen-Z coder who wants to work from home and a senior Electrical Engineer who believes in traditional 9-to-5 office hours. You must use Human Skills to keep both productive.</p>
+</li>
+<li>
+<p>Utilizing IT: You implement a cloud-based monitoring system so your customers can see their solar production on their phones. This IT integration adds value to your hardware and keeps you modern.</p>
+</li>
+</ul>
+<h2 id="13-building-blocks-of-competitive-advantage">13. Building Blocks of Competitive Advantage:</h2>
+<p>This explains how a company actually &quot;wins&quot; against its rivals. To be a market leader, a manager must focus on these four specific pillars.</p>
+<ol>
+<li>Efficiency</li>
+<li>Quality</li>
+<li>Innovation</li>
+<li>Responsiveness to Customers</li>
+</ol>
+<h4 id="real-world-explanation-for-an-eee-student">Real-World Explanation for an EEE Student:</h4>
+<p>Let’s use the example of Walton (a major electronics manufacturer in Bangladesh) competing against global brands like Samsung or LG:</p>
+<ul>
+<li>
+<p>Efficiency: Walton uses high-tech automated machinery to manufacture Refrigerators. Because their labor and production costs are lower than importing a finished unit from Korea, they can sell it at a lower price. Lower cost through better resource use = Competitive Advantage.</p>
+</li>
+<li>
+<p>Quality: If you buy an Air Conditioner, you expect the compressor to last 10 years. If Walton’s ACs fail in 2 years, they lose their advantage. They must ensure high-grade copper coils and robust circuit protection to maintain a reputation for quality.</p>
+</li>
+<li>
+<p>Innovation: This is where you, the EEE engineer, come in! If Walton develops a new Inverter Technology that saves 60% more electricity than a traditional AC, that innovation gives them a massive edge over competitors who are still using older, power-hungry designs.</p>
+</li>
+<li>
+<p>Responsiveness to Customers: Imagine there is a sudden heatwave. Customers want ACs now. If Walton’s supply chain is fast and they have units ready in every local showroom while competitors are &quot;out of stock,&quot; Walton wins. Similarly, if customers want &quot;Smart Home&quot; features (controlling the AC via phone), the company must respond by adding Wi-Fi modules to their designs.</p>
+</li>
+</ul>
+<h2 id="14-is-management-an-art-or-a-science">14. Is Management an Art or a Science?</h2>
+<h4 id="management-as-a-science">Management as a Science:</h4>
+<p>Management is considered a science because it is based on logical observation, facts, and proven theories.</p>
+<ul>
+<li>Knowledge Base: Over the last 100 years, researchers have developed &quot;laws&quot; and &quot;principles&quot; (like the ones we just studied—Efficiency, Effectiveness, and the 5 Functions).</li>
+<li>Predictability: Just like in EEE where $V = IR$ tells you exactly what will happen to the current if you increase voltage, in management, there are models (like Queueing Theory or Inventory Models) that use math to predict outcomes.</li>
+<li>Data-Driven: It uses Information Technology (IT) and statistical analysis to make decisions.</li>
+</ul>
+<h4 id="management-as-an-art">Management as an Art:</h4>
+<p>Management is considered an art because it depends on the personal skills, aptitude, and creativity of the manager.</p>
+<ul>
+<li>
+<p>Personal Application: Two engineers might have the same technical knowledge, but one might be much better at motivating a team. That &quot;touch&quot; is an art.</p>
+</li>
+<li>
+<p>Creativity: There isn't always a formula for dealing with a &quot;Disturbance.&quot; Sometimes you have to think outside the box to solve a conflict between two employees or to negotiate a deal.</p>
+</li>
+</ul>
+<h4 id="real-world-explanation-for-an-eee-student">Real-World Explanation for an EEE Student:</h4>
+<p>Think about Circuit Designing:</p>
+<ul>
+<li>
+<p>The Science: You must follow the laws of physics. You use KVL (Kirchhoff's Voltage Law) and specific formulas to calculate the capacitor value. If you ignore the science, the circuit will burn. This is the Management Science (using the right tools and data).</p>
+</li>
+<li>
+<p>The Art: Where do you place the components on the PCB to make it compact, aesthetic, and easy to manufacture? There isn't one &quot;correct&quot; way to layout a board; it requires the Art of the engineer to make it elegant and functional.</p>
+</li>
+</ul>
+
+</body>
+</html>
