@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>06_Marketing_Management_Notes.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="marketing-management--smart-notes">Marketing Management — Smart Notes</h1>
+<h3 id="topics-marketing-concepts-organization-industrial--consumer-selling-advertising">Topics: Marketing Concepts, Organization, Industrial &amp; Consumer Selling, Advertising</h3>
+<hr>
+<h2 id="1-what-is-marketing-management">1. What is Marketing Management?</h2>
+<p>Marketing Management is the <strong>process of planning and executing strategies</strong> to bring the right product to the right customer at the right price, place, and time — while also achieving the organization's business goals.</p>
+<p>The four core decision areas in marketing are often called the <strong>4 Ps</strong>:</p>
+<ul>
+<li><strong>Product</strong> — What are you selling? What features, quality, and design does it have?</li>
+<li><strong>Price</strong> — What will you charge? How does that compare to competitors?</li>
+<li><strong>Promotion</strong> — How will you communicate with customers? (Advertising, sales, social media)</li>
+<li><strong>Distribution (Place)</strong> — How will the product reach the customer? (Retail, online, direct sales)</li>
+</ul>
+<p><strong>Why does this matter for an engineer?</strong>
+Consider Walton, which manufactures refrigerators and ACs. They have excellent production capability (engineering side). But if their marketing team sets the wrong price, distributes only in Dhaka while demand is in rural areas, and fails to advertise the product's energy-efficiency features — the product fails in the market regardless of its technical quality. Marketing Management is what connects the engineering output to the actual customer.</p>
+<hr>
+<h2 id="2-evolution-of-marketing-concepts">2. Evolution of Marketing Concepts</h2>
+<p>This is the historical story of how companies' mindset about marketing changed over time. Each era had a dominant philosophy — and each one has weaknesses that drove the shift to the next.</p>
+<hr>
+<h3 id="concept-1--production-concept-early-industrial-era">Concept 1 — Production Concept (Early Industrial Era)</h3>
+<p><strong>Core Idea:</strong> If you can produce it cheaply and in large quantities, customers will buy it.</p>
+<p>The assumption: demand exceeds supply, so anything produced will be sold. The focus is entirely on <strong>maximizing production volume and minimizing cost</strong>.</p>
+<p><em>Real-World Example: Henry Ford's Model T — &quot;You can have any color as long as it's black.&quot; Ford focused entirely on mass production efficiency. There was no concern for customer preferences because the demand for affordable cars far exceeded supply. This worked perfectly — in that era.</em></p>
+<p><strong>The Weakness:</strong> Once supply catches up with demand and customers have choices, a company that only focuses on production has nothing to distinguish itself. Customers start asking &quot;but which car do I want?&quot; not just &quot;can I get a car?&quot;</p>
+<hr>
+<h3 id="concept-2--product-concept">Concept 2 — Product Concept</h3>
+<p><strong>Core Idea:</strong> Customers will choose the product with the best quality, features, and performance.</p>
+<p>This is sometimes called <strong>&quot;marketing myopia&quot;</strong> — companies became so obsessed with improving the product that they forgot to check if customers actually wanted what they were building.</p>
+<p><em>Real-World Example: Think of a company that spent years perfecting a high-quality, precision mechanical watch — engineering it to be perfectly accurate, beautiful, and durable. Then the digital watch arrived. Customers didn't care about mechanical precision anymore; they wanted cheap, readable time. The product-focused company had built the best product in a market that no longer existed in the same form.</em></p>
+<p><em>Bangladeshi Context: Some local electronics manufacturers focus on building technically superior products but fail to match the packaging, branding, and after-sales service that customers also value — resulting in losing market share to Chinese imports that may be technically inferior but are better marketed.</em></p>
+<p><strong>The Weakness:</strong> &quot;Best product&quot; is defined by the customer, not by the engineer. You can fall in love with your own product and miss what the market actually wants.</p>
+<hr>
+<h3 id="concept-3--selling-concept">Concept 3 — Selling Concept</h3>
+<p><strong>Core Idea:</strong> Customers won't buy enough on their own — you must aggressively push them through heavy sales and promotion efforts.</p>
+<p>This concept treats selling as the solution to any marketing problem. The attitude is: &quot;We made the product; now we need to convince people to buy it.&quot;</p>
+<p><em>Real-World Example: Door-to-door insurance salespeople who call repeatedly and use high-pressure tactics to close a sale. Or aggressive mobile phone shops in Bashundhara City that grab customers walking by and try to sell them whatever is in stock that day — without actually understanding what the customer needs.</em></p>
+<p><strong>The Weakness:</strong> This creates one-time transactions, not loyal customers. If you push someone into buying something they didn't really need or want, they don't come back — and they tell their friends not to come either. It prioritizes short-term sales over long-term relationships.</p>
+<hr>
+<h3 id="concept-4--marketing-concept-the-modern-foundation">Concept 4 — Marketing Concept (The Modern Foundation)</h3>
+<p><strong>Core Idea:</strong> First understand what the customer needs, then build and deliver that — better than the competition.</p>
+<p>This is the <strong>180-degree flip</strong> from the Selling Concept. Instead of &quot;make the product, then sell it,&quot; the Marketing Concept says: &quot;find out what the customer wants, then make it.&quot;</p>
+<p>The philosophy: <strong>Customer needs → Product/Service → Profit through customer satisfaction.</strong></p>
+<p><em>Real-World Example: When Apple was developing the iPhone, they didn't just build a better phone — they studied how people were frustrated with carrying multiple devices (phone, camera, music player) and having complicated interfaces. The product was built around identified customer needs, not around what was easiest to manufacture.</em></p>
+<p><em>Bangladeshi Example: Grameenphone's introduction of small prepaid airtime packages (10 taka recharge) was driven by research showing that most rural customers couldn't afford large recharges but used phones regularly. The product feature was shaped entirely by customer need understanding — that's the Marketing Concept in action.</em></p>
+<p><strong>The Shift:</strong> The focus moves from the factory to the customer. The organization becomes market-driven, not production-driven.</p>
+<hr>
+<h3 id="concept-5--societal-marketing-concept-the-modern-extension">Concept 5 — Societal Marketing Concept (The Modern Extension)</h3>
+<p><strong>Core Idea:</strong> Meet customer needs AND do it in a way that benefits society and doesn't harm the environment or public welfare.</p>
+<p>This is the Marketing Concept with an added layer of <strong>social responsibility</strong>. A company should consider three things simultaneously:</p>
+<ul>
+<li><strong>Customer Wants</strong> (what the individual customer desires right now)</li>
+<li><strong>Society's Welfare</strong> (what is good for the community and environment long-term)</li>
+<li><strong>Company Profits</strong> (the business must remain financially viable)</li>
+</ul>
+<p><em>Real-World Example: Tesla's entire brand is built on the Societal Marketing Concept. They sell electric vehicles that customers want (customer satisfaction), reduce carbon emissions (social welfare), and build a highly profitable business (company profits). They didn't just make a car — they framed it as a solution to an environmental crisis.</em></p>
+<p><em>Bangladeshi Example: Solar home system companies like Grameen Shakti sell solar panels to rural households who want electricity (customer need), reduce kerosene consumption and carbon emissions (social welfare), and run a profitable business (company viability). This is the Societal Marketing Concept applied locally.</em></p>
+<p><strong>The Key Question This Concept Asks:</strong> Is what we are selling actually good for the customer AND for society in the long run?</p>
+<hr>
+<h2 id="3-the-modern-marketing-concept-discussed-in-detail">3. The Modern Marketing Concept (Discussed in Detail)</h2>
+<p>The Modern Marketing Concept builds on Concept 4 (Marketing Concept) and adds newer practices that reflect today's competitive environment.</p>
+<p><strong>Four Pillars of the Modern Marketing Concept:</strong></p>
+<p><strong>1. Customer-Oriented Approach</strong>
+Every decision — from product design to pricing to customer service — starts with the question: &quot;What does the customer value?&quot; Not &quot;what is easiest for us to produce?&quot; or &quot;what maximizes our short-term revenue?&quot;</p>
+<p><em>Example: Samsung's Galaxy series constantly surveys users and runs focus groups to determine what camera features, battery life, and screen size customers actually prioritize. Product updates are driven by this data, not just by engineering capability.</em></p>
+<p><strong>2. Market Research-Driven Decisions</strong>
+Instead of guessing what customers want, modern companies invest in systematic data collection — surveys, A/B testing, sales analysis, social media listening, focus groups. Decisions are based on evidence, not intuition.</p>
+<p><em>Example: Before launching a new AC model in Bangladesh, Walton might analyze which regions have the highest power outage rates (and therefore need better energy-efficient compressors), which income brackets are buying ACs for the first time, and what complaints existing AC owners have. All of this informs product design and marketing strategy.</em></p>
+<p><strong>3. Long-Term Customer Relationship Focus</strong>
+Modern marketing is not about making a single sale — it is about building a customer relationship that generates repeat purchases, referrals, and brand loyalty over years. This is called <strong>Customer Relationship Management (CRM)</strong>.</p>
+<p><em>Example: Grameenphone's loyalty program — offering existing long-term customers better data packages and exclusive offers — is designed to retain customers rather than constantly acquiring new ones (which is far more expensive).</em></p>
+<p><strong>4. Value Creation for the Customer</strong>
+The product or service must deliver genuine value — solving a real problem, saving time, improving quality of life. The customer asks: &quot;Is what I'm paying worth what I'm getting?&quot; Modern marketing ensures the answer is yes, and then communicates that value clearly.</p>
+<p><em>Example: When Walton markets an inverter AC, they don't just say &quot;it's an AC.&quot; They communicate the value: &quot;Save up to 60% on your electricity bill.&quot; The technical feature (inverter compressor) is translated into customer value (money saved).</em></p>
+<hr>
+<h2 id="4-marketing-organization">4. Marketing Organization</h2>
+<p>A <strong>Marketing Organization</strong> is the internal structure within a company that manages all marketing activities — from research to product development coordination to advertising to sales monitoring.</p>
+<p>Its roles:</p>
+<ul>
+<li><strong>Coordinate marketing strategies</strong> across departments (so the sales team knows what the advertising team is promising customers).</li>
+<li><strong>Support product and sales operations</strong> (marketing provides the market intelligence that guides what to build and how to sell it).</li>
+<li><strong>Ensure customer satisfaction</strong> (by maintaining the link between customer feedback and company decisions).</li>
+</ul>
+<hr>
+<h2 id="5-types-of-marketing-organization-structure">5. Types of Marketing Organization Structure</h2>
+<h3 id="structure-1--functional-organization">Structure 1 — Functional Organization</h3>
+<p>The marketing department is divided by <strong>function</strong> — separate teams for advertising, sales, market research, public relations, etc.</p>
+<ul>
+<li>Best for: Smaller companies with a limited product range.</li>
+<li>Advantage: Specialization — each team becomes expert in their function.</li>
+<li>Disadvantage: Poor coordination between functions. The advertising team might not know what the sales team is experiencing on the ground.</li>
+</ul>
+<p><em>Example: A small Bangladeshi electronics startup might have one team for digital marketing, one for sales, and one for customer service — each reporting separately to the marketing head.</em></p>
+<hr>
+<h3 id="structure-2--product-based-organization">Structure 2 — Product-Based Organization</h3>
+<p>The marketing department is organized around <strong>product lines</strong>, with each product line having its own dedicated marketing team.</p>
+<ul>
+<li>Best for: Companies with multiple distinct products.</li>
+<li>Advantage: Each product gets dedicated attention and expertise.</li>
+<li>Disadvantage: Duplication of resources (multiple teams doing similar work).</li>
+</ul>
+<p><em>Example: Walton's marketing department might have separate teams for Refrigerators, ACs, Televisions, and Smartphones — each team managing the full marketing mix for their product category.</em></p>
+<hr>
+<h3 id="structure-3--geographic-organization">Structure 3 — Geographic Organization</h3>
+<p>The marketing department is organized by <strong>location/region</strong>, with different teams handling different geographic markets.</p>
+<ul>
+<li>Best for: Companies operating across multiple regions with different customer behaviors.</li>
+<li>Advantage: Better understanding of local market nuances.</li>
+<li>Disadvantage: Inconsistent brand messaging across regions if not well coordinated.</li>
+</ul>
+<p><em>Example: Grameenphone has regional marketing teams for Dhaka, Chittagong, Sylhet, etc., because customer demographics, income levels, and usage patterns differ significantly across these regions.</em></p>
+<hr>
+<h3 id="structure-4--market-based-organization">Structure 4 — Market-Based Organization</h3>
+<p>The marketing department is organized around <strong>customer segments</strong> rather than products or locations.</p>
+<ul>
+<li>Best for: Companies serving distinctly different customer types.</li>
+<li>Advantage: Deep understanding of each customer segment's specific needs.</li>
+<li>Disadvantage: Same product may be marketed redundantly to different segments.</li>
+</ul>
+<p><em>Example: A power equipment company like Siemens or ABB might have separate marketing teams for Utilities (selling to PGCB/BPDB), Industrial Customers (selling to factories and manufacturing plants), and Infrastructure Customers (selling to construction developers) — because each group has completely different needs, decision processes, and buying criteria.</em></p>
+<hr>
+<h2 id="6-role-of-the-marketing-manager">6. Role of the Marketing Manager</h2>
+<p>A Marketing Manager is responsible for the full marketing cycle — from understanding the market to ensuring sales targets are met.</p>
+<p><strong>Key Responsibilities:</strong></p>
+<p><strong>1. Market Analysis and Planning</strong>
+Continuously study the market: Who are the customers? What do they need? What are competitors doing? What are the trends? Then translate this analysis into a concrete marketing plan with targets and strategies.</p>
+<p><strong>2. Product Development Coordination</strong>
+Marketing managers bridge the customer and the engineering/production teams. They bring customer feedback (&quot;customers want a smaller inverter with WiFi control&quot;) to the product development team so the right product is built.</p>
+<p><strong>3. Promotion Strategy Design</strong>
+Decide how, where, and with what message to reach customers — TV ads, social media campaigns, trade shows, technical demonstrations, or direct sales. Select the right promotional tools for the right audience.</p>
+<p><strong>4. Sales Performance Monitoring</strong>
+Track whether the marketing strategies are actually working — are sales targets being met? Which campaigns brought the best results? Where are customers dropping off in the purchase journey? Adjust the strategy based on this data.</p>
+<hr>
+<h2 id="7-industrial-selling-vs-consumer-selling">7. Industrial Selling vs. Consumer Selling</h2>
+<p>This is one of the most important distinctions in this chapter, especially for engineers who will work in companies that sell either to other businesses or directly to the public.</p>
+<h3 id="industrial-selling--business-to-business-b2b">Industrial Selling — Business to Business (B2B)</h3>
+<p>The seller is a business, and the buyer is also a business or organization. The product is typically used in that organization's own production or operations.</p>
+<p><em>Examples:</em></p>
+<ul>
+<li>ABB selling 132kV circuit breakers to PGCB (power utility).</li>
+<li>Siemens selling industrial motors to Bashundhara Cement Factory.</li>
+<li>A PCB manufacturer selling custom circuit boards to Walton's AC production line.</li>
+<li>A cable manufacturer selling underground cables to a Dhaka Metro Rail project.</li>
+</ul>
+<h3 id="consumer-selling--business-to-consumer-b2c">Consumer Selling — Business to Consumer (B2C)</h3>
+<p>The seller is a business, and the buyer is an individual person buying for personal or household use.</p>
+<p><em>Examples:</em></p>
+<ul>
+<li>Walton selling a refrigerator to a family in Sylhet.</li>
+<li>Grameenphone selling a SIM card to a student.</li>
+<li>An electronics shop in Elephant Road selling a laptop to an engineer.</li>
+</ul>
+<hr>
+<h2 id="8-characteristics-of-industrial-selling-b2b">8. Characteristics of Industrial Selling (B2B)</h2>
+<p><strong>1. Large Order Size</strong>
+A single transaction involves a large quantity or high-value purchase. PGCB buying 50 power transformers in one contract. A single deal might be worth hundreds of crores of taka. Losing one deal is a major financial impact.</p>
+<p><strong>2. Technical Product Knowledge Required</strong>
+The buyer is a technical expert (another engineer or procurement specialist). They will ask detailed questions about specifications, tolerances, certifications, and compatibility. The salesperson must be technically competent — often engineers themselves — to answer these questions credibly.</p>
+<p><em>Example: When Schneider Electric sells switchgear to DPDC, the salesperson must understand protection coordination, bus bar ratings, IEC standards, and installation requirements. A non-technical salesperson would fail immediately.</em></p>
+<p><strong>3. Long Negotiation Process</strong>
+B2B sales don't happen in one meeting. There are multiple rounds of technical discussions, proposal submissions, price negotiations, contract reviews, and approval processes. A major power equipment sale might take 6–18 months from first contact to signed contract.</p>
+<p><strong>4. Relationship-Based Selling</strong>
+Trust and long-term relationships are the foundation of B2B sales. Engineers and procurement managers buy from suppliers they trust — those who have delivered reliably in the past, provided good after-sales support, and dealt honestly during negotiations. One good project leads to the next contract.</p>
+<p><em>Example: Energypac Power Generation has long-standing relationships with BPDB and various government agencies. When a new power plant tender is announced, Energypac's established trust gives them a significant advantage over unknown competitors.</em></p>
+<hr>
+<h2 id="9-characteristics-of-consumer-selling-b2c">9. Characteristics of Consumer Selling (B2C)</h2>
+<p><strong>1. Smaller Purchase Quantity</strong>
+An individual buys one refrigerator, one phone, one AC. The value per transaction is low compared to industrial sales.</p>
+<p><strong>2. Emotional Buying Behavior</strong>
+Consumer purchases are strongly influenced by emotion, brand perception, aesthetics, and social factors — not just rational analysis. A customer might choose a Walton TV over a cheaper but unknown brand because Walton &quot;feels reliable&quot; or because their neighbor has one.</p>
+<p><em>Example: Apple's iPhone commands a significant price premium over technically comparable Android phones. Many customers buy it not because it is technically superior in every benchmark but because of the status, design, and ecosystem perception — all emotional factors.</em></p>
+<p><strong>3. Short Decision Time</strong>
+A consumer buying an AC might decide within a few days of researching. The decision cycle is short compared to industrial selling.</p>
+<p><strong>4. Mass Marketing Approach</strong>
+Because there are millions of potential individual customers, B2C marketing uses broad-reach tools: TV commercials, social media ads, billboards, influencer marketing. You cannot have a one-on-one relationship with every consumer — you communicate at scale.</p>
+<hr>
+<h2 id="10-comparison-industrial-vs-consumer-selling">10. Comparison: Industrial vs. Consumer Selling</h2>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Industrial Selling (B2B)</th>
+<th>Consumer Selling (B2C)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buyer</td>
+<td>Organizations, businesses</td>
+<td>Individual consumers</td>
+</tr>
+<tr>
+<td>Decision Process</td>
+<td>Rational, technical, committee-based</td>
+<td>Mix of emotional and rational, individual</td>
+</tr>
+<tr>
+<td>Number of Customers</td>
+<td>Few, concentrated</td>
+<td>Many, dispersed</td>
+</tr>
+<tr>
+<td>Value per Sale</td>
+<td>Very high</td>
+<td>Relatively low</td>
+</tr>
+<tr>
+<td>Relationship</td>
+<td>Long-term, personal</td>
+<td>Often transactional</td>
+</tr>
+<tr>
+<td>Sales Cycle</td>
+<td>Long (months to years)</td>
+<td>Short (days to weeks)</td>
+</tr>
+<tr>
+<td>Product Knowledge</td>
+<td>Deep technical expertise needed</td>
+<td>General knowledge usually sufficient</td>
+</tr>
+<tr>
+<td>Marketing Approach</td>
+<td>Targeted (specific decision-makers)</td>
+<td>Mass marketing (TV, social media, billboards)</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>ABB selling transformers to BPDB</td>
+<td>Walton selling ACs to households</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important Exam Distinction — Target Customer Group vs. Market Segmentation:</strong></p>
+<ul>
+<li>In <strong>Industrial Selling</strong>, you identify a specific <strong>target customer group</strong> — e.g., &quot;all power utilities in Bangladesh who are upgrading their substations.&quot; The list of potential customers is finite and identifiable.</li>
+<li>In <strong>Consumer Selling</strong>, you practice <strong>market segmentation</strong> — dividing the massive consumer population into segments (by age, income, geography, lifestyle) and designing different marketing messages for each segment. Walton might target upper-middle-income urban households with premium AC models and rural first-time buyers with budget models.</li>
+</ul>
+<hr>
+<h2 id="11-advertising-in-marketing">11. Advertising in Marketing</h2>
+<h3 id="what-is-advertising">What is Advertising?</h3>
+<p>Advertising is <strong>paid, non-personal promotion</strong> of a product, service, or brand through various media channels, with the goal of informing, persuading, or reminding a target audience.</p>
+<p>Key word: <strong>paid</strong> — this distinguishes advertising from public relations (free media coverage) or word-of-mouth.
+Key word: <strong>non-personal</strong> — it communicates to many people at once, not individually (unlike personal selling).</p>
+<p>Advertising:</p>
+<ul>
+<li>Creates awareness (customers learn the product exists).</li>
+<li>Builds brand image (customers associate the product with quality, innovation, reliability, etc.).</li>
+<li>Supports sales growth (awareness drives purchase decisions).</li>
+<li>Requires <strong>target-specific promotional tools</strong> — a TV commercial for a mass consumer product; a technical whitepaper and trade show presentation for an industrial product.</li>
+</ul>
+<hr>
+<h2 id="12-objectives-of-advertising">12. Objectives of Advertising</h2>
+<p><strong>1. Inform Customers About the Product</strong>
+This is the primary objective for new products. Before customers can buy, they must know the product exists and what it does.
+<em>Example: When Walton launched its first smartphone, advertising was needed to inform customers that Walton — known for fridges and ACs — also makes smartphones.</em></p>
+<p><strong>2. Persuade Customers to Buy</strong>
+Once customers are aware, advertising must convince them that <em>this</em> product is the right choice over alternatives. This involves highlighting benefits, value, and differentiation.
+<em>Example: Grameenphone's ads consistently emphasize the widest network coverage in Bangladesh — persuading customers that switching from a competitor means better connectivity everywhere.</em></p>
+<p><strong>3. Remind Customers About the Brand</strong>
+For established products, the goal shifts to staying &quot;top of mind&quot; — so that when a customer is ready to buy, your brand is the first they think of. Coca-Cola doesn't need to explain what it is — its advertising is purely about reminding and reinforcing brand presence.</p>
+<p><strong>4. Build Brand Loyalty</strong>
+Over time, advertising shapes a relationship between the brand and the customer — a preference so strong that the customer doesn't seriously consider alternatives. This is the long-term goal.
+<em>Example: Apple's advertising consistently reinforces themes of creativity, simplicity, and innovation — so loyal customers automatically think &quot;iPhone&quot; when they need a new phone, without seriously evaluating alternatives.</em></p>
+<hr>
+<h2 id="13-types-of-advertising">13. Types of Advertising</h2>
+<h3 id="traditional-advertising--tv-radio-newspaper">Traditional Advertising — TV, Radio, Newspaper</h3>
+<p>Broad reach, high cost, non-targeted. Best for mass consumer products where you need to reach millions of people with a single message.
+<em>Example: Walton's AC and fridge commercials on Bangladeshi TV channels during Eid season — they reach millions of households who are planning major purchases during this period.</em></p>
+<h3 id="digital-advertising--social-media-search-engines">Digital Advertising — Social Media, Search Engines</h3>
+<p>Highly targeted, measurable, cost-effective for specific audiences. Facebook and Google ads allow targeting by age, location, interests, and behavior.
+<em>Example: A solar panel company targeting Bangladeshi homeowners in districts with frequent load shedding, showing them Facebook ads about solar home systems. The targeting precision means no money is wasted advertising to apartment residents in Dhaka who can't install rooftop panels.</em></p>
+<h3 id="outdoor-advertising--billboards-signage">Outdoor Advertising — Billboards, Signage</h3>
+<p>High visibility in physical locations. Good for brand awareness in specific geographic areas.
+<em>Example: Grameenphone and Robi billboards at major highways and intersections — reminding commuters of their brand presence.</em></p>
+<h3 id="direct-marketing--email-sms">Direct Marketing — Email, SMS</h3>
+<p>One-to-one communication targeted at specific known customers or prospects.
+<em>Example: Grameenphone sending an SMS to customers who haven't recharged in 7 days, offering a special bonus recharge deal. This is highly targeted and cost-efficient.</em></p>
+<hr>
+<h2 id="14-advertising-strategy-elements">14. Advertising Strategy Elements</h2>
+<p>A good advertising campaign is not just &quot;make an ad and run it.&quot; It requires a structured strategy:</p>
+<p><strong>1. Target Audience Selection</strong>
+Who exactly are you trying to reach? Age, income, geography, profession, behavior? The more precisely you define this, the more effective and efficient the advertising will be.
+<em>Example: An industrial generator company (like Aggreko or Himoinsa) selling to factories would target procurement managers and engineering heads at manufacturing companies — not the general public.</em></p>
+<p><strong>2. Message Design</strong>
+What will you say, and how? The message must be relevant to the target audience's needs and concerns, clearly communicate the key benefit, and be memorable.
+<em>Example: For industrial equipment, the message might be technical and data-driven (&quot;Our generator delivers 99.97% uptime under full load&quot;). For consumer products, the message is emotional and aspirational (&quot;Keep your family cool all summer with Walton's new inverter AC — save up to 60% on electricity&quot;).</em></p>
+<p><strong>3. Media Selection</strong>
+Which channel will best reach your target audience at an acceptable cost? A B2B company might choose industry trade magazines, LinkedIn, and technical conferences. A B2C company might choose TV, Facebook, and billboards.</p>
+<p><strong>4. Budget Planning</strong>
+How much will you spend, and how will you allocate it across media channels and time periods? Budget decisions involve calculating expected reach, cost per impression, and expected return on advertising investment.</p>
+<hr>
+<h2 id="15-challenges-in-modern-advertising">15. Challenges in Modern Advertising</h2>
+<p><strong>1. High Competition</strong>
+Every product category is crowded with competitors all advertising simultaneously. Standing out requires more creative and targeted advertising, which costs more.
+<em>Example: In Bangladesh's mobile market, Grameenphone, Robi, Banglalink, and Teletalk all advertise heavily — each fighting for the same customer attention.</em></p>
+<p><strong>2. Changing Customer Behavior</strong>
+Customers skip ads (YouTube's skip button), use ad blockers, trust influencer recommendations over brand ads, and make purchasing decisions based on peer reviews rather than traditional advertising. The old approach of &quot;broadcast a message to everyone&quot; works less effectively every year.</p>
+<p><strong>3. Digital Media Dominance</strong>
+Traditional TV and newspaper advertising is declining in reach (especially among younger demographics who consume content entirely online). Companies that don't invest in digital advertising strategies are losing visibility with a growing segment of consumers.</p>
+<p><strong>4. Advertising Cost Increase</strong>
+As more companies compete for ad space — especially on Facebook, Google, and YouTube — the cost per impression and cost per click keeps rising. Small companies and startups struggle to compete with established brands' advertising budgets.</p>
+<hr>
+<h2 id="quick-reference-summary-table">Quick Reference Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Core Idea</th>
+<th>One-Line Exam Anchor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marketing Management</td>
+<td>Planning and executing the 4 Ps (Product, Price, Promotion, Place)</td>
+<td>Connects engineering output to the customer</td>
+</tr>
+<tr>
+<td>Production Concept</td>
+<td>Make more, sell more</td>
+<td>&quot;Any color as long as it's black&quot; — Ford</td>
+</tr>
+<tr>
+<td>Product Concept</td>
+<td>Best product wins</td>
+<td>Can cause &quot;marketing myopia&quot;</td>
+</tr>
+<tr>
+<td>Selling Concept</td>
+<td>Push hard enough and customers will buy</td>
+<td>Short-term transactions, not loyalty</td>
+</tr>
+<tr>
+<td>Marketing Concept</td>
+<td>Understand customer needs first, then build</td>
+<td>Customer need → Product → Profit</td>
+</tr>
+<tr>
+<td>Societal Marketing Concept</td>
+<td>Customer need + Society's welfare + Company profit</td>
+<td>Tesla / Grameen Shakti model</td>
+</tr>
+<tr>
+<td>Functional Organization</td>
+<td>Organized by marketing function</td>
+<td>Best for small companies, limited products</td>
+</tr>
+<tr>
+<td>Product-Based Organization</td>
+<td>Each product line has its own marketing team</td>
+<td>Best for multi-product companies like Walton</td>
+</tr>
+<tr>
+<td>Geographic Organization</td>
+<td>Organized by region</td>
+<td>Best for companies spanning different markets</td>
+</tr>
+<tr>
+<td>Market-Based Organization</td>
+<td>Organized by customer segment type</td>
+<td>Best for B2B companies serving different sectors</td>
+</tr>
+<tr>
+<td>Industrial Selling (B2B)</td>
+<td>Rational, technical, long cycle, few high-value customers</td>
+<td>ABB selling to PGCB</td>
+</tr>
+<tr>
+<td>Consumer Selling (B2C)</td>
+<td>Emotional, mass market, short cycle, many low-value customers</td>
+<td>Walton selling ACs to households</td>
+</tr>
+<tr>
+<td>Advertising</td>
+<td>Paid, non-personal promotion</td>
+<td>Inform → Persuade → Remind → Loyalty</td>
+</tr>
+<tr>
+<td>Advertising Types</td>
+<td>Traditional / Digital / Outdoor / Direct</td>
+<td>Match type to target audience</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
