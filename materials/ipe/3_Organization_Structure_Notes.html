@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>3_Organization_Structure_Notes.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="part-iii-organization-structure--study-of-various-types-of-organizations">Part (iii): Organization Structure &amp; Study of Various Types of Organizations</h1>
+<h2 id="overview-why-structure-matters">Overview: Why Structure Matters</h2>
+<p>Every organization needs a structure — a blueprint that answers: Who does what? Who reports to whom? How are decisions made? Who has authority? Without a clear structure, even talented people produce chaos. This part covers how organizations are designed, what shapes that design, and what the actual structural options look like.</p>
+<hr>
+<h2 id="1-key-definitions-must-know-for-exam">1. Key Definitions (Must Know for Exam)</h2>
+<p><strong>Organizing:</strong> The process by which managers establish working relationships among employees to achieve goals.</p>
+<p><strong>Organizational Design:</strong> The determination of the organizational structure that is most appropriate for the strategy, people, technology, and tasks of the organization. It is the <em>process</em> of choosing which structure fits best.</p>
+<p><strong>Organizational Structure:</strong> The way in which an organization's activities are divided, organized, and coordinated. More precisely: the <strong>formal arrangement of jobs within an organization.</strong></p>
+<p>The critical link between them: Successful organizational design depends on the organization's unique situation. There is no single universal correct structure — this connects directly to Contingency Theory from Part 2.</p>
+<hr>
+<h2 id="2-factors-affecting-organizational-design-the-four-determinants">2. Factors Affecting Organizational Design (The Four Determinants)</h2>
+<p>Four factors determine what kind of structure an organization should have. Managers must consider all four simultaneously — ignoring any one leads to a mismatched structure.</p>
+<h3 id="factor-1-the-environment">Factor 1: The Environment</h3>
+<p>The quicker the environment changes, the more problems managers face, and the more flexible the structure must be.</p>
+<p>When environmental change is rapid, organizations usually need to <strong>decentralize authority</strong> — push decision-making down to lower levels so that managers closest to the problem can respond quickly without waiting for top-level approval.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>A traditional substation operator at BPDB in a stable grid environment can use a rigid, formal structure with clear rules — the environment changes slowly.</li>
+<li>A tech startup like Pathao or ShopUp (Bangladesh) operates in a fast-changing market (new competitors, new regulations, changing customer behavior) — they need a flexible, decentralized structure where teams can pivot quickly without waiting for the CEO to approve every decision.</li>
+<li>Google and Apple compete in an environment where new smartphone technology emerges every year — highly flexible structures are essential.</li>
+</ul>
+<h3 id="factor-2-strategy">Factor 2: Strategy</h3>
+<p>Different strategies require different structures. The structure must support how the organization is trying to compete.</p>
+<ul>
+<li>A <strong>differentiation strategy</strong> (competing by offering unique, premium, or innovative products) needs a <strong>flexible structure</strong> — it requires creativity, collaboration, and rapid innovation. Apple's strategy of premium design and innovation requires flexible teams of designers, engineers, and software developers who collaborate freely.</li>
+<li>A <strong>low cost strategy</strong> (competing by being the cheapest producer) may need a <strong>more formal structure</strong> — standardized processes, tight cost controls, and efficient routines. A price-competitive garment factory in Bangladesh competes on cost, so standardized work procedures and formal controls are appropriate.</li>
+<li><strong>Increased vertical integration or diversification</strong> (expanding into new products or owning more of the supply chain) also requires a <strong>more flexible structure</strong> — because more complexity means more coordination is needed.</li>
+</ul>
+<h3 id="factor-3-technology">Factor 3: Technology</h3>
+<p>Technology is defined as the combination of <strong>skills, knowledge, tools, equipment, computers, and machines</strong> used in the organization.</p>
+<p>More complex technology makes it harder for managers to regulate the organization because there are more variables, more specialized knowledge required, and more potential failure points.</p>
+<p>Technology's impact on structure is measured by two dimensions:</p>
+<p><strong>Task Variety:</strong> The number of new and different problems a manager encounters. High task variety means the work is unpredictable and novel — problems are unique each time.</p>
+<p><strong>Task Analyzability:</strong> The degree to which programmed (pre-established) solutions are available for a manager to solve problems. High analyzability means there is a standard procedure for almost every problem.</p>
+<p>The combination determines the right structure:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Meaning</th>
+<th>Best Structure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High task variety + Low analyzability</td>
+<td>Many unique, novel problems with no standard solutions</td>
+<td>Flexible (Organic) structure</td>
+</tr>
+<tr>
+<td>Low task variety + High analyzability</td>
+<td>Routine, repetitive tasks with established procedures</td>
+<td>Formal (Mechanistic) structure</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><strong>High variety, Low analyzability:</strong> Software development at a Bangladeshi fintech company like bKash's engineering team — every new feature has unique technical challenges, there's no &quot;standard procedure&quot; for writing new code. Needs a flexible structure.</li>
+<li><strong>Low variety, High analyzability:</strong> A power substation operator at PGCB who follows strict SOPs for switching operations, maintenance schedules, and fault isolation — tasks are repetitive and fully proceduralized. Needs a formal structure.</li>
+</ul>
+<h3 id="factor-4-human-resources">Factor 4: Human Resources</h3>
+<p>Higher skilled workers who need to work in teams usually need a <strong>more flexible structure</strong> because they resist micromanagement, need autonomy to apply their expertise, and collaborate across disciplines. Higher skilled workers often have <strong>professional norms</strong> — standards of conduct from their profession (like IEEE standards for engineers, medical ethics for doctors) that already guide their behavior, reducing the need for tight organizational rules.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>A team of EEE engineers designing a smart grid system at DPDC — they are highly skilled, work in interdisciplinary teams (electrical, software, civil), and need autonomy. A rigid Weberian bureaucracy would stifle them.</li>
+<li>In contrast, a team of semi-skilled technicians doing cable laying for a fixed infrastructure project needs more direct supervision and formal procedures.</li>
+</ul>
+<p><strong>Key Rule:</strong> Managers must take into account all four factors — environment, strategy, technology, and human resources — when designing the structure of the organization.</p>
+<hr>
+<h2 id="3-the-six-key-elements-of-organizational-design">3. The Six Key Elements of Organizational Design</h2>
+<p>Once you understand the four determinants, you make concrete design decisions across six key elements. These six elements are the building blocks of any organizational structure.</p>
+<h3 id="element-1-work-specialization">Element 1: Work Specialization</h3>
+<p><strong>Definition:</strong> The degree to which tasks in the organization are divided into separate jobs with each step completed by a different person.</p>
+<p>This is Adam Smith's division of labor (from Part 2) applied in practice. High specialization means each person does a very narrow, specific task. Low specialization means each person handles a wider range of tasks.</p>
+<p><strong>The Problem of Overspecialization:</strong>
+Overspecialization can result in <strong>human diseconomies</strong> — negative effects on humans from being over-specialized. These include: boredom, fatigue, stress, poor quality output, increased absenteeism, and higher employee turnover.</p>
+<p><strong>Example:</strong> At a Walton assembly line, one worker who only installs the same bolt 400 times per day will become fatigued and disengaged — the quality of installation deteriorates. This is why modern factories introduce job rotation and job enlargement to counter overspecialization.</p>
+<h3 id="element-2-departmentalization">Element 2: Departmentalization</h3>
+<p><strong>Definition:</strong> The basis by which jobs are grouped together. There are five types:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Basis of Grouping</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Functional</strong></td>
+<td>By function performed</td>
+<td>Engineering Dept, Finance Dept, HR Dept — all engineers together, all finance staff together</td>
+</tr>
+<tr>
+<td><strong>Product</strong></td>
+<td>By product line</td>
+<td>Walton: Refrigerator Division, AC Division, Television Division</td>
+</tr>
+<tr>
+<td><strong>Geographic</strong></td>
+<td>By territory or geography</td>
+<td>Grameenphone: Dhaka Region, Chittagong Region, Sylhet Region</td>
+</tr>
+<tr>
+<td><strong>Process</strong></td>
+<td>By product or customer flow</td>
+<td>Manufacturing flow: Welding Dept → Assembly Dept → Painting Dept → Testing Dept</td>
+</tr>
+<tr>
+<td><strong>Customer</strong></td>
+<td>By type of customer</td>
+<td>Bank: Retail Banking Division, Corporate Banking Division, SME Division</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exam tip:</strong> Most large organizations use a combination. For example, BPDB uses geographic departmentalization (divisions per region) within which functional departments (engineering, finance, HR) exist.</p>
+<h3 id="element-3-chain-of-command">Element 3: Chain of Command</h3>
+<p><strong>Definition:</strong> The continuous line of authority that extends from upper levels of an organization to the lowest levels and clarifies <strong>who reports to whom.</strong></p>
+<p>Three concepts within the chain of command:</p>
+<p><strong>Authority:</strong> The rights inherent in a managerial position to tell people what to do and to expect them to do it. Authority comes with the position, not the person — when you are promoted to Sub-Divisional Engineer at BPDB, you gain the authority of that position.</p>
+<p><strong>Responsibility:</strong> The obligation or expectation to perform assigned tasks. When authority is delegated to a manager, responsibility for results comes with it. You cannot have one without the other — giving someone authority without responsibility creates unaccountable managers; giving responsibility without authority makes the job impossible.</p>
+<p><strong>Unity of Command:</strong> The concept that a person should have one boss and should report only to that person. This is Fayol's 4th principle applied at the structural level. Violating unity of command leads to conflicting instructions and confusion.</p>
+<p><strong>Example at BPDB:</strong> A Junior Engineer reports to one Sub-Divisional Engineer only. If both the SDE and the Executive Engineer give direct conflicting orders to the Junior Engineer simultaneously, work stops and the engineer is paralyzed. Unity of command prevents this.</p>
+<h3 id="element-4-span-of-control">Element 4: Span of Control</h3>
+<p><strong>Definition:</strong> The number of employees who can be effectively and efficiently supervised by a manager.</p>
+<p>A <strong>narrow span</strong> means each manager supervises few employees (say, 3–5) — results in a tall organizational hierarchy. A <strong>wide span</strong> means each manager supervises many employees (say, 15–20) — results in a flat organizational hierarchy.</p>
+<p><strong>Factors that affect the width of span of control:</strong></p>
+<ul>
+<li><strong>Skills and abilities of the manager</strong> — a more capable manager can handle more subordinates</li>
+<li><strong>Employee characteristics</strong> — experienced, self-motivated employees need less supervision (wider span); new or unskilled employees need more supervision (narrower span)</li>
+<li><strong>Similarity of tasks</strong> — if all employees do the same task, supervision is easier (wider span)</li>
+<li><strong>Complexity of tasks</strong> — complex, technical work requires more manager involvement (narrower span)</li>
+<li><strong>Physical proximity of subordinates</strong> — if workers are geographically spread out (e.g., PGCB substations across Bangladesh), supervision is harder (narrower span)</li>
+<li><strong>Standardization of tasks</strong> — highly standardized, rule-based work requires less supervision (wider span)</li>
+</ul>
+<p><strong>Real-World Context:</strong> A supervisor at a Walton production line where all workers do standardized tasks can supervise 20+ workers (wide span). A Senior Engineer at a SCADA control center supervising complex grid operations may only effectively manage 4–5 specialized engineers (narrow span).</p>
+<h3 id="element-5-centralization-and-decentralization">Element 5: Centralization and Decentralization</h3>
+<p><strong>Centralization:</strong> The degree to which decision-making is concentrated at a single point (the top) of the organization. In centralized organizations, top managers make all the decisions and lower-level employees simply carry out those orders.</p>
+<p><strong>Decentralization:</strong> Decision-making is pushed down to the managers who are closest to the action. <strong>Employee Empowerment</strong> is the result of decentralization — increasing the decision-making discretion of lower-level employees.</p>
+<p><strong>When to Centralize vs Decentralize:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Centralization works when...</th>
+<th>Decentralization works when...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decisions need uniformity</td>
+<td>Local conditions vary significantly</td>
+</tr>
+<tr>
+<td>Crisis or startup phase</td>
+<td>Organization is large and complex</td>
+</tr>
+<tr>
+<td>Stable, predictable environment</td>
+<td>Rapid environmental change requires fast decisions</td>
+</tr>
+<tr>
+<td>Lower-level staff lack experience</td>
+<td>Lower-level staff are skilled and experienced</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Real-World Examples:</strong></p>
+<ul>
+<li><strong>Centralized:</strong> Bangladesh's national grid frequency control — all decisions about load shedding, frequency adjustment, and power routing are made centrally by NLDC (National Load Dispatch Centre) in Rampura. You cannot have regional substations independently deciding to cut power — the whole system collapses.</li>
+<li><strong>Decentralized:</strong> Google allows individual product teams to make design and feature decisions without CEO approval. Amazon's &quot;two-pizza teams&quot; (small, autonomous teams) are empowered to build and launch products with significant independence.</li>
+</ul>
+<h3 id="element-6-formalization">Element 6: Formalization</h3>
+<p><strong>Definition:</strong> The degree to which jobs within the organization are standardized and the extent to which employee behavior is guided by rules and procedures.</p>
+<ul>
+<li><strong>Highly formalized jobs</strong> offer little discretion over what is to be done — there is a rule, SOP, or guideline for almost every situation. The worker follows the procedure, not their own judgment.</li>
+<li><strong>Low formalization</strong> means fewer constraints — employees use their own judgment and creativity to complete their work.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><strong>High Formalization:</strong> A power plant operator at Ashuganj Power Station follows strict ISO-certified operational SOPs for starting a gas turbine. Every step is documented. There is no room for improvisation — safety demands it.</li>
+<li><strong>Low Formalization:</strong> A software engineer at a Bangladeshi tech startup decides how to architect a feature, what tools to use, and when to write tests. There is no &quot;official procedure&quot; — creative freedom is the point.</li>
+</ul>
+<hr>
+<h2 id="4-mechanistic-vs-organic-organizations">4. Mechanistic vs Organic Organizations</h2>
+<p>These are the two extreme ends of the organizational design spectrum, defined by how the six elements are configured.</p>
+<h3 id="mechanistic-organization--%22the-machine%22">Mechanistic Organization — &quot;The Machine&quot;</h3>
+<p>A <strong>rigid and tightly controlled structure.</strong> Everything is standardized, controlled, and formal.</p>
+<p>Characteristics:</p>
+<ul>
+<li>High specialization (everyone does a narrow job)</li>
+<li>Rigid departmentalization (departments do not mix)</li>
+<li>Narrow spans of control (close supervision)</li>
+<li>High formalization (many rules and procedures)</li>
+<li>Limited information network — information flows mainly <strong>downward</strong> (top-down)</li>
+<li>Low decision participation — workers follow orders, they do not participate in decisions</li>
+</ul>
+<p><strong>Best for:</strong> Stable environments, routine tasks, cost-focused strategies, semi-skilled or unskilled workers.</p>
+<p><strong>Example:</strong> BPDB's maintenance division, a traditional garment factory, or a large government utility — these are highly mechanistic. Decisions flow from top down, rules govern everything, and workers execute rather than decide.</p>
+<h3 id="organic-organization--%22the-organism%22">Organic Organization — &quot;The Organism&quot;</h3>
+<p>A <strong>highly flexible and adaptable structure.</strong> Designed for change and innovation.</p>
+<p>Characteristics:</p>
+<ul>
+<li>Non-standardized jobs (job descriptions are flexible)</li>
+<li>Team-based structure (cross-functional teams replace rigid departments)</li>
+<li>Little direct supervision (trust-based)</li>
+<li>Minimal formal rules (judgment over procedure)</li>
+<li>Open communication network (information flows in all directions)</li>
+<li>Empowered employees (can make decisions at their level)</li>
+</ul>
+<p><strong>Best for:</strong> Rapidly changing environments, innovative tasks, differentiation strategies, highly skilled workers.</p>
+<p><strong>Example:</strong> Google, Meta, a Bangladeshi AI startup, or a research &amp; development team at Samsung — these are organic. Engineers communicate across departments freely, propose and implement ideas without layers of approval, and adapt rapidly.</p>
+<p><strong>Quick Comparison Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Mechanistic</th>
+<th>Organic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structure</td>
+<td>Rigid</td>
+<td>Flexible</td>
+</tr>
+<tr>
+<td>Specialization</td>
+<td>High</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Rules</td>
+<td>Many, strict</td>
+<td>Few, loose</td>
+</tr>
+<tr>
+<td>Decision-making</td>
+<td>Centralized (top-down)</td>
+<td>Decentralized (empowered)</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Downward only</td>
+<td>Multi-directional</td>
+</tr>
+<tr>
+<td>Supervision</td>
+<td>Close</td>
+<td>Minimal</td>
+</tr>
+<tr>
+<td>Environment fit</td>
+<td>Stable</td>
+<td>Dynamic</td>
+</tr>
+<tr>
+<td>Strategy fit</td>
+<td>Low-cost</td>
+<td>Differentiation</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>BPDB, garment factory</td>
+<td>Google, startups</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-tall-vs-flat-organizational-structure">5. Tall vs Flat Organizational Structure</h2>
+<p>This is about the shape of the hierarchy — how many vertical levels exist.</p>
+<h3 id="tall-structure">Tall Structure</h3>
+<p>Has <strong>many levels of authority</strong> relative to the organization's size. Each manager has a narrow span of control.</p>
+<p>Problems with tall structures:</p>
+<ul>
+<li>As hierarchy levels increase, <strong>communication gets difficult</strong> — messages pass through many hands</li>
+<li>Extra levels result in <strong>more time to implement decisions</strong> — approvals take longer</li>
+<li><strong>Communications can become garbled</strong> (distorted/misunderstood) as messages are repeated through multiple levels of the firm</li>
+</ul>
+<p><strong>Example:</strong> Traditional government organizations in Bangladesh (like many ministry departments) are tall — a decision from the Secretary may pass through Joint Secretary → Deputy Secretary → Senior Assistant Secretary → Assistant Secretary → Upper Division Clerk before reaching the person who needs to act. By then, it is late and sometimes distorted.</p>
+<h3 id="flat-structure">Flat Structure</h3>
+<p>Has <strong>few levels</strong> of hierarchy but <strong>wide spans of control</strong>. Each manager supervises many employees.</p>
+<p>Benefits and Problems:</p>
+<ul>
+<li>Results in <strong>quick communication</strong> — fewer levels means faster information flow</li>
+<li>But can lead to <strong>overworked managers</strong> — when each manager supervises 20+ people, the quality of supervision drops</li>
+</ul>
+<p><strong>Example:</strong> A small engineering consultancy firm in Bangladesh with 30 people may have only two levels: the Managing Director at top and 28 engineers below. Communication is instant but the MD is overwhelmed.</p>
+<hr>
+<h2 id="6-common-organizational-designs-types-of-organizations">6. Common Organizational Designs (Types of Organizations)</h2>
+<h3 id="traditional-designs">TRADITIONAL DESIGNS</h3>
+<h4 id="a-simple-structure">A. Simple Structure</h4>
+<p><strong>Characteristics:</strong> Low departmentalization, wide spans of control, centralized authority, little formalization.</p>
+<p>This is typical of <strong>small businesses and startups</strong> where the owner/founder makes most decisions, there are no formal departments, and everyone does what is needed.</p>
+<p><strong>Example:</strong> A new electrical contracting company in Sylhet with 10 engineers — the owner-engineer manages everything, there are no HR/Finance departments, and the structure is basically &quot;boss + workers.&quot;</p>
+<p><strong>Strength:</strong> Fast decisions, simple, low overhead.
+<strong>Weakness:</strong> As the company grows, it cannot scale — the founder becomes a bottleneck.</p>
+<hr>
+<h4 id="b-functional-structure">B. Functional Structure</h4>
+<p><strong>Characteristics:</strong> Departmentalization by function — all engineers in one department, all accountants in another, all HR staff in another.</p>
+<p>The departments are typically: Operations, Finance, Human Resources, and Product Research &amp; Development.</p>
+<p><strong>Example (from slide):</strong> A company with a CEO at the top, then three Senior Vice Presidents for Finance &amp; Admin, Stores, and Logistics — each with their own functional sub-departments (Tax, Controller, MIS under Finance; Distribution, Transportation under Logistics).</p>
+<p>At PGCB, a functional structure would look like: MD → Engineering Department, Finance Department, HR Department, IT Department — each function grouped separately.</p>
+<p><strong>Strength:</strong> Deep expertise develops within each function; economies of scale; efficient.
+<strong>Weakness:</strong> Poor coordination between departments (engineers don't talk to finance); slow response to changes that require cross-functional decisions; &quot;silo mentality.&quot;</p>
+<hr>
+<h4 id="c-divisional-structure">C. Divisional Structure</h4>
+<p><strong>Definition:</strong> Composed of separate business units or divisions with limited autonomy under the coordination and control of the parent corporation. A <strong>division is a collection of functions working together to produce a product.</strong></p>
+<p>Divisions create smaller, manageable parts of a firm — each division operates almost like its own mini-company with its own Engineering, Finance, HR, and Sales functions.</p>
+<p>There are three types of divisional structure:</p>
+<p><strong>1. Product Structure:</strong> Divisions created according to the type of product or service.</p>
+<p>The CEO and Corporate Managers sit at the top, and below them are separate product divisions — each with its own full set of functional departments.</p>
+<p>Example: Walton has separate divisions for Refrigerators, Air Conditioners, Televisions, Motorcycles — each is a complete business unit. Samsung similarly has Consumer Electronics Division, Semiconductor Division, and Mobile Division — each operates independently.</p>
+<p><strong>2. Geographic Structure:</strong> Divisions based on the area of a country or world served.</p>
+<p>Example: Grameenphone divides into Dhaka Region, Chittagong Region, Sylhet Region, etc. Each regional division has its own Network, Sales, and Customer Service teams. McDonald's globally has USA Division, Asia-Pacific Division, Europe Division — each adapts to local conditions.</p>
+<p><strong>3. Market Structure (Customer Structure):</strong> Divisions based on the types of customers served.</p>
+<p>Example (from slide): A company with divisions for Large Business Customers, Small Business Customers, Educational Institutions, and Individual Customers. A bank like Dutch-Bangla Bank might have Corporate Banking Division, Retail Banking Division, and SME Banking Division — each serving a different customer type with specialized services.</p>
+<p><strong>Strength of Divisional Structures:</strong> Each division is focused; better customer/market responsiveness; clear accountability per product/region.
+<strong>Weakness:</strong> Duplication of functions (each division has its own HR, Finance, etc. — expensive); rivalry between divisions; loss of economies of scale.</p>
+<hr>
+<h3 id="contemporary-organizational-designs">CONTEMPORARY ORGANIZATIONAL DESIGNS</h3>
+<h4 id="a-team-structures">A. Team Structures</h4>
+<p><strong>Definition:</strong> The entire organization is made up of work groups or <strong>self-managed teams of empowered employees.</strong></p>
+<p>There are no traditional departments. Instead, teams are formed around goals or projects, manage themselves, and report results rather than following a manager's instructions.</p>
+<p><strong>Example:</strong> Spotify uses a &quot;Squad, Tribe, Chapter, Guild&quot; model — each squad is a small, self-managed team responsible for a specific product feature. There is no traditional &quot;Engineering Department&quot; or &quot;Marketing Department&quot; — teams are cross-functional and autonomous.</p>
+<hr>
+<h4 id="b-matrix-and-project-structures">B. Matrix and Project Structures</h4>
+<p><strong>Matrix Structure:</strong> Managers group people <strong>by function AND by product teams simultaneously.</strong> This creates a grid — hence &quot;matrix.&quot;</p>
+<p><strong>How it works:</strong> A Sales Engineer belongs to both the Sales functional department AND to Product Team B. They have <strong>two bosses</strong> — a Functional Manager (Head of Sales) and a Team/Project Manager (Head of Product Team B).</p>
+<p>Key features:</p>
+<ul>
+<li>Results in a <strong>complex network of reporting relationships</strong></li>
+<li>Very <strong>flexible</strong> and can respond rapidly to change</li>
+<li><strong>Each employee has two bosses</strong> — which can cause problems when the functional manager and the product manager give different directions and the employee cannot satisfy both (violates Fayol's Unity of Command principle)</li>
+</ul>
+<p><strong>Example:</strong> At a power engineering company like ABB or Siemens, an electrical engineer may belong to the Electrical Engineering Department (functional) and simultaneously be assigned to the &quot;Bangladesh Grid Expansion Project&quot; team (project). She reports to both the Chief Electrical Engineer and the Project Manager. If they conflict, she has a problem.</p>
+<p><strong>Project Structure:</strong> Employees work continuously on projects, <strong>moving on to another project as each project is completed.</strong> When a project ends, the team dissolves and members are reassigned to new projects.</p>
+<p><strong>Example:</strong> A construction and installation company handling power plant projects — engineers are assigned to &quot;Ashuganj Unit 7 project,&quot; when that finishes they move to &quot;Bibiyana Gas Plant project.&quot; There is no permanent team — only project-based assignments.</p>
+<hr>
+<h4 id="c-boundaryless-organization">C. Boundaryless Organization</h4>
+<p><strong>Definition:</strong> A flexible and unstructured organizational design that is intended to <strong>break down external barriers between the organization and its customers and suppliers.</strong></p>
+<p>It removes both internal and external boundaries:</p>
+<p><strong>Removes internal (horizontal) boundaries:</strong></p>
+<ul>
+<li>Eliminates the chain of command</li>
+<li>Has limitless spans of control</li>
+<li>Uses empowered teams rather than departments</li>
+</ul>
+<p><strong>Eliminates external boundaries:</strong></p>
+<ul>
+<li>Uses virtual, network, and modular organizational structures to get closer to stakeholders (customers, suppliers, partners)</li>
+</ul>
+<p>The three forms of boundaryless organizations are:</p>
+<p><strong>Virtual Organization:</strong> An organization that consists of a <strong>small core of full-time employees</strong> and that <strong>temporarily hires specialists</strong> to work on opportunities that arise.</p>
+<p>The company is mostly a coordinator — it contracts out work to specialists and assembles a team when a project comes in, then dissolves the team when done.</p>
+<p>Example: A Bangladeshi software product company with 5 full-time developers that brings in freelance UI designers, security experts, and marketing specialists for each new client project. The company has no permanent large team — it builds one as needed. Many consulting firms globally work this way.</p>
+<p><strong>Network Organization:</strong> A small core organization that <strong>outsources its major business functions</strong> (e.g., manufacturing) in order to concentrate on what it does best.</p>
+<p>Example: Apple is the classic case — Apple designs and markets products but outsources manufacturing entirely to Foxconn (Taiwan/China) and components to various suppliers. Apple's core is design, branding, and software — everything else is outsourced through its network.</p>
+<p><strong>Modular Organization:</strong> A manufacturing organization that uses <strong>outside suppliers to provide product components</strong> for its final assembly operations.</p>
+<p>Example: Boeing assembles aircraft from components made by hundreds of suppliers worldwide. Boeing focuses on final assembly and quality control — wings come from Japan, engines from Rolls-Royce, electronics from various suppliers. Similarly, many Bangladeshi electronics assemblers import PCBs and components from China and do final assembly locally.</p>
+<hr>
+<h4 id="d-the-learning-organization-as-an-organizational-design">D. The Learning Organization (as an Organizational Design)</h4>
+<p><strong>Definition:</strong> An organization that has developed the capacity to <strong>continuously learn, adapt, and change</strong> through the practice of knowledge management by employees.</p>
+<p>Note: This was discussed in Part 2 as a management theory. Here it is described as an actual organizational design with specific characteristics.</p>
+<p><strong>Characteristics of a Learning Organization:</strong></p>
+<ul>
+<li>An <strong>open team-based</strong> organization design that empowers employees</li>
+<li><strong>Extensive and open information sharing</strong> — knowledge flows freely, not hoarded by departments or managers</li>
+<li><strong>Leadership that provides a shared vision</strong> of the organization's future, plus support and encouragement for learning</li>
+<li>A <strong>strong culture of shared values, trust, openness, and a sense of community</strong></li>
+</ul>
+<p><strong>Example:</strong> Google's internal knowledge-sharing culture — engineers post &quot;design docs&quot; visible to all, conduct internal tech talks, and maintain wikis. A junior engineer in Bangalore can read the design decisions made by the team that built Gmail. This open information sharing enables continuous organizational learning. Amazon's &quot;Leadership Principles&quot; and internal &quot;Correction of Errors&quot; culture (writing post-mortems after every failure) is another example — the organization learns systematically from its mistakes.</p>
+<hr>
+<h2 id="7-summary-choosing-the-right-structure">7. Summary: Choosing the Right Structure</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Recommended Structure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small startup, founder-led</td>
+<td>Simple Structure</td>
+</tr>
+<tr>
+<td>Stable environment, functional expertise needed</td>
+<td>Functional Structure</td>
+</tr>
+<tr>
+<td>Multiple products, geographic markets</td>
+<td>Divisional Structure</td>
+</tr>
+<tr>
+<td>Need flexibility + functional depth</td>
+<td>Matrix Structure</td>
+</tr>
+<tr>
+<td>Project-based work</td>
+<td>Project Structure</td>
+</tr>
+<tr>
+<td>Creative, innovation-driven</td>
+<td>Team / Organic Structure</td>
+</tr>
+<tr>
+<td>Outsourced operations, lean core</td>
+<td>Network / Virtual / Modular</td>
+</tr>
+<tr>
+<td>Stable, routine operations</td>
+<td>Mechanistic / Tall</td>
+</tr>
+<tr>
+<td>Dynamic environment, fast decisions</td>
+<td>Organic / Flat</td>
+</tr>
+<tr>
+<td>Continuous learning and adaptation</td>
+<td>Learning Organization</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The Master Rule:</strong> There is no universally correct organizational structure. The right structure depends on the four determinants — environment, strategy, technology, and human resources. This is precisely the Contingency Theory from Part 2 applied to organizational design.</p>
+
+</body>
+</html>
