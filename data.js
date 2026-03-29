@@ -99,6 +99,18 @@ const DRIVE_DATA = {
               "url": "materials/power-system-i/Newton_Raphson_Guide.pdf"
             }
           ]
+        },
+        {
+          "id": "power-world-simulator",
+          "name": "Power World Simulator",
+          "files": [
+            {
+              "id": "f1774785634261",
+              "name": "Fault Analysis for 7-Bus Power System using Power World",
+              "type": "pdf",
+              "url": "materials/power-system-i/PowerWorld_Fault_Analysis_7-Bus Power System_Tutorial.pdf"
+            }
+          ]
         }
       ],
       "files": []
