@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exam_Question_Bank_Full.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%F0%9F%93%9A-exam-question-bank--organization--management">📚 Exam Question Bank — Organization &amp; Management</h1>
+<h3 id="covers-management-functions--evolution-of-org-theory--organization-structure--personnel-management--marketing-management">Covers: Management Functions | Evolution of Org Theory | Organization Structure | Personnel Management | Marketing Management</h3>
+<hr>
+<h1 id="part-a--multiple-choice-questions-mcq">PART A — MULTIPLE CHOICE QUESTIONS (MCQ)</h1>
+<hr>
+<h2 id="%F0%9F%94%B7-section-1-management-functions">🔷 SECTION 1: Management Functions</h2>
+<p><strong>Q1.</strong> Which of the following best defines an organization?</p>
+<ul>
+<li>a) A building where people work</li>
+<li>b) A group of people working together in a structured way to achieve a goal ✅</li>
+<li>c) A government institution</li>
+<li>d) A collection of machines and equipment</li>
+</ul>
+<p><strong>Q2.</strong> Management is best described as:</p>
+<ul>
+<li>a) Running a factory</li>
+<li>b) The process of using resources to achieve goals efficiently ✅</li>
+<li>c) Supervising workers on a production line</li>
+<li>d) Writing reports for the board of directors</li>
+</ul>
+<p><strong>Q3.</strong> How many categories of resources are identified in management?</p>
+<ul>
+<li>a) 4</li>
+<li>b) 5</li>
+<li>c) 7 ✅</li>
+<li>d) 9</li>
+</ul>
+<p><strong>Q4.</strong> Which of the following is NOT one of the 7 categories of management resources?</p>
+<ul>
+<li>a) People</li>
+<li>b) Energy</li>
+<li>c) Reputation ✅</li>
+<li>d) Equipment</li>
+</ul>
+<p><strong>Q5.</strong> The 5 functions of management in the traditional view are:</p>
+<ul>
+<li>a) Planning, Organizing, Staffing, Directing, Controlling ✅</li>
+<li>b) Planning, Leading, Budgeting, Staffing, Reviewing</li>
+<li>c) Planning, Organizing, Leading, Controlling, Evaluating</li>
+<li>d) Hiring, Training, Planning, Directing, Monitoring</li>
+</ul>
+<p><strong>Q6.</strong> The modern 4-function model of management (Henri Fayol) includes:</p>
+<ul>
+<li>a) Planning, Staffing, Leading, Controlling</li>
+<li>b) Planning, Organizing, Leading, Controlling ✅</li>
+<li>c) Planning, Organizing, Staffing, Directing</li>
+<li>d) Budgeting, Staffing, Organizing, Directing</li>
+</ul>
+<p><strong>Q7.</strong> &quot;Doing things right&quot; defines:</p>
+<ul>
+<li>a) Effectiveness</li>
+<li>b) Efficiency ✅</li>
+<li>c) Productivity</li>
+<li>d) Performance</li>
+</ul>
+<p><strong>Q8.</strong> &quot;Doing the right thing&quot; defines:</p>
+<ul>
+<li>a) Efficiency</li>
+<li>b) Effectiveness ✅</li>
+<li>c) Quality</li>
+<li>d) Innovation</li>
+</ul>
+<p><strong>Q9.</strong> A company produces an excellent DVD player in 2024 at very low cost. This is an example of:</p>
+<ul>
+<li>a) High efficiency, high effectiveness</li>
+<li>b) Low efficiency, high effectiveness</li>
+<li>c) High efficiency, low effectiveness ✅</li>
+<li>d) Low efficiency, low effectiveness</li>
+</ul>
+<p><strong>Q10.</strong> Walton manufacturing a fridge that people want at a cost lower than competitors represents:</p>
+<ul>
+<li>a) Low efficiency, high effectiveness</li>
+<li>b) High efficiency, low effectiveness</li>
+<li>c) High efficiency, high effectiveness ✅</li>
+<li>d) Low efficiency, low effectiveness</li>
+</ul>
+<p><strong>Q11.</strong> Which managerial function involves checking if work is going according to plan and fixing errors?</p>
+<ul>
+<li>a) Planning</li>
+<li>b) Organizing</li>
+<li>c) Leading</li>
+<li>d) Controlling ✅</li>
+</ul>
+<p><strong>Q12.</strong> Assigning one friend to code Arduino, another to design the circuit, and buying sensors for a robot project is an example of:</p>
+<ul>
+<li>a) Planning</li>
+<li>b) Organizing ✅</li>
+<li>c) Leading</li>
+<li>d) Controlling</li>
+</ul>
+<p><strong>Q13.</strong> The &quot;outcome of leadership&quot; is:</p>
+<ul>
+<li>a) Completed projects</li>
+<li>b) Increased profits</li>
+<li>c) Highly motivated and committed organizational members ✅</li>
+<li>d) A formal organizational structure</li>
+</ul>
+<p><strong>Q14.</strong> Which type of manager deals most with day-to-day operations?</p>
+<ul>
+<li>a) Top Manager</li>
+<li>b) Middle Manager</li>
+<li>c) First-Line Manager ✅</li>
+<li>d) CEO</li>
+</ul>
+<p><strong>Q15.</strong> Top managers spend the most time on which managerial function?</p>
+<ul>
+<li>a) Leading</li>
+<li>b) Controlling</li>
+<li>c) Organizing</li>
+<li>d) Planning ✅</li>
+</ul>
+<p><strong>Q16.</strong> First-line managers spend the most time on which function?</p>
+<ul>
+<li>a) Planning</li>
+<li>b) Organizing</li>
+<li>c) Leading ✅</li>
+<li>d) Controlling</li>
+</ul>
+<p><strong>Q17.</strong> Human skills are important at:</p>
+<ul>
+<li>a) Only the top management level</li>
+<li>b) Only the first-line manager level</li>
+<li>c) All levels of management equally ✅</li>
+<li>d) Only the middle management level</li>
+</ul>
+<p><strong>Q18.</strong> Conceptual skills are most important for:</p>
+<ul>
+<li>a) First-line managers</li>
+<li>b) Middle managers</li>
+<li>c) Top managers ✅</li>
+<li>d) Non-managerial employees</li>
+</ul>
+<p><strong>Q19.</strong> Technical skills are most critical for:</p>
+<ul>
+<li>a) CEOs</li>
+<li>b) First-line managers ✅</li>
+<li>c) Middle managers</li>
+<li>d) Board of directors</li>
+</ul>
+<p><strong>Q20.</strong> Henry Mintzberg classified managerial roles into three categories. Which of the following is NOT one of them?</p>
+<ul>
+<li>a) Decisional</li>
+<li>b) Informational</li>
+<li>c) Operational ✅</li>
+<li>d) Interpersonal</li>
+</ul>
+<p><strong>Q21.</strong> The &quot;Disturbance Handler&quot; role belongs to which category of managerial roles?</p>
+<ul>
+<li>a) Informational</li>
+<li>b) Interpersonal</li>
+<li>c) Decisional ✅</li>
+<li>d) Organizational</li>
+</ul>
+<p><strong>Q22.</strong> A manager who represents the organization to the public or press is playing the role of:</p>
+<ul>
+<li>a) Monitor</li>
+<li>b) Disseminator</li>
+<li>c) Spokesperson ✅</li>
+<li>d) Figurehead</li>
+</ul>
+<p><strong>Q23.</strong> A manager attending a ribbon-cutting ceremony is acting as:</p>
+<ul>
+<li>a) Leader</li>
+<li>b) Liaison</li>
+<li>c) Figurehead ✅</li>
+<li>d) Entrepreneur</li>
+</ul>
+<p><strong>Q24.</strong> The &quot;Liaison&quot; role under interpersonal roles means:</p>
+<ul>
+<li>a) Making speeches to the public</li>
+<li>b) Linking and coordinating activities between people and groups inside and outside the organization ✅</li>
+<li>c) Managing an unexpected crisis</li>
+<li>d) Allocating the budget between departments</li>
+</ul>
+<p><strong>Q25.</strong> The four building blocks of competitive advantage are:</p>
+<ul>
+<li>a) Planning, Quality, Innovation, Staffing</li>
+<li>b) Efficiency, Quality, Innovation, Responsiveness to Customers ✅</li>
+<li>c) Price, Product, Promotion, Place</li>
+<li>d) Efficiency, Effectiveness, Planning, Controlling</li>
+</ul>
+<p><strong>Q26.</strong> Management is considered an art because:</p>
+<ul>
+<li>a) It uses mathematical models</li>
+<li>b) It follows proven laws and theories</li>
+<li>c) It depends on the personal skills, aptitude, and creativity of the manager ✅</li>
+<li>d) It can be learned from textbooks only</li>
+</ul>
+<p><strong>Q27.</strong> The three steps in the planning process are deciding which goals to pursue, deciding what courses of action to adopt, and:</p>
+<ul>
+<li>a) Hiring the right staff</li>
+<li>b) Deciding how to allocate resources ✅</li>
+<li>c) Setting up the organizational chart</li>
+<li>d) Monitoring performance</li>
+</ul>
+<p><strong>Q28.</strong> Information Technology helps managers by:</p>
+<ul>
+<li>a) Replacing all managerial roles</li>
+<li>b) Adopting a cross-departmental view of the organization ✅</li>
+<li>c) Eliminating the need for human skills</li>
+<li>d) Reducing the number of employees needed</li>
+</ul>
+<p><strong>Q29.</strong> The &quot;Resource Allocator&quot; role involves:</p>
+<ul>
+<li>a) Negotiating with customers</li>
+<li>b) Representing the organization externally</li>
+<li>c) Assigning resources between functions and setting budgets ✅</li>
+<li>d) Training junior employees</li>
+</ul>
+<p><strong>Q30.</strong> Which of the following is a goal of management besides profit?</p>
+<ul>
+<li>a) Societal concerns ✅</li>
+<li>b) Number of machines owned</li>
+<li>c) Factory floor area</li>
+<li>d) Number of employees</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%B7-section-2-evolution-of-management--organization-theory">🔷 SECTION 2: Evolution of Management &amp; Organization Theory</h2>
+<p><strong>Q31.</strong> &quot;The marketplace is a battlefield&quot; was said by:</p>
+<ul>
+<li>a) Henri Fayol</li>
+<li>b) Max Weber</li>
+<li>c) Sun Tzu ✅</li>
+<li>d) Frederick Taylor</li>
+</ul>
+<p><strong>Q32.</strong> The concept of Division of Labor was introduced by:</p>
+<ul>
+<li>a) Adam Smith ✅</li>
+<li>b) Frederick Taylor</li>
+<li>c) Henri Fayol</li>
+<li>d) Max Weber</li>
+</ul>
+<p><strong>Q33.</strong> Frederick Taylor's Scientific Management aims to:</p>
+<ul>
+<li>a) Develop human relationships at work</li>
+<li>b) Find the &quot;one best way&quot; to do any job through scientific study ✅</li>
+<li>c) Create a perfect bureaucratic hierarchy</li>
+<li>d) Study organizational culture</li>
+</ul>
+<p><strong>Q34.</strong> Taylor's method of studying work efficiency was called:</p>
+<ul>
+<li>a) Behavioral observation</li>
+<li>b) Time and motion studies ✅</li>
+<li>c) Job satisfaction surveys</li>
+<li>d) Contingency analysis</li>
+</ul>
+<p><strong>Q35.</strong> How many principles did Frederick Taylor propose in Scientific Management?</p>
+<ul>
+<li>a) 3</li>
+<li>b) 4 ✅</li>
+<li>c) 5</li>
+<li>d) 14</li>
+</ul>
+<p><strong>Q36.</strong> Max Weber's ideal organizational model is known as:</p>
+<ul>
+<li>a) Scientific Management</li>
+<li>b) Administrative Theory</li>
+<li>c) Bureaucracy ✅</li>
+<li>d) Behavioral Organization</li>
+</ul>
+<p><strong>Q37.</strong> Which of the following is NOT a characteristic of Weber's ideal bureaucracy?</p>
+<ul>
+<li>a) Impersonality</li>
+<li>b) Formal rules and procedures</li>
+<li>c) Promotion based on personal relationships ✅</li>
+<li>d) Well-defined hierarchy</li>
+</ul>
+<p><strong>Q38.</strong> Henri Fayol focused primarily on:</p>
+<ul>
+<li>a) Workers on the factory floor</li>
+<li>b) Top management functions and principles ✅</li>
+<li>c) Psychological needs of workers</li>
+<li>d) Division of labor in manufacturing</li>
+</ul>
+<p><strong>Q39.</strong> How many management principles did Henri Fayol propose?</p>
+<ul>
+<li>a) 4</li>
+<li>b) 7</li>
+<li>c) 10</li>
+<li>d) 14 ✅</li>
+</ul>
+<p><strong>Q40.</strong> Fayol's principle that an employee should receive orders from only one supervisor is called:</p>
+<ul>
+<li>a) Unity of Direction</li>
+<li>b) Unity of Command ✅</li>
+<li>c) Scalar Chain</li>
+<li>d) Division of Work</li>
+</ul>
+<p><strong>Q41.</strong> The difference between Unity of Command and Unity of Direction is:</p>
+<ul>
+<li>a) There is no difference</li>
+<li>b) Unity of Command = one boss per employee; Unity of Direction = one plan per group activity ✅</li>
+<li>c) Unity of Command applies to organizations; Unity of Direction applies to individuals</li>
+<li>d) Both refer to the same principle applied at different levels</li>
+</ul>
+<p><strong>Q42.</strong> The Hawthorne Studies were conducted at:</p>
+<ul>
+<li>a) Ford Motor Company</li>
+<li>b) Western Electric's Hawthorne plant ✅</li>
+<li>c) General Motors</li>
+<li>d) Taylor's steel factory</li>
+</ul>
+<p><strong>Q43.</strong> The Hawthorne Effect means:</p>
+<ul>
+<li>a) Productivity increases when workers are paid more</li>
+<li>b) Workers perform better simply because they know they are being observed ✅</li>
+<li>c) Better lighting always improves productivity</li>
+<li>d) Social groups reduce efficiency</li>
+</ul>
+<p><strong>Q44.</strong> Who conducted the famous Hawthorne Studies?</p>
+<ul>
+<li>a) Frederick Taylor</li>
+<li>b) Max Weber</li>
+<li>c) Elton Mayo ✅</li>
+<li>d) Abraham Maslow</li>
+</ul>
+<p><strong>Q45.</strong> Theory X and Theory Y were proposed by:</p>
+<ul>
+<li>a) Abraham Maslow</li>
+<li>b) Frederick Herzberg</li>
+<li>c) Douglas McGregor ✅</li>
+<li>d) Victor Vroom</li>
+</ul>
+<p><strong>Q46.</strong> In Theory X, managers believe that employees:</p>
+<ul>
+<li>a) Are self-motivated and enjoy work</li>
+<li>b) Need autonomy to perform their best</li>
+<li>c) Dislike work and must be strictly controlled ✅</li>
+<li>d) Are naturally creative and responsible</li>
+</ul>
+<p><strong>Q47.</strong> Systems Theory was developed by:</p>
+<ul>
+<li>a) Max Weber</li>
+<li>b) Henri Fayol</li>
+<li>c) Ludwig von Bertalanffy ✅</li>
+<li>d) Peter Senge</li>
+</ul>
+<p><strong>Q48.</strong> Synergy in systems theory means:</p>
+<ul>
+<li>a) Parts of a system work independently</li>
+<li>b) The whole is greater than the sum of its parts ✅</li>
+<li>c) Organizations must remain closed to outside influence</li>
+<li>d) Subsystems compete against each other</li>
+</ul>
+<p><strong>Q49.</strong> Equifinality means:</p>
+<ul>
+<li>a) All organizations must follow the same path to success</li>
+<li>b) Different initial conditions can lead to the same end result ✅</li>
+<li>c) Equal pay for equal work</li>
+<li>d) The efficiency principle applied equally across departments</li>
+</ul>
+<p><strong>Q50.</strong> Contingency Theory directly contradicts:</p>
+<ul>
+<li>a) Maslow's hierarchy of needs</li>
+<li>b) Taylor's &quot;one best way&quot; approach ✅</li>
+<li>c) Weber's bureaucratic model</li>
+<li>d) Fayol's 14 principles</li>
+</ul>
+<p><strong>Q51.</strong> TQM stands for:</p>
+<ul>
+<li>a) Total Task Management</li>
+<li>b) Technical Quality Metrics</li>
+<li>c) Total Quality Management ✅</li>
+<li>d) Top-level Quality Monitoring</li>
+</ul>
+<p><strong>Q52.</strong> The Japanese concept of continuous improvement used in TQM is called:</p>
+<ul>
+<li>a) Kaizen ✅</li>
+<li>b) Kanban</li>
+<li>c) Keiretsu</li>
+<li>d) Karoshi</li>
+</ul>
+<p><strong>Q53.</strong> In a Learning Organization, &quot;Experimental Learning&quot; means:</p>
+<ul>
+<li>a) Learning from competitors</li>
+<li>b) Learning through trial, error, and internal experimentation ✅</li>
+<li>c) Sending employees to external training programs</li>
+<li>d) Benchmarking against global best practices</li>
+</ul>
+<p><strong>Q54.</strong> The book &quot;The Prince&quot; was written by:</p>
+<ul>
+<li>a) Adam Smith</li>
+<li>b) Sun Tzu</li>
+<li>c) Niccolò Machiavelli ✅</li>
+<li>d) Max Weber</li>
+</ul>
+<p><strong>Q55.</strong> Which management perspective shifted focus from efficiency to human motivation?</p>
+<ul>
+<li>a) Classical Perspective</li>
+<li>b) Behavioral Perspective ✅</li>
+<li>c) Contingency Perspective</li>
+<li>d) Systems Perspective</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%B7-section-3-organization-structure">🔷 SECTION 3: Organization Structure</h2>
+<p><strong>Q56.</strong> Organizational design is the process of:</p>
+<ul>
+<li>a) Drawing the organizational chart</li>
+<li>b) Determining the most appropriate organizational structure for a given situation ✅</li>
+<li>c) Hiring employees for each department</li>
+<li>d) Setting the company's annual budget</li>
+</ul>
+<p><strong>Q57.</strong> Which factor affecting organizational design says that rapid change requires more decentralized structure?</p>
+<ul>
+<li>a) Strategy</li>
+<li>b) Technology</li>
+<li>c) Human Resources</li>
+<li>d) Environment ✅</li>
+</ul>
+<p><strong>Q58.</strong> Work Specialization refers to:</p>
+<ul>
+<li>a) Hiring only specialists</li>
+<li>b) Dividing tasks into separate jobs, each done by a different person ✅</li>
+<li>c) Training all employees in every function</li>
+<li>d) Assigning a whole project to one person</li>
+</ul>
+<p><strong>Q59.</strong> Negative effects on workers caused by over-specialization are called:</p>
+<ul>
+<li>a) Bureaucratic inefficiency</li>
+<li>b) Human diseconomies ✅</li>
+<li>c) Organizational rigidity</li>
+<li>d) Structural dysfunction</li>
+</ul>
+<p><strong>Q60.</strong> Grouping employees by product line is called:</p>
+<ul>
+<li>a) Functional departmentalization</li>
+<li>b) Geographic departmentalization</li>
+<li>c) Product departmentalization ✅</li>
+<li>d) Customer departmentalization</li>
+</ul>
+<p><strong>Q61.</strong> Chain of command refers to:</p>
+<ul>
+<li>a) The production sequence in a factory</li>
+<li>b) The continuous line of authority from top to bottom of an organization ✅</li>
+<li>c) The order in which products are assembled</li>
+<li>d) The communication channel between customers and suppliers</li>
+</ul>
+<p><strong>Q62.</strong> The number of subordinates a manager can effectively supervise is called:</p>
+<ul>
+<li>a) Chain of command</li>
+<li>b) Span of control ✅</li>
+<li>c) Centralization degree</li>
+<li>d) Delegation limit</li>
+</ul>
+<p><strong>Q63.</strong> Centralization means:</p>
+<ul>
+<li>a) All employees are located in one building</li>
+<li>b) Decision-making authority is concentrated at the top levels ✅</li>
+<li>c) Each department makes its own decisions</li>
+<li>d) The organization has a flat structure</li>
+</ul>
+<p><strong>Q64.</strong> Decentralization is preferred when:</p>
+<ul>
+<li>a) The environment is stable and predictable</li>
+<li>b) The organization is small</li>
+<li>c) Lower-level managers are competent and the environment is fast-changing ✅</li>
+<li>d) The CEO wants tight control over all decisions</li>
+</ul>
+<p><strong>Q65.</strong> Formalization refers to:</p>
+<ul>
+<li>a) The number of management levels</li>
+<li>b) The degree to which jobs are standardized with explicit rules and procedures ✅</li>
+<li>c) The number of departments in an organization</li>
+<li>d) The formal dress code for employees</li>
+</ul>
+<p><strong>Q66.</strong> A Mechanistic structure is characterized by:</p>
+<ul>
+<li>a) Loose authority, flexible roles, open communication</li>
+<li>b) High specialization, rigid hierarchy, extensive formalization ✅</li>
+<li>c) Self-managed teams and minimal supervision</li>
+<li>d) Temporary project-based teams</li>
+</ul>
+<p><strong>Q67.</strong> An Organic structure is most suitable for:</p>
+<ul>
+<li>a) Stable, routine production environments</li>
+<li>b) Government bureaucracies</li>
+<li>c) Dynamic, fast-changing environments requiring innovation ✅</li>
+<li>d) Large manufacturing plants with repetitive tasks</li>
+</ul>
+<p><strong>Q68.</strong> In a Simple Structure, decision-making authority is held by:</p>
+<ul>
+<li>a) A committee</li>
+<li>b) All employees equally</li>
+<li>c) The owner/founder ✅</li>
+<li>d) Middle managers</li>
+</ul>
+<p><strong>Q69.</strong> The main weakness of a Functional Structure is:</p>
+<ul>
+<li>a) Too much flexibility</li>
+<li>b) Poor specialization</li>
+<li>c) Poor communication across departments (functional silos) ✅</li>
+<li>d) Too many product lines</li>
+</ul>
+<p><strong>Q70.</strong> In a Divisional Structure, each division is organized around:</p>
+<ul>
+<li>a) Functions like HR and Finance</li>
+<li>b) A specific product, geographic region, or customer type ✅</li>
+<li>c) The size of the workforce</li>
+<li>d) The management hierarchy</li>
+</ul>
+<p><strong>Q71.</strong> In a Matrix Structure, an employee has:</p>
+<ul>
+<li>a) No direct manager</li>
+<li>b) Two bosses — a functional manager and a project/product manager ✅</li>
+<li>c) A team of managers above them</li>
+<li>d) Full authority over their own decisions</li>
+</ul>
+<p><strong>Q72.</strong> Matrix structure violates which of Fayol's principles?</p>
+<ul>
+<li>a) Division of Work</li>
+<li>b) Scalar Chain</li>
+<li>c) Unity of Command ✅</li>
+<li>d) Equity</li>
+</ul>
+<p><strong>Q73.</strong> A Virtual Organization is characterized by:</p>
+<ul>
+<li>a) Large permanent workforce</li>
+<li>b) Small core of full-time employees that hires specialists temporarily ✅</li>
+<li>c) Multiple geographic divisions</li>
+<li>d) A traditional tall hierarchy</li>
+</ul>
+<p><strong>Q74.</strong> Apple outsourcing all manufacturing to Foxconn while keeping design and marketing in-house is an example of:</p>
+<ul>
+<li>a) Modular Organization</li>
+<li>b) Virtual Organization</li>
+<li>c) Network Organization ✅</li>
+<li>d) Team Structure</li>
+</ul>
+<p><strong>Q75.</strong> Boeing assembling aircraft from components made by hundreds of global suppliers is an example of:</p>
+<ul>
+<li>a) Network Organization</li>
+<li>b) Virtual Organization</li>
+<li>c) Modular Organization ✅</li>
+<li>d) Matrix Structure</li>
+</ul>
+<p><strong>Q76.</strong> &quot;Task analyzability&quot; refers to:</p>
+<ul>
+<li>a) How many tasks a manager handles</li>
+<li>b) The degree to which standard procedures are available to solve problems ✅</li>
+<li>c) The technical difficulty of a single task</li>
+<li>d) The number of employees needed for a task</li>
+</ul>
+<p><strong>Q77.</strong> High task variety combined with low task analyzability requires:</p>
+<ul>
+<li>a) Mechanistic / formal structure</li>
+<li>b) Tall hierarchy</li>
+<li>c) Flexible / organic structure ✅</li>
+<li>d) Bureaucratic management</li>
+</ul>
+<p><strong>Q78.</strong> A Boundaryless Organization aims to:</p>
+<ul>
+<li>a) Create strict internal boundaries between departments</li>
+<li>b) Break down external barriers between the organization and its customers and suppliers ✅</li>
+<li>c) Establish a clear chain of command</li>
+<li>d) Increase formalization and specialization</li>
+</ul>
+<p><strong>Q79.</strong> Spotify's &quot;Squad, Tribe, Chapter, Guild&quot; model is an example of:</p>
+<ul>
+<li>a) Functional Structure</li>
+<li>b) Divisional Structure</li>
+<li>c) Team Structure ✅</li>
+<li>d) Matrix Structure</li>
+</ul>
+<p><strong>Q80.</strong> The Master Rule of organizational design is:</p>
+<ul>
+<li>a) All organizations should use functional structure</li>
+<li>b) The right structure depends on environment, strategy, technology, and human resources ✅</li>
+<li>c) Flat structures are always better than tall structures</li>
+<li>d) Larger organizations always need more formalization</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%B7-section-4-personnel-management--hrm">🔷 SECTION 4: Personnel Management / HRM</h2>
+<p><strong>Q81.</strong> According to the British Institute of Personnel Management, HRM is concerned with:</p>
+<ul>
+<li>a) Financial planning and budgeting</li>
+<li>b) People at work and their relationships within an organization ✅</li>
+<li>c) Product quality and customer satisfaction</li>
+<li>d) Technological development and innovation</li>
+</ul>
+<p><strong>Q82.</strong> According to the American Management Association, the four operative functions of HRM are:</p>
+<ul>
+<li>a) Planning, Organizing, Leading, Controlling</li>
+<li>b) Procuring, Developing, Maintaining, Utilizing ✅</li>
+<li>c) Recruiting, Selecting, Training, Appraising</li>
+<li>d) Attracting, Motivating, Rewarding, Retaining</li>
+</ul>
+<p><strong>Q83.</strong> Which of the following is NOT an objective of HRM?</p>
+<ul>
+<li>a) To attract and retain talented employees</li>
+<li>b) To maximize profit through product sales ✅</li>
+<li>c) To build trust between management and workers</li>
+<li>d) To increase efficiency through training and guidance</li>
+</ul>
+<p><strong>Q84.</strong> &quot;Knowledge lives inside people, not machines&quot; reflects the importance of:</p>
+<ul>
+<li>a) Financial management</li>
+<li>b) Technology investment</li>
+<li>c) Human Resource Management ✅</li>
+<li>d) Product development</li>
+</ul>
+<p><strong>Q85.</strong> Maslow's Need Hierarchy has how many levels?</p>
+<ul>
+<li>a) 3</li>
+<li>b) 4</li>
+<li>c) 5 ✅</li>
+<li>d) 7</li>
+</ul>
+<p><strong>Q86.</strong> Which is the lowest level in Maslow's hierarchy?</p>
+<ul>
+<li>a) Safety needs</li>
+<li>b) Social needs</li>
+<li>c) Physiological needs ✅</li>
+<li>d) Esteem needs</li>
+</ul>
+<p><strong>Q87.</strong> Which is the highest level in Maslow's hierarchy?</p>
+<ul>
+<li>a) Esteem</li>
+<li>b) Self-Actualization ✅</li>
+<li>c) Social</li>
+<li>d) Safety</li>
+</ul>
+<p><strong>Q88.</strong> The key rule of Maslow's hierarchy is:</p>
+<ul>
+<li>a) All levels must be satisfied simultaneously</li>
+<li>b) Higher levels are more important than lower levels</li>
+<li>c) Lower-level needs must be satisfied before higher-level needs can motivate ✅</li>
+<li>d) Self-actualization is most common in the workplace</li>
+</ul>
+<p><strong>Q89.</strong> Herzberg's Two-Factor Theory classifies factors into:</p>
+<ul>
+<li>a) Intrinsic and extrinsic</li>
+<li>b) Financial and non-financial</li>
+<li>c) Hygiene factors and Motivators ✅</li>
+<li>d) Theory X and Theory Y</li>
+</ul>
+<p><strong>Q90.</strong> Hygiene factors in Herzberg's theory:</p>
+<ul>
+<li>a) Create motivation and satisfaction</li>
+<li>b) Prevent dissatisfaction but do not create motivation ✅</li>
+<li>c) Are always financial rewards</li>
+<li>d) Include achievement and recognition</li>
+</ul>
+<p><strong>Q91.</strong> Which of the following is a Motivator (not a Hygiene factor)?</p>
+<ul>
+<li>a) Salary</li>
+<li>b) Job security</li>
+<li>c) Company policy</li>
+<li>d) Recognition ✅</li>
+</ul>
+<p><strong>Q92.</strong> The critical insight of Herzberg's theory is:</p>
+<ul>
+<li>a) Salary is the best motivator</li>
+<li>b) Removing dissatisfaction automatically creates motivation</li>
+<li>c) Removing dissatisfaction does NOT automatically create motivation ✅</li>
+<li>d) Job security is the most important factor</li>
+</ul>
+<p><strong>Q93.</strong> In Expectancy Theory, &quot;Instrumentality&quot; means:</p>
+<ul>
+<li>a) Effort will lead to improved performance</li>
+<li>b) Performance will lead to reward ✅</li>
+<li>c) The value of the reward to the employee</li>
+<li>d) The employee's belief in their own ability</li>
+</ul>
+<p><strong>Q94.</strong> Expectancy Theory was proposed by:</p>
+<ul>
+<li>a) Abraham Maslow</li>
+<li>b) Douglas McGregor</li>
+<li>c) Frederick Herzberg</li>
+<li>d) Victor Vroom ✅</li>
+</ul>
+<p><strong>Q95.</strong> Motivation formula in Expectancy Theory is:</p>
+<ul>
+<li>a) Motivation = Effort × Performance × Reward</li>
+<li>b) Motivation = Expectancy × Instrumentality × Valence ✅</li>
+<li>c) Motivation = Hygiene × Motivation factors</li>
+<li>d) Motivation = Salary × Recognition × Growth</li>
+</ul>
+<p><strong>Q96.</strong> In McGregor's Theory Y, employees are seen as:</p>
+<ul>
+<li>a) Lazy and needing strict supervision</li>
+<li>b) Avoiding responsibility whenever possible</li>
+<li>c) Self-motivated, responsible, and capable of creativity ✅</li>
+<li>d) Motivated only by financial rewards</li>
+</ul>
+<p><strong>Q97.</strong> An engineer who blames the testing team for his own delayed code submission is demonstrating which defense mechanism?</p>
+<ul>
+<li>a) Denial</li>
+<li>b) Regression</li>
+<li>c) Projection ✅</li>
+<li>d) Displacement</li>
+</ul>
+<p><strong>Q98.</strong> An engineer who justifies arriving late every day with &quot;traffic in Dhaka is impossible&quot; is demonstrating:</p>
+<ul>
+<li>a) Denial</li>
+<li>b) Rationalization ✅</li>
+<li>c) Projection</li>
+<li>d) Displacement</li>
+</ul>
+<p><strong>Q99.</strong> Productivity is measured as:</p>
+<ul>
+<li>a) Output × Input</li>
+<li>b) Output / Input ✅</li>
+<li>c) Input / Output</li>
+<li>d) Output − Input</li>
+</ul>
+<p><strong>Q100.</strong> Job Involvement refers to:</p>
+<ul>
+<li>a) The salary associated with a job</li>
+<li>b) The number of tasks in a job description</li>
+<li>c) The extent to which an individual is dedicated to a job ✅</li>
+<li>d) The level of technical skill required for the job</li>
+</ul>
+<p><strong>Q101.</strong> Job Analysis produces which two key documents?</p>
+<ul>
+<li>a) Job Application and Job Contract</li>
+<li>b) Job Description and Job Specification ✅</li>
+<li>c) Job Review and Job Evaluation</li>
+<li>d) Job Offer and Job Agreement</li>
+</ul>
+<p><strong>Q102.</strong> Which of the following is NOT a use of job analysis?</p>
+<ul>
+<li>a) Recruitment</li>
+<li>b) Training</li>
+<li>c) Setting the product price ✅</li>
+<li>d) Performance appraisal</li>
+</ul>
+<p><strong>Q103.</strong> Satisfied employees tend to show:</p>
+<ul>
+<li>a) Higher absenteeism and turnover</li>
+<li>b) Less absenteeism and less turnover ✅</li>
+<li>c) Greater dependence on management</li>
+<li>d) Lower productivity</li>
+</ul>
+<p><strong>Q104.</strong> Which wage system pays based on units produced?</p>
+<ul>
+<li>a) Time Rate Wage System</li>
+<li>b) Piece Rate Wage System ✅</li>
+<li>c) Incentive Wage System</li>
+<li>d) Performance-Based Pay</li>
+</ul>
+<p><strong>Q105.</strong> Internal hiring includes:</p>
+<ul>
+<li>a) Campus recruitment</li>
+<li>b) Job portals</li>
+<li>c) Promotion and internal transfer ✅</li>
+<li>d) Recruitment agencies</li>
+</ul>
+<p><strong>Q106.</strong> Which external factor directly sets the minimum standards for wages and working hours?</p>
+<ul>
+<li>a) Global economy</li>
+<li>b) Technology change</li>
+<li>c) Legislation ✅</li>
+<li>d) Political environment</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%B7-section-5-marketing-management">🔷 SECTION 5: Marketing Management</h2>
+<p><strong>Q107.</strong> Marketing Management involves decisions about:</p>
+<ul>
+<li>a) Only advertising and promotion</li>
+<li>b) Product, Price, Promotion, and Distribution (4 Ps) ✅</li>
+<li>c) Only product design and quality</li>
+<li>d) Only customer satisfaction surveys</li>
+</ul>
+<p><strong>Q108.</strong> The Production Concept focuses on:</p>
+<ul>
+<li>a) Customer needs and market research</li>
+<li>b) Mass production and low-cost manufacturing ✅</li>
+<li>c) Aggressive selling techniques</li>
+<li>d) Society's long-term welfare</li>
+</ul>
+<p><strong>Q109.</strong> &quot;Marketing Myopia&quot; is associated with which marketing concept?</p>
+<ul>
+<li>a) Production Concept</li>
+<li>b) Product Concept ✅</li>
+<li>c) Selling Concept</li>
+<li>d) Societal Marketing Concept</li>
+</ul>
+<p><strong>Q110.</strong> Which marketing concept first places customer needs at the center?</p>
+<ul>
+<li>a) Production Concept</li>
+<li>b) Product Concept</li>
+<li>c) Selling Concept</li>
+<li>d) Marketing Concept ✅</li>
+</ul>
+<p><strong>Q111.</strong> The Societal Marketing Concept balances:</p>
+<ul>
+<li>a) Price and product quality</li>
+<li>b) Customer wants, society's welfare, and company profits ✅</li>
+<li>c) Production efficiency and advertising costs</li>
+<li>d) B2B and B2C selling strategies</li>
+</ul>
+<p><strong>Q112.</strong> Henry Ford's &quot;any color as long as it's black&quot; model represents:</p>
+<ul>
+<li>a) Marketing Concept</li>
+<li>b) Societal Marketing Concept</li>
+<li>c) Production Concept ✅</li>
+<li>d) Selling Concept</li>
+</ul>
+<p><strong>Q113.</strong> A marketing organization structured around product lines (e.g., Refrigerator Division, AC Division) is:</p>
+<ul>
+<li>a) Functional Organization</li>
+<li>b) Geographic Organization</li>
+<li>c) Product-Based Organization ✅</li>
+<li>d) Market-Based Organization</li>
+</ul>
+<p><strong>Q114.</strong> Grameenphone having separate marketing teams for Dhaka, Chittagong, and Sylhet regions is an example of:</p>
+<ul>
+<li>a) Functional Organization</li>
+<li>b) Product-Based Organization</li>
+<li>c) Market-Based Organization</li>
+<li>d) Geographic Organization ✅</li>
+</ul>
+<p><strong>Q115.</strong> Industrial Selling (B2B) is characterized by:</p>
+<ul>
+<li>a) Emotional buying behavior and mass marketing</li>
+<li>b) Short decision cycles and small order sizes</li>
+<li>c) Large orders, technical knowledge, and long negotiation ✅</li>
+<li>d) Many customers and low value per sale</li>
+</ul>
+<p><strong>Q116.</strong> Consumer Selling (B2C) is characterized by:</p>
+<ul>
+<li>a) Rational, technical decision-making</li>
+<li>b) Fewer customers with high value per transaction</li>
+<li>c) Relationship-based selling and long sales cycles</li>
+<li>d) Emotional buying behavior and mass marketing approach ✅</li>
+</ul>
+<p><strong>Q117.</strong> In B2B marketing, the approach is:</p>
+<ul>
+<li>a) Mass marketing to broad audience</li>
+<li>b) Targeting specific decision-makers ✅</li>
+<li>c) Social media influencer campaigns</li>
+<li>d) Billboard and TV advertising</li>
+</ul>
+<p><strong>Q118.</strong> In B2C marketing, which segmentation approach is used?</p>
+<ul>
+<li>a) Target Customer Group (specific list)</li>
+<li>b) Market Segmentation (dividing the mass market into segments) ✅</li>
+<li>c) One-on-one negotiation</li>
+<li>d) Technical specification matching</li>
+</ul>
+<p><strong>Q119.</strong> Advertising is defined as:</p>
+<ul>
+<li>a) Free media coverage of a brand</li>
+<li>b) Personal selling to individual customers</li>
+<li>c) Paid, non-personal promotion of a product or service ✅</li>
+<li>d) Word-of-mouth recommendation</li>
+</ul>
+<p><strong>Q120.</strong> Which type of advertising allows the highest level of audience targeting?</p>
+<ul>
+<li>a) Traditional advertising (TV, Radio)</li>
+<li>b) Outdoor advertising (Billboards)</li>
+<li>c) Digital advertising (Social media, Search engines) ✅</li>
+<li>d) Direct mail campaigns</li>
+</ul>
+<p><strong>Q121.</strong> The objective of &quot;reminder advertising&quot; is to:</p>
+<ul>
+<li>a) Introduce a new product to the market</li>
+<li>b) Persuade customers to switch from a competitor</li>
+<li>c) Keep the brand top of mind for existing customers ✅</li>
+<li>d) Educate customers about product features</li>
+</ul>
+<p><strong>Q122.</strong> Which stage of advertising objectives comes FIRST for a brand-new product?</p>
+<ul>
+<li>a) Persuade</li>
+<li>b) Remind</li>
+<li>c) Build loyalty</li>
+<li>d) Inform ✅</li>
+</ul>
+<p><strong>Q123.</strong> ABB selling 132kV circuit breakers to PGCB is an example of:</p>
+<ul>
+<li>a) Consumer selling (B2C)</li>
+<li>b) Industrial selling (B2B) ✅</li>
+<li>c) Direct marketing</li>
+<li>d) Geographic market segmentation</li>
+</ul>
+<p><strong>Q124.</strong> Grameen Shakti selling solar home systems is an example of which marketing concept?</p>
+<ul>
+<li>a) Production Concept</li>
+<li>b) Product Concept</li>
+<li>c) Selling Concept</li>
+<li>d) Societal Marketing Concept ✅</li>
+</ul>
+<p><strong>Q125.</strong> The Modern Marketing Concept includes all of the following EXCEPT:</p>
+<ul>
+<li>a) Customer-oriented approach</li>
+<li>b) Market research-driven decisions</li>
+<li>c) Aggressive push selling ✅</li>
+<li>d) Long-term customer relationship focus</li>
+</ul>
+<hr>
+<h1 id="part-b--true--false-questions">PART B — TRUE / FALSE QUESTIONS</h1>
+<hr>
+<h2 id="management-functions">Management Functions</h2>
+<p><strong>T/F 1.</strong> An organization is just a building where employees work.
+<strong>→ FALSE.</strong> An organization is a group of people working together in a structured way to achieve a goal.</p>
+<p><strong>T/F 2.</strong> Management is the process of converting inputs (resources) into outputs (goals).
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 3.</strong> There are 5 categories of management resources.
+<strong>→ FALSE.</strong> There are 7 categories: People, Money, Time, Work Procedures, Energy, Materials, Equipment.</p>
+<p><strong>T/F 4.</strong> Efficiency means doing the right thing.
+<strong>→ FALSE.</strong> Efficiency means doing things right (using resources productively). Effectiveness means doing the right thing.</p>
+<p><strong>T/F 5.</strong> A company can be highly efficient but still fail if it is pursuing the wrong goal.
+<strong>→ TRUE.</strong> (High efficiency, low effectiveness = &quot;The Smart Fool&quot; scenario.)</p>
+<p><strong>T/F 6.</strong> Henri Fayol was the first to identify the four managerial functions.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 7.</strong> Top managers spend the most time on the Leading function.
+<strong>→ FALSE.</strong> Top managers spend most time on Planning. First-line managers spend most time on Leading.</p>
+<p><strong>T/F 8.</strong> Human skills are equally important at all levels of management.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 9.</strong> The Spokesperson role is the same as the Liaison role.
+<strong>→ FALSE.</strong> Spokesperson communicates to the public/external parties. Liaison builds internal and external coordination/relationships.</p>
+<p><strong>T/F 10.</strong> The Figurehead role involves making strategic decisions for the organization.
+<strong>→ FALSE.</strong> Figurehead involves symbolic, ceremonial, and legal duties — representing the organization's mission.</p>
+<p><strong>T/F 11.</strong> Controlling involves establishing standards, measuring performance, and taking corrective action.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 12.</strong> Management is purely a science because it follows strict mathematical laws.
+<strong>→ FALSE.</strong> Management is both a science (based on facts, models, and theories) and an art (depends on personal skill, creativity, and judgment).</p>
+<p><strong>T/F 13.</strong> Conceptual skills are most important for first-line managers.
+<strong>→ FALSE.</strong> Conceptual skills are most important for top managers.</p>
+<p><strong>T/F 14.</strong> The four building blocks of competitive advantage are Efficiency, Quality, Innovation, and Responsiveness to Customers.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 15.</strong> IT helps managers adopt a cross-departmental view of their organization.
+<strong>→ TRUE.</strong></p>
+<hr>
+<h2 id="evolution-of-management-theory">Evolution of Management Theory</h2>
+<p><strong>T/F 16.</strong> Adam Smith introduced the concept of division of labor.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 17.</strong> Frederick Taylor is the father of Bureaucratic Management.
+<strong>→ FALSE.</strong> Taylor is the father of Scientific Management. Max Weber developed the Bureaucratic Management model.</p>
+<p><strong>T/F 18.</strong> Taylor's time and motion studies aimed to find the &quot;one best way&quot; to perform any task.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 19.</strong> Weber's ideal bureaucracy promotes promotions based on personal relationships and loyalty.
+<strong>→ FALSE.</strong> Weber's bureaucracy promotes advancement based on merit and qualifications.</p>
+<p><strong>T/F 20.</strong> Henri Fayol's Unity of Command states that a group should have one plan for each activity.
+<strong>→ FALSE.</strong> Unity of Command states each employee should receive orders from only one supervisor. Unity of Direction is the principle about one plan per group activity.</p>
+<p><strong>T/F 21.</strong> The Hawthorne Studies showed that workers became more productive simply because they knew they were being observed.
+<strong>→ TRUE.</strong> (This is the Hawthorne Effect.)</p>
+<p><strong>T/F 22.</strong> Contingency Theory states there is one best way to manage all organizations.
+<strong>→ FALSE.</strong> Contingency Theory says there is NO single best way — the best approach depends on the specific situation.</p>
+<p><strong>T/F 23.</strong> TQM considers quality to be the responsibility of only the quality control department.
+<strong>→ FALSE.</strong> TQM makes quality everyone's responsibility — from CEO to factory floor worker.</p>
+<p><strong>T/F 24.</strong> Kaizen is a Japanese concept meaning continuous improvement.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 25.</strong> Equifinality means different starting points can lead to the same final outcome.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 26.</strong> A Learning Organization reacts to change only after it happens.
+<strong>→ FALSE.</strong> A Learning Organization anticipates change and adapts proactively.</p>
+<p><strong>T/F 27.</strong> The Behavioral Perspective of management emerged as a reaction to the Classical Perspective's neglect of human factors.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 28.</strong> Systems Theory treats an organization as a collection of isolated, independent departments.
+<strong>→ FALSE.</strong> Systems Theory treats an organization as an interconnected system where each part affects others.</p>
+<p><strong>T/F 29.</strong> An open system interacts with its external environment.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 30.</strong> Fayol proposed that remuneration should be fair and satisfactory to both employees and the organization.
+<strong>→ TRUE.</strong> (Fayol's principle of Remuneration.)</p>
+<hr>
+<h2 id="organization-structure">Organization Structure</h2>
+<p><strong>T/F 31.</strong> Organizational Structure is the formal arrangement of jobs within an organization.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 32.</strong> In a rapidly changing environment, organizations should centralize decision-making.
+<strong>→ FALSE.</strong> In a rapidly changing environment, organizations should decentralize to enable faster local decisions.</p>
+<p><strong>T/F 33.</strong> High task variety and low task analyzability require a flexible (organic) structure.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 34.</strong> A tall organizational structure has a narrow span of control.
+<strong>→ TRUE.</strong> (Many management levels, each with few direct reports.)</p>
+<p><strong>T/F 35.</strong> A flat organizational structure has a wide span of control.
+<strong>→ TRUE.</strong> (Few management levels, each manager supervises many employees.)</p>
+<p><strong>T/F 36.</strong> Over-specialization can lead to boredom, fatigue, and high employee turnover.
+<strong>→ TRUE.</strong> (These are called &quot;human diseconomies.&quot;)</p>
+<p><strong>T/F 37.</strong> A Simple Structure is best suited to a large multinational corporation.
+<strong>→ FALSE.</strong> Simple Structure suits small, founder-led organizations.</p>
+<p><strong>T/F 38.</strong> In a Matrix Structure, each employee reports to two bosses simultaneously.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 39.</strong> Matrix Structure violates Fayol's principle of Unity of Command.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 40.</strong> A Network Organization manufactures all its products in-house.
+<strong>→ FALSE.</strong> A Network Organization outsources its major business functions to concentrate on its core competency.</p>
+<p><strong>T/F 41.</strong> Organic structures are more suitable for stable, routine production environments.
+<strong>→ FALSE.</strong> Mechanistic structures suit stable, routine environments. Organic structures suit dynamic environments.</p>
+<p><strong>T/F 42.</strong> Formalization refers to how many managers an organization has.
+<strong>→ FALSE.</strong> Formalization refers to the degree to which jobs are standardized with explicit rules and procedures.</p>
+<p><strong>T/F 43.</strong> A company that uses geographic departmentalization groups employees by the type of customer they serve.
+<strong>→ FALSE.</strong> Geographic departmentalization groups by territory/region. Customer departmentalization groups by customer type.</p>
+<p><strong>T/F 44.</strong> The Learning Organization design emphasizes open information sharing across all levels.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 45.</strong> A Project Structure has employees permanently assigned to one fixed team.
+<strong>→ FALSE.</strong> In a Project Structure, employees move from project to project as each one is completed.</p>
+<hr>
+<h2 id="personnel-management--hrm">Personnel Management / HRM</h2>
+<p><strong>T/F 46.</strong> According to the British Institute, HRM is concerned with machines and production systems.
+<strong>→ FALSE.</strong> It is concerned with people at work and their relationships within an organization.</p>
+<p><strong>T/F 47.</strong> Maslow's model says all five levels of needs motivate people equally at all times.
+<strong>→ FALSE.</strong> Lower-level needs must be satisfied first before higher-level needs become motivating.</p>
+<p><strong>T/F 48.</strong> Salary is a Hygiene factor in Herzberg's theory.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 49.</strong> In Herzberg's theory, providing good hygiene factors (like salary and safe workplace) will strongly motivate employees to perform their best.
+<strong>→ FALSE.</strong> Hygiene factors only prevent dissatisfaction — they do not create motivation.</p>
+<p><strong>T/F 50.</strong> Theory Y managers believe employees need strict supervision to perform well.
+<strong>→ FALSE.</strong> Theory Y believes employees are self-motivated and responsible. Theory X believes in strict supervision.</p>
+<p><strong>T/F 51.</strong> In Expectancy Theory, Valence refers to the value of the reward to the employee.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 52.</strong> Productivity is calculated as Output multiplied by Input.
+<strong>→ FALSE.</strong> Productivity = Output / Input.</p>
+<p><strong>T/F 53.</strong> Job Involvement means an individual is highly dedicated and mentally invested in their job.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 54.</strong> Job Analysis is only useful for the recruitment process.
+<strong>→ FALSE.</strong> Job Analysis is useful for 8 purposes: Job redesign, work standards, recruitment, selection, training, performance appraisal, job evaluation, and safety.</p>
+<p><strong>T/F 55.</strong> Satisfied employees tend to show more absenteeism than dissatisfied employees.
+<strong>→ FALSE.</strong> Satisfied employees show less absenteeism and less turnover.</p>
+<p><strong>T/F 56.</strong> Piece Rate wage system pays employees based on the number of hours they work.
+<strong>→ FALSE.</strong> Piece Rate pays based on the number of units produced. Time Rate pays by hours/days worked.</p>
+<p><strong>T/F 57.</strong> Defense mechanisms are conscious, deliberate strategies employees use to manage workplace stress.
+<strong>→ FALSE.</strong> Defense mechanisms are unconscious psychological responses.</p>
+<p><strong>T/F 58.</strong> Displacement involves redirecting negative emotions from the real source to a safer target.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 59.</strong> The objective of HRM includes building respect and trust between management and workers.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 60.</strong> Internal hiring through promotion costs more than external hiring in most cases.
+<strong>→ FALSE.</strong> Internal hiring is generally cheaper and faster than external hiring.</p>
+<hr>
+<h2 id="marketing-management">Marketing Management</h2>
+<p><strong>T/F 61.</strong> The Production Concept focuses on meeting individual customer needs.
+<strong>→ FALSE.</strong> The Production Concept focuses on mass production and low-cost manufacturing.</p>
+<p><strong>T/F 62.</strong> Marketing Myopia means a company is too focused on its product and loses sight of actual customer needs.
+<strong>→ TRUE.</strong> (Associated with the Product Concept.)</p>
+<p><strong>T/F 63.</strong> The Societal Marketing Concept only considers company profit.
+<strong>→ FALSE.</strong> It balances customer wants, society's welfare, AND company profits.</p>
+<p><strong>T/F 64.</strong> Industrial selling (B2B) typically involves fewer customers but higher value per sale compared to consumer selling (B2C).
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 65.</strong> Consumer buying behavior is primarily rational and technically focused.
+<strong>→ FALSE.</strong> Consumer buying is driven by a mix of emotional and rational factors, with emotion often dominant.</p>
+<p><strong>T/F 66.</strong> Advertising is a paid, non-personal form of promotion.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 67.</strong> Digital advertising allows less precise audience targeting than traditional TV advertising.
+<strong>→ FALSE.</strong> Digital advertising allows far more precise targeting (by age, location, interests, behavior).</p>
+<p><strong>T/F 68.</strong> In a Functional Marketing Organization, the department is divided by product lines.
+<strong>→ FALSE.</strong> Functional Organization is divided by marketing function (advertising, sales, research, etc.). Product-based organization is divided by product lines.</p>
+<p><strong>T/F 69.</strong> B2B salespersons typically need deeper technical product knowledge than B2C salespersons.
+<strong>→ TRUE.</strong></p>
+<p><strong>T/F 70.</strong> The Modern Marketing Concept focuses on short-term transactional relationships with customers.
+<strong>→ FALSE.</strong> It focuses on long-term customer relationship building.</p>
+<hr>
+<h1 id="part-c--one-line-short-questions--answers">PART C — ONE-LINE SHORT QUESTIONS &amp; ANSWERS</h1>
+<hr>
+<h2 id="management-functions">Management Functions</h2>
+<p><strong>Q1.</strong> What is an organization?
+<strong>A:</strong> A group of two or more people working together in a structured way to achieve a specific goal.</p>
+<p><strong>Q2.</strong> Define Management.
+<strong>A:</strong> The process of using available resources (inputs) to achieve organizational goals (outputs) efficiently and effectively.</p>
+<p><strong>Q3.</strong> List the 7 categories of management resources.
+<strong>A:</strong> People, Money, Time, Work Procedures, Energy, Materials, Equipment.</p>
+<p><strong>Q4.</strong> What is Efficiency?
+<strong>A:</strong> A measure of how well or productively resources are used to achieve a goal — &quot;doing things right.&quot;</p>
+<p><strong>Q5.</strong> What is Effectiveness?
+<strong>A:</strong> A measure of how appropriate the goals are and the degree to which they are achieved — &quot;doing the right thing.&quot;</p>
+<p><strong>Q6.</strong> What is Organizational Performance?
+<strong>A:</strong> A measure of how efficiently and effectively managers use organizational resources to satisfy customers and achieve goals.</p>
+<p><strong>Q7.</strong> List the 5 functions of management (traditional view).
+<strong>A:</strong> Planning, Organizing, Staffing, Directing (Leading), Controlling.</p>
+<p><strong>Q8.</strong> What are the 4 functions of management according to Henri Fayol?
+<strong>A:</strong> Planning, Organizing, Leading, Controlling.</p>
+<p><strong>Q9.</strong> Define Planning.
+<strong>A:</strong> Identifying and selecting appropriate goals and courses of action for the organization — deciding what to do, how to do it, and how to allocate resources.</p>
+<p><strong>Q10.</strong> Define Organizing.
+<strong>A:</strong> Structuring working relationships in a way that allows organizational members to work together to achieve goals.</p>
+<p><strong>Q11.</strong> Define Leading.
+<strong>A:</strong> Articulating a clear vision and energizing organizational members using power, influence, persuasion, and communication to achieve organizational goals.</p>
+<p><strong>Q12.</strong> Define Controlling.
+<strong>A:</strong> Evaluating how well an organization is achieving its goals, monitoring performance, and taking corrective action to improve performance.</p>
+<p><strong>Q13.</strong> What is the outcome of the Leading function?
+<strong>A:</strong> Highly motivated and committed organizational members.</p>
+<p><strong>Q14.</strong> What is the outcome of the Controlling function?
+<strong>A:</strong> The ability to measure performance accurately and regulate the organization for efficiency and effectiveness.</p>
+<p><strong>Q15.</strong> What are the three types of managers?
+<strong>A:</strong> First-Line Managers, Middle Managers, and Top Managers.</p>
+<p><strong>Q16.</strong> What do First-Line Managers focus on?
+<strong>A:</strong> Day-to-day operations — supervising non-managerial employees who perform the actual work.</p>
+<p><strong>Q17.</strong> What do Middle Managers do?
+<strong>A:</strong> Supervise first-line managers and find the best way to use departmental resources to achieve company goals.</p>
+<p><strong>Q18.</strong> What do Top Managers do?
+<strong>A:</strong> Set long-term goals, monitor the entire organization, and form the top management team (CEO, COO, etc.).</p>
+<p><strong>Q19.</strong> Name the three categories of managerial roles identified by Henry Mintzberg.
+<strong>A:</strong> Decisional, Informational, and Interpersonal roles.</p>
+<p><strong>Q20.</strong> Name the four Decisional roles.
+<strong>A:</strong> Entrepreneur, Disturbance Handler, Resource Allocator, Negotiator.</p>
+<p><strong>Q21.</strong> Name the three Informational roles.
+<strong>A:</strong> Monitor, Disseminator, Spokesperson.</p>
+<p><strong>Q22.</strong> Name the three Interpersonal roles.
+<strong>A:</strong> Figurehead, Leader, Liaison.</p>
+<p><strong>Q23.</strong> What is the difference between Disseminator and Spokesperson?
+<strong>A:</strong> Disseminator transmits information inward (to employees). Spokesperson transmits information outward (to the public, government, or press).</p>
+<p><strong>Q24.</strong> What are the four building blocks of Competitive Advantage?
+<strong>A:</strong> Efficiency, Quality, Innovation, Responsiveness to Customers.</p>
+<p><strong>Q25.</strong> Is management an art or a science? Answer in one sentence.
+<strong>A:</strong> Management is both an art (depends on personal creativity and judgment) and a science (based on proven principles, models, and data-driven analysis).</p>
+<p><strong>Q26.</strong> What are the 5 challenges for management in a global environment?
+<strong>A:</strong> Increasing global organizations, building competitive advantage, maintaining ethical standards, managing diverse workforce, and utilizing IT and e-commerce.</p>
+<hr>
+<h2 id="evolution-of-management-theory">Evolution of Management Theory</h2>
+<p><strong>Q27.</strong> What is the key lesson from Sun Tzu's &quot;The Art of War&quot; for management?
+<strong>A:</strong> The marketplace is a battlefield — managers must develop competitive strategy, conserve resources, and outmaneuver rivals.</p>
+<p><strong>Q28.</strong> What concept did Adam Smith introduce that is foundational to modern management?
+<strong>A:</strong> Division of Labor — breaking complex tasks into smaller, specialized parts assigned to different workers.</p>
+<p><strong>Q29.</strong> What is Scientific Management and who developed it?
+<strong>A:</strong> Developed by Frederick W. Taylor; it seeks to increase productivity by scientifically studying work and finding the &quot;one best way&quot; to perform each task.</p>
+<p><strong>Q30.</strong> What research method did Taylor use to find the most efficient work procedures?
+<strong>A:</strong> Time and Motion Studies — observing and timing each movement in a task to eliminate waste.</p>
+<p><strong>Q31.</strong> State Taylor's four principles of Scientific Management.
+<strong>A:</strong> (1) Scientifically study each task. (2) Select and train workers in the best method. (3) Cooperate with workers to ensure use of the method. (4) Divide work between management (planning) and workers (execution).</p>
+<p><strong>Q32.</strong> What did Max Weber contribute to management theory?
+<strong>A:</strong> The concept of an ideal Bureaucracy — a rational, rule-based organizational structure with formal hierarchy, merit-based promotion, specialization, and impersonality.</p>
+<p><strong>Q33.</strong> Name any five of Henri Fayol's 14 principles.
+<strong>A:</strong> Division of Work, Authority and Responsibility, Discipline, Unity of Command, Unity of Direction, Scalar Chain, Remuneration, Equity, Esprit de Corps (and others).</p>
+<p><strong>Q34.</strong> What is the Hawthorne Effect?
+<strong>A:</strong> Workers perform better simply because they know they are being observed — the act of attention itself improves performance.</p>
+<p><strong>Q35.</strong> Who conducted the Hawthorne Studies?
+<strong>A:</strong> Elton Mayo.</p>
+<p><strong>Q36.</strong> What is the key difference between Theory X and Theory Y?
+<strong>A:</strong> Theory X assumes employees dislike work and need strict control; Theory Y assumes employees are self-motivated, responsible, and creative when conditions are right.</p>
+<p><strong>Q37.</strong> What is Synergy in Systems Theory?
+<strong>A:</strong> The whole is greater than the sum of its parts (1 + 1 &gt; 2) — subsystems working together produce more than each would produce independently.</p>
+<p><strong>Q38.</strong> What is Equifinality?
+<strong>A:</strong> Different starting conditions or paths can lead to the same final outcome.</p>
+<p><strong>Q39.</strong> What does Contingency Theory state?
+<strong>A:</strong> There is no single &quot;one best way&quot; to manage an organization — the most effective approach depends on the specific situation (contingencies).</p>
+<p><strong>Q40.</strong> What is TQM?
+<strong>A:</strong> Total Quality Management — an organization-wide approach where all employees and units work harmoniously to satisfy customers through continuous quality improvement.</p>
+<p><strong>Q41.</strong> What is Kaizen?
+<strong>A:</strong> A Japanese concept meaning continuous, incremental improvement — central to TQM.</p>
+<p><strong>Q42.</strong> What is a Learning Organization?
+<strong>A:</strong> An organization that continuously anticipates and adapts to change faster than competitors through experimental and external learning.</p>
+<p><strong>Q43.</strong> Name the two ways a Learning Organization learns.
+<strong>A:</strong> Experimental Learning (learning from internal trials and experience) and External Learning (learning from competitors, customers, and benchmarking).</p>
+<hr>
+<h2 id="organization-structure">Organization Structure</h2>
+<p><strong>Q44.</strong> Define Organizational Structure.
+<strong>A:</strong> The formal arrangement of jobs within an organization — how activities are divided, organized, and coordinated.</p>
+<p><strong>Q45.</strong> What are the four factors that determine organizational design?
+<strong>A:</strong> Environment, Strategy, Technology, and Human Resources.</p>
+<p><strong>Q46.</strong> What is Work Specialization?
+<strong>A:</strong> The degree to which tasks are divided into separate jobs, each completed by a different person.</p>
+<p><strong>Q47.</strong> What are &quot;human diseconomies&quot;?
+<strong>A:</strong> Negative effects on workers from over-specialization — including boredom, fatigue, stress, poor quality, high absenteeism, and increased turnover.</p>
+<p><strong>Q48.</strong> What is Departmentalization?
+<strong>A:</strong> The basis by which jobs are grouped together into departments — can be functional, product-based, geographic, process-based, or customer-based.</p>
+<p><strong>Q49.</strong> What is Chain of Command?
+<strong>A:</strong> The continuous line of authority that extends from the top of the organization to its lowest level, clarifying who reports to whom.</p>
+<p><strong>Q50.</strong> What is Span of Control?
+<strong>A:</strong> The number of subordinates a manager can effectively supervise.</p>
+<p><strong>Q51.</strong> What is the difference between Centralization and Decentralization?
+<strong>A:</strong> Centralization concentrates decision-making at the top levels; Decentralization pushes decision-making authority down to lower-level managers.</p>
+<p><strong>Q52.</strong> What is Formalization?
+<strong>A:</strong> The degree to which jobs within the organization are standardized and employee behavior is guided by explicit rules and procedures.</p>
+<p><strong>Q53.</strong> Distinguish between Mechanistic and Organic structures.
+<strong>A:</strong> Mechanistic = high specialization, rigid hierarchy, heavy formalization — suitable for stable environments. Organic = flexible roles, open communication, low formalization — suitable for dynamic environments.</p>
+<p><strong>Q54.</strong> What is a Simple Structure?
+<strong>A:</strong> A flat, informal structure with low specialization, few formal rules, and centralized authority held by the owner/founder. Best for small organizations.</p>
+<p><strong>Q55.</strong> What is the main weakness of a Functional Structure?
+<strong>A:</strong> Poor cross-departmental communication — &quot;functional silos&quot; where departments work in isolation rather than collaborating.</p>
+<p><strong>Q56.</strong> What is a Divisional Structure?
+<strong>A:</strong> An organizational design where the company is divided into self-contained divisions, each organized around a specific product, geographic region, or customer type.</p>
+<p><strong>Q57.</strong> What is a Matrix Structure?
+<strong>A:</strong> A structure that simultaneously groups employees by function AND by product/project teams — resulting in each employee having two bosses.</p>
+<p><strong>Q58.</strong> Which Fayol principle does the Matrix Structure violate?
+<strong>A:</strong> Unity of Command.</p>
+<p><strong>Q59.</strong> What is a Virtual Organization?
+<strong>A:</strong> A small core of full-time employees that temporarily hires specialists as needed — the company coordinates rather than employs a large permanent workforce.</p>
+<p><strong>Q60.</strong> Distinguish between Virtual, Network, and Modular organizations.
+<strong>A:</strong> Virtual = small core that hires specialists temporarily. Network = small core that outsources major functions (e.g., Apple outsourcing manufacturing). Modular = manufacturer that outsources components and does final assembly in-house.</p>
+<p><strong>Q61.</strong> What is Task Variety?
+<strong>A:</strong> The number of new and different problems a manager or worker encounters in their job.</p>
+<p><strong>Q62.</strong> What is Task Analyzability?
+<strong>A:</strong> The degree to which standard, pre-established solutions are available to handle problems encountered in a job.</p>
+<hr>
+<h2 id="personnel-management--hrm">Personnel Management / HRM</h2>
+<p><strong>Q63.</strong> Define HRM according to the British Institute of Personnel Management.
+<strong>A:</strong> &quot;That part of management which is concerned with people at work and with their relationships within an organization.&quot;</p>
+<p><strong>Q64.</strong> State the four operative functions of HRM according to the American Management Association.
+<strong>A:</strong> Procuring, Developing, Maintaining, and Utilizing a workforce.</p>
+<p><strong>Q65.</strong> Name five objectives of HRM.
+<strong>A:</strong> Attract/develop/retain talent; optimum utilization of human resources; encourage best employee contribution; build management-worker trust; increase worker efficiency through training.</p>
+<p><strong>Q66.</strong> Name the five levels of Maslow's Need Hierarchy in order from lowest to highest.
+<strong>A:</strong> Physiological → Safety → Social/Belongingness → Esteem → Self-Actualization.</p>
+<p><strong>Q67.</strong> What is Intrinsic Motivation?
+<strong>A:</strong> Motivation that comes from internal satisfaction — the work itself is rewarding.</p>
+<p><strong>Q68.</strong> What is Extrinsic Motivation?
+<strong>A:</strong> Motivation driven by external rewards — salary, bonuses, awards, promotions.</p>
+<p><strong>Q69.</strong> State Herzberg's key finding in one sentence.
+<strong>A:</strong> Removing dissatisfaction (through hygiene factors) does NOT create motivation — you must also provide motivators (achievement, recognition, growth) to truly motivate employees.</p>
+<p><strong>Q70.</strong> Name four Hygiene Factors (Herzberg).
+<strong>A:</strong> Salary, Job Security, Working Conditions, Company Policy, Quality of Supervision.</p>
+<p><strong>Q71.</strong> Name four Motivators (Herzberg).
+<strong>A:</strong> Achievement, Recognition, Responsibility, Growth, Interesting Work.</p>
+<p><strong>Q72.</strong> State the Expectancy Theory formula.
+<strong>A:</strong> Motivation = Expectancy × Instrumentality × Valence.</p>
+<p><strong>Q73.</strong> What does Valence mean in Expectancy Theory?
+<strong>A:</strong> The degree to which the employee values the reward being offered.</p>
+<p><strong>Q74.</strong> What is the defense mechanism called &quot;Projection&quot;?
+<strong>A:</strong> Attributing your own faults, mistakes, or feelings to other people.</p>
+<p><strong>Q75.</strong> What is the defense mechanism called &quot;Denial&quot;?
+<strong>A:</strong> Refusing to accept an unpleasant reality.</p>
+<p><strong>Q76.</strong> What is Job Satisfaction?
+<strong>A:</strong> The degree to which an individual feels positively or negatively about various aspects of their job.</p>
+<p><strong>Q77.</strong> What is Job Performance?
+<strong>A:</strong> The quantity and quality of tasks accomplished by an individual or group at work.</p>
+<p><strong>Q78.</strong> Define Job Analysis.
+<strong>A:</strong> A formal, scientific, and systematic study of a job to collect all pertinent facts about what the job involves, what skills it requires, and what conditions surround it.</p>
+<p><strong>Q79.</strong> Name the 8 uses/objectives of Job Analysis.
+<strong>A:</strong> Job redesign, work standards, recruitment, selection, training, performance appraisal, job evaluation, safety.</p>
+<p><strong>Q80.</strong> What is the Time Rate Wage System?
+<strong>A:</strong> A wage system where employees are paid based on the amount of time they work (hourly, daily, weekly, or monthly) regardless of output volume.</p>
+<p><strong>Q81.</strong> Name three ways HRM can help a firm gain sustainable competitive advantage.
+<strong>A:</strong> Maximize value added by employees; acquire rare employees; develop a culture that cannot be copied.</p>
+<hr>
+<h2 id="marketing-management">Marketing Management</h2>
+<p><strong>Q82.</strong> Define Marketing Management.
+<strong>A:</strong> The process of planning and executing strategies for product, price, promotion, and distribution decisions to achieve customer satisfaction and business goals.</p>
+<p><strong>Q83.</strong> What are the 4 Ps of Marketing?
+<strong>A:</strong> Product, Price, Promotion, Place (Distribution).</p>
+<p><strong>Q84.</strong> What is the Production Concept?
+<strong>A:</strong> A marketing philosophy focused on mass production and low-cost manufacturing — assumes demand will absorb whatever is produced cheaply in large quantities.</p>
+<p><strong>Q85.</strong> What is &quot;Marketing Myopia&quot;?
+<strong>A:</strong> When a company is so focused on improving its product that it loses sight of actual customer needs and misses fundamental market shifts.</p>
+<p><strong>Q86.</strong> What is the core idea of the Marketing Concept?
+<strong>A:</strong> First understand customer needs, then build and deliver a product that meets those needs better than the competition.</p>
+<p><strong>Q87.</strong> What does the Societal Marketing Concept add to the Marketing Concept?
+<strong>A:</strong> It adds the requirement to consider society's long-term welfare alongside customer wants and company profits.</p>
+<p><strong>Q88.</strong> What are the four pillars of the Modern Marketing Concept?
+<strong>A:</strong> Customer-oriented approach, market research-driven decisions, long-term customer relationship focus, and value creation for the customer.</p>
+<p><strong>Q89.</strong> What is the main advantage of a Product-Based Marketing Organization?
+<strong>A:</strong> Each product line gets dedicated attention and expertise, allowing specialized marketing strategies for each product.</p>
+<p><strong>Q90.</strong> What is the key difference between Industrial Selling (B2B) and Consumer Selling (B2C) in terms of decision-making?
+<strong>A:</strong> B2B decisions are rational and technical, often involving a committee and long negotiation. B2C decisions mix emotion and reason, are made quickly, often by one individual.</p>
+<p><strong>Q91.</strong> Why do B2B salespersons need stronger technical knowledge than B2C salespersons?
+<strong>A:</strong> Because buyers in industrial selling are technical experts who ask detailed specification questions — a non-technical salesperson cannot answer credibly.</p>
+<p><strong>Q92.</strong> Define Advertising.
+<strong>A:</strong> Paid, non-personal promotion of a product or service through media channels to inform, persuade, remind, or build loyalty among a target audience.</p>
+<p><strong>Q93.</strong> State the four objectives of advertising in order.
+<strong>A:</strong> Inform → Persuade → Remind → Build Brand Loyalty.</p>
+<p><strong>Q94.</strong> What is the difference between B2B's &quot;Target Customer Group&quot; and B2C's &quot;Market Segmentation&quot;?
+<strong>A:</strong> B2B targets a finite, identifiable list of specific organizations. B2C divides the mass consumer population into segments by age, income, geography, or behavior.</p>
+<p><strong>Q95.</strong> Name four types of advertising.
+<strong>A:</strong> Traditional (TV, Radio, Newspaper), Digital (Social media, Search engines), Outdoor (Billboards), Direct Marketing (Email, SMS).</p>
+<p><strong>Q96.</strong> Name four elements of an advertising strategy.
+<strong>A:</strong> Target audience selection, message design, media selection, budget planning.</p>
+<p><strong>Q97.</strong> Name four modern challenges in advertising.
+<strong>A:</strong> High competition, changing customer behavior, digital media dominance, rising advertising costs.</p>
+<p><strong>Q98.</strong> What is the evolution order of the five marketing concepts?
+<strong>A:</strong> Production Concept → Product Concept → Selling Concept → Marketing Concept → Societal Marketing Concept.</p>
+<p><strong>Q99.</strong> What type of marketing organization would a bank use that has separate divisions for Corporate, Retail, and SME customers?
+<strong>A:</strong> Market-Based Organization (organized by customer segment).</p>
+<p><strong>Q100.</strong> What is the relationship between productivity and job satisfaction?
+<strong>A:</strong> They are interdependent — satisfied employees are more productive, and high productivity leads to recognition which increases satisfaction. Poor satisfaction leads to low productivity.</p>
+<hr>
+<h1 id="part-d--bonus-rapid-fire-5-word-answers">PART D — BONUS RAPID FIRE (5-Word Answers)</h1>
+<p><strong>1.</strong> Father of Scientific Management → <strong>Frederick Winslow Taylor</strong>
+<strong>2.</strong> Father of Bureaucratic Management → <strong>Max Weber</strong>
+<strong>3.</strong> Father of Administrative Management → <strong>Henri Fayol</strong>
+<strong>4.</strong> Who conducted Hawthorne Studies → <strong>Elton Mayo</strong>
+<strong>5.</strong> Theory X and Y proposed by → <strong>Douglas McGregor</strong>
+<strong>6.</strong> Expectancy Theory proposed by → <strong>Victor Vroom</strong>
+<strong>7.</strong> Maslow's Hierarchy proposed by → <strong>Abraham Maslow</strong>
+<strong>8.</strong> Systems Theory proposed by → <strong>Ludwig von Bertalanffy</strong>
+<strong>9.</strong> &quot;The Art of War&quot; written by → <strong>Sun Tzu</strong>
+<strong>10.</strong> &quot;The Wealth of Nations&quot; written by → <strong>Adam Smith</strong>
+<strong>11.</strong> &quot;The Prince&quot; written by → <strong>Niccolò Machiavelli</strong>
+<strong>12.</strong> TQM continuous improvement concept → <strong>Kaizen</strong>
+<strong>13.</strong> Formula: Motivation = → <strong>E × I × V (Expectancy × Instrumentality × Valence)</strong>
+<strong>14.</strong> Productivity formula → <strong>Output / Input</strong>
+<strong>15.</strong> Doing things right = → <strong>Efficiency</strong>
+<strong>16.</strong> Doing the right thing = → <strong>Effectiveness</strong>
+<strong>17.</strong> One employee, one boss = Fayol's → <strong>Unity of Command</strong>
+<strong>18.</strong> One plan per group = Fayol's → <strong>Unity of Direction</strong>
+<strong>19.</strong> Matrix structure violates → <strong>Unity of Command</strong>
+<strong>20.</strong> Apple outsourcing to Foxconn = → <strong>Network Organization</strong>
+<strong>21.</strong> Boeing using global component suppliers = → <strong>Modular Organization</strong>
+<strong>22.</strong> B2B = → <strong>Business to Business (Industrial Selling)</strong>
+<strong>23.</strong> B2C = → <strong>Business to Consumer (Consumer Selling)</strong>
+<strong>24.</strong> 4 Ps of Marketing → <strong>Product, Price, Promotion, Place</strong>
+<strong>25.</strong> Hawthorne Effect means → <strong>Performance improves when being observed</strong></p>
+
+</body>
+</html>
