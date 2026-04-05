@@ -169,6 +169,33 @@ const DRIVE_DATA = {
           ]
         }
       ]
+    },
+    {
+      "id": "electronics-i-ii",
+      "name": "Electronics I & II",
+      "code": "EEE 0714 1221 & EEE 0714 2127",
+      "desc": "",
+      "files": [],
+      "topics": [
+        {
+          "id": "mosfet",
+          "name": "MOSFET",
+          "files": [
+            {
+              "id": "f1775374208488",
+              "name": "MOSFET Study Guide",
+              "type": "link",
+              "url": "materials/electronics-i-ii/mosfet_study_guide.html"
+            },
+            {
+              "id": "f1775374255922",
+              "name": "MOSFET Types",
+              "type": "link",
+              "url": "materials/electronics-i-ii/chapter5_updated.html"
+            }
+          ]
+        }
+      ]
     }
   ]
 };
