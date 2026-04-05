@@ -192,6 +192,12 @@ const DRIVE_DATA = {
               "name": "MOSFET Types",
               "type": "link",
               "url": "materials/electronics-i-ii/chapter5_updated.html"
+            },
+            {
+              "id": "f1775414638419",
+              "name": "MOSFET Boylestad Book",
+              "type": "pdf",
+              "url": "materials/electronics-i-ii/MOSFET_Boylestad_compressed.pdf"
             }
           ]
         }
