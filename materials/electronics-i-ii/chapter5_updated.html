@@ -1,0 +1,1616 @@
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- CHAPTER 5 — COMPLETE MOSFET TYPES (FULLY UPDATED)                 -->
+<!-- Boylestad-style symbols, deep physics, all 6 student questions     -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<div class="chapter-divider" id="mosfet-types">
+  <div class="ch-num">05</div>
+  <div class="ch-info">
+    <div class="ch-label">Chapter Five · Types of MOSFET</div>
+    <h2>The Four Types — Built from First Principles</h2>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 5.0 — FAMILY TREE OVERVIEW                                        -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="types-overview">
+  <div class="section-header">
+    <span class="section-num">5.0</span>
+    <h2>The MOSFET Family Tree</h2>
+  </div>
+
+  <p>Every MOSFET belongs to exactly one of four types. These come from two independent manufacturing choices:</p>
+
+  <div class="two-col">
+    <div class="info-card">
+      <div class="ic-title" style="color:var(--accent)">Choice 1 — Channel Type</div>
+      <p style="font-size:14px;color:var(--text-muted)">
+        <strong style="color:var(--nmos)">N-Channel:</strong> Electrons carry the current. Fast. Built on P-substrate.<br><br>
+        <strong style="color:var(--pmos)">P-Channel:</strong> Holes carry the current. Slower. Built on N-substrate.
+      </p>
+    </div>
+    <div class="info-card">
+      <div class="ic-title" style="color:var(--accent2)">Choice 2 — Mode of Operation</div>
+      <p style="font-size:14px;color:var(--text-muted)">
+        <strong style="color:var(--accent3)">Enhancement (E):</strong> No channel at rest. Must CREATE it with gate voltage. Normally OFF.<br><br>
+        <strong style="color:var(--accent4)">Depletion (D):</strong> Channel pre-built during manufacturing. Must DESTROY it. Normally ON.
+      </p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">The 4 MOSFET Types — Complete Family</div>
+    <svg viewBox="0 0 660 260" xmlns="http://www.w3.org/2000/svg">
+      <!-- Column headers -->
+      <rect x="170" y="10" width="200" height="30" rx="4" fill="rgba(79,142,247,0.15)" stroke="#4f8ef7" stroke-width="1"/>
+      <text x="270" y="30" font-family="IBM Plex Mono,monospace" font-size="13" fill="#4f8ef7" text-anchor="middle" font-weight="600">N-CHANNEL</text>
+      <rect x="390" y="10" width="200" height="30" rx="4" fill="rgba(247,79,110,0.12)" stroke="#f74f6e" stroke-width="1"/>
+      <text x="490" y="30" font-family="IBM Plex Mono,monospace" font-size="13" fill="#f74f6e" text-anchor="middle" font-weight="600">P-CHANNEL</text>
+      <!-- Row headers -->
+      <rect x="10" y="50" width="150" height="90" rx="4" fill="rgba(79,247,154,0.08)" stroke="#4ff79a" stroke-width="1"/>
+      <text x="85" y="87" font-family="IBM Plex Mono,monospace" font-size="12" fill="#4ff79a" text-anchor="middle" font-weight="600">ENHANCEMENT</text>
+      <text x="85" y="103" font-family="Source Serif 4,serif" font-size="11" fill="#7a8099" text-anchor="middle">Normally OFF</text>
+      <text x="85" y="117" font-family="Source Serif 4,serif" font-size="11" fill="#7a8099" text-anchor="middle">No built-in channel</text>
+      <rect x="10" y="155" width="150" height="90" rx="4" fill="rgba(247,79,110,0.08)" stroke="#f74f6e" stroke-width="1"/>
+      <text x="85" y="192" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e" text-anchor="middle" font-weight="600">DEPLETION</text>
+      <text x="85" y="208" font-family="Source Serif 4,serif" font-size="11" fill="#7a8099" text-anchor="middle">Normally ON</text>
+      <text x="85" y="222" font-family="Source Serif 4,serif" font-size="11" fill="#7a8099" text-anchor="middle">Built-in channel</text>
+      <!-- Cell 1 -->
+      <rect x="170" y="50" width="200" height="90" rx="4" fill="#13161e" stroke="#4f8ef7" stroke-width="1.5"/>
+      <text x="270" y="80" font-family="Playfair Display,serif" font-size="15" font-weight="700" fill="#4f8ef7" text-anchor="middle">N-Ch Enhancement</text>
+      <text x="270" y="98" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7a8099" text-anchor="middle">+Vgs turns ON</text>
+      <text x="270" y="114" font-family="Source Serif 4,serif" font-size="12" fill="#7a8099" text-anchor="middle">Most common in digital</text>
+      <rect x="215" y="122" width="110" height="12" rx="3" fill="rgba(79,247,154,0.2)" stroke="#4ff79a" stroke-width="0.8"/>
+      <text x="270" y="132" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">★ MOST USED TYPE ★</text>
+      <!-- Cell 2 -->
+      <rect x="390" y="50" width="200" height="90" rx="4" fill="#13161e" stroke="#f74f6e" stroke-width="1.5"/>
+      <text x="490" y="80" font-family="Playfair Display,serif" font-size="15" font-weight="700" fill="#f74f6e" text-anchor="middle">P-Ch Enhancement</text>
+      <text x="490" y="98" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7a8099" text-anchor="middle">−Vgs turns ON</text>
+      <text x="490" y="114" font-family="Source Serif 4,serif" font-size="12" fill="#7a8099" text-anchor="middle">Used in CMOS pull-up</text>
+      <rect x="435" y="122" width="110" height="12" rx="3" fill="rgba(247,195,79,0.15)" stroke="#f7c34f" stroke-width="0.8"/>
+      <text x="490" y="132" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f7c34f" text-anchor="middle">CMOS complement</text>
+      <!-- Cell 3 -->
+      <rect x="170" y="155" width="200" height="90" rx="4" fill="#13161e" stroke="#4f8ef7" stroke-width="1" opacity="0.7"/>
+      <text x="270" y="185" font-family="Playfair Display,serif" font-size="15" font-weight="700" fill="#4f8ef7" text-anchor="middle" opacity="0.8">N-Ch Depletion</text>
+      <text x="270" y="203" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7a8099" text-anchor="middle">−Vgs turns OFF</text>
+      <text x="270" y="219" font-family="Source Serif 4,serif" font-size="12" fill="#7a8099" text-anchor="middle">RF, analog biasing</text>
+      <!-- Cell 4 -->
+      <rect x="390" y="155" width="200" height="90" rx="4" fill="#13161e" stroke="#f74f6e" stroke-width="1" opacity="0.7"/>
+      <text x="490" y="185" font-family="Playfair Display,serif" font-size="15" font-weight="700" fill="#f74f6e" text-anchor="middle" opacity="0.8">P-Ch Depletion</text>
+      <text x="490" y="203" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7a8099" text-anchor="middle">+Vgs turns OFF</text>
+      <text x="490" y="219" font-family="Source Serif 4,serif" font-size="12" fill="#7a8099" text-anchor="middle">Rare, specialized use</text>
+    </svg>
+  </div>
+
+  <div class="why-box">
+    <div class="why-label">💡 Study Strategy</div>
+    <p style="margin:0">Master <strong>N-Channel Enhancement</strong> first — it's 90% of what you'll ever use. Once you understand it deeply, the other three types follow by analogy: flip the polarity for P-channel, add a pre-built channel for Depletion.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- PART A — ENHANCEMENT MOSFETs                                      -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="chapter-divider" id="emosfet">
+  <div class="ch-num" style="font-size:56px;color:var(--accent3)">E</div>
+  <div class="ch-info">
+    <div class="ch-label">Part A · Enhancement Mode</div>
+    <h2>E-MOSFET — The Normally OFF Transistor</h2>
+  </div>
+</div>
+
+<section class="section" id="emosfet-theory">
+  <div class="section-header">
+    <span class="section-num">5.1</span>
+    <h2>What is Enhancement Mode? — The Big Idea</h2>
+  </div>
+
+  <p>The word <strong>"Enhancement"</strong> tells you everything. There is <em>no channel present at rest</em>. When you apply a gate voltage, you <strong>enhance</strong> — you create — a conducting channel out of nothing. Before voltage: no current. After voltage: current flows.</p>
+
+  <div class="analogy-box">
+    <div class="analogy-label">🏗️ Analogy — Building a Bridge</div>
+    <p style="margin:0">Imagine a river (the P-substrate) separating two towns (the N+ Drain and N+ Source). No bridge connects them — no one can cross. When you apply gate voltage, you are <strong>building a temporary bridge</strong> (the inversion channel) across the river. Remove the voltage, the bridge disappears. The E-MOSFET <em>constructs its own path on demand.</em></p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 5.2 — N-CHANNEL E-MOSFET                                          -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="n-emosfet">
+  <div class="section-header">
+    <span class="section-num">5.2</span>
+    <h2>N-Channel Enhancement MOSFET (NMOS)</h2>
+  </div>
+
+  <p>This is the <strong>most important and most used MOSFET type</strong>. Every processor, memory chip, and digital logic circuit is built predominantly from these.</p>
+
+  <!-- ── CONSTRUCTION ── -->
+  <h3>Construction</h3>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">N-Channel E-MOSFET — Physical Cross-Section</div>
+    <svg viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="psub-n" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+          <rect width="10" height="10" fill="#1a1e2a"/>
+          <circle cx="5" cy="5" r="1.5" fill="#f74f6e" opacity="0.45"/>
+        </pattern>
+        <pattern id="nplus" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+          <rect width="8" height="8" fill="#0f1624"/>
+          <rect x="2" y="2" width="4" height="4" fill="#4f8ef7" opacity="0.55" rx="0.5"/>
+        </pattern>
+      </defs>
+      <!-- P-substrate -->
+      <rect x="50" y="185" width="580" height="85" rx="4" fill="url(#psub-n)" stroke="#f74f6e" stroke-width="1.5"/>
+      <text x="340" y="230" font-family="IBM Plex Mono,monospace" font-size="13" fill="#f74f6e" text-anchor="middle" font-weight="600">P-type Silicon Substrate (Body)</text>
+      <text x="340" y="248" font-family="Source Serif 4,serif" font-size="11" fill="#7a8099" text-anchor="middle">Majority carriers = Holes (⊕)</text>
+      <g font-family="Arial" font-size="13" fill="#f74f6e" opacity="0.5">
+        <text x="95" y="265">⊕</text><text x="140" y="256">⊕</text><text x="185" y="265">⊕</text>
+        <text x="240" y="255">⊕</text><text x="290" y="265">⊕</text><text x="345" y="256">⊕</text>
+        <text x="395" y="265">⊕</text><text x="445" y="255">⊕</text><text x="495" y="265">⊕</text>
+        <text x="545" y="255">⊕</text><text x="590" y="265">⊕</text>
+      </g>
+      <!-- N+ Drain -->
+      <rect x="70" y="135" width="120" height="65" rx="3" fill="url(#nplus)" stroke="#4ff79a" stroke-width="2"/>
+      <text x="130" y="162" font-family="IBM Plex Mono,monospace" font-size="13" fill="#4ff79a" text-anchor="middle" font-weight="600">N+</text>
+      <text x="130" y="178" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle">Drain Region</text>
+      <g font-family="Arial" font-size="11" fill="#4f8ef7" opacity="0.6">
+        <text x="85" y="155">⊖</text><text x="108" y="168">⊖</text><text x="130" y="152">⊖</text>
+        <text x="152" y="165">⊖</text><text x="168" y="153">⊖</text>
+      </g>
+      <!-- N+ Source -->
+      <rect x="490" y="135" width="120" height="65" rx="3" fill="url(#nplus)" stroke="#c084fc" stroke-width="2"/>
+      <text x="550" y="162" font-family="IBM Plex Mono,monospace" font-size="13" fill="#c084fc" text-anchor="middle" font-weight="600">N+</text>
+      <text x="550" y="178" font-family="IBM Plex Mono,monospace" font-size="10" fill="#c084fc" text-anchor="middle">Source Region</text>
+      <g font-family="Arial" font-size="11" fill="#4f8ef7" opacity="0.6">
+        <text x="505" y="155">⊖</text><text x="528" y="168">⊖</text><text x="550" y="152">⊖</text>
+        <text x="572" y="165">⊖</text><text x="590" y="153">⊖</text>
+      </g>
+      <!-- No channel -->
+      <rect x="210" y="170" width="260" height="30" rx="2" fill="rgba(247,79,110,0.08)" stroke="#f74f6e" stroke-width="1" stroke-dasharray="5,4"/>
+      <text x="340" y="190" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f74f6e" text-anchor="middle">← NO CHANNEL (P-type surface) →</text>
+      <!-- Oxide -->
+      <rect x="210" y="125" width="260" height="20" rx="2" fill="#334155" stroke="#94a3b8" stroke-width="1.2"/>
+      <text x="340" y="139" font-family="IBM Plex Mono,monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">SiO₂ Gate Oxide — Insulator (~5–10 nm)</text>
+      <!-- Gate -->
+      <rect x="210" y="85" width="260" height="38" rx="3" fill="#d97706" opacity="0.9"/>
+      <text x="340" y="104" font-family="IBM Plex Mono,monospace" font-size="13" fill="#0d0f14" text-anchor="middle" font-weight="700">Gate (G) — Metal / Polysilicon</text>
+      <text x="340" y="118" font-family="Source Serif 4,serif" font-size="11" fill="#0d0f14" text-anchor="middle">Vgs = 0V applied here</text>
+      <!-- Contacts -->
+      <rect x="85" y="85" width="90" height="48" rx="3" fill="#059669" opacity="0.9"/>
+      <text x="130" y="108" font-family="IBM Plex Mono,monospace" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">DRAIN (D)</text>
+      <text x="130" y="123" font-family="IBM Plex Mono,monospace" font-size="10" fill="#d1fae5" text-anchor="middle">→ VDD (high V)</text>
+      <rect x="505" y="85" width="90" height="48" rx="3" fill="#7c3aed" opacity="0.9"/>
+      <text x="550" y="108" font-family="IBM Plex Mono,monospace" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">SOURCE (S)</text>
+      <text x="550" y="123" font-family="IBM Plex Mono,monospace" font-size="10" fill="#ddd6fe" text-anchor="middle">→ GND (0V)</text>
+      <!-- Channel length label -->
+      <line x1="210" y1="298" x2="470" y2="298" stroke="#4f8ef7" stroke-width="0.8"/>
+      <line x1="210" y1="293" x2="210" y2="303" stroke="#4f8ef7" stroke-width="1"/>
+      <line x1="470" y1="293" x2="470" y2="303" stroke="#4f8ef7" stroke-width="1"/>
+      <text x="340" y="309" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4f8ef7" text-anchor="middle">← Channel Length (L) →</text>
+    </svg>
+  </div>
+
+  <!-- ── WHY N+ NOT N ── -->
+  <h3>❓ Why N<sup>+</sup> (Heavily Doped) Instead of Just N?</h3>
+  <p>This is a question most textbooks skip. The "+" symbol means <strong>heavily doped</strong> — far more dopant atoms than a regular N-type region. Here is exactly why this matters:</p>
+
+  <div class="why-box">
+    <div class="why-label">💡 Why Heavy Doping (N+) is Essential</div>
+    <p style="margin:0;margin-bottom:14px">Think about what we need from the Drain and Source regions:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:14px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent4);letter-spacing:2px;margin-bottom:8px;">IF WE USED LIGHTLY DOPED N</div>
+        <ul style="font-size:13px;color:var(--text-muted);padding-left:16px;line-height:2">
+          <li>Few free electrons available</li>
+          <li>High resistance at contacts</li>
+          <li>Voltage drop at metal–silicon junction</li>
+          <li>Rectifying (diode-like) contact → bad!</li>
+          <li>Poor current delivery into channel</li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:14px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent3);letter-spacing:2px;margin-bottom:8px;">WITH HEAVILY DOPED N+</div>
+        <ul style="font-size:13px;color:var(--text-muted);padding-left:16px;line-height:2">
+          <li>Huge electron concentration</li>
+          <li>Very low resistance (near zero)</li>
+          <li><strong style="color:var(--text)">Ohmic contact</strong> with metal wire</li>
+          <li>No voltage drop at contact</li>
+          <li>Excellent electron reservoir for channel</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin:12px 0 0 0;font-size:14px;color:var(--text-muted)">The N+ regions act as <strong style="color:var(--text)">electron reservoirs</strong>. When the channel forms, electrons flood in from the N+ Source — but only if the Source has an abundance of them. Light doping would starve the channel. Heavy doping ensures the channel is well-supplied. Also, the metal wire connecting to Drain/Source makes an <strong style="color:var(--text)">ohmic (non-rectifying) contact</strong> only when the semiconductor is heavily doped — otherwise you get an unwanted diode junction at every terminal.</p>
+  </div>
+
+  <!-- ── IS DRAIN ALWAYS VDD? ── -->
+  <h3>❓ Is Drain Always at Higher Voltage (VDD) and Source Always at GND?</h3>
+  <p>This is a very common source of confusion. The short answer: <strong>not always by definition, but almost always in practice.</strong></p>
+
+  <div class="why-box">
+    <div class="why-label">💡 The Real Definition of Source vs Drain</div>
+    <p style="margin:0;margin-bottom:12px">The names come from the <strong>direction of conventional current flow</strong>:</p>
+    <ul style="padding-left:20px;margin:0;line-height:2.2;font-size:14px;color:var(--text-muted)">
+      <li><strong style="color:var(--text)">Source</strong> = where the current-carrying carriers <em>originate from</em>. In NMOS, electrons come from Source → it's the electron source. Connected to GND (0V) so electrons can flow from it into the channel.</li>
+      <li><strong style="color:var(--text)">Drain</strong> = where the carriers are <em>drained away to</em>. In NMOS, electrons arrive here from the channel and flow out. Connected to VDD (positive) to attract the electrons.</li>
+      <li>So yes — in <strong>NMOS circuits</strong>, Drain is almost always at the higher voltage (VDD side) and Source is at the lower voltage (GND side). This is because electrons (negative charges) flow from low potential to high potential.</li>
+      <li>In <strong>PMOS circuits</strong>, it is reversed — Source is at VDD and Drain is at the lower voltage, because holes (positive charges) flow from high to low potential.</li>
+      <li><em>Exception:</em> In some analog circuits (e.g., transmission gates), the MOSFET can be "bidirectional" and Drain/Source can swap roles depending on which terminal happens to be at higher potential during operation.</li>
+    </ul>
+  </div>
+
+  <table class="comp-table">
+    <tr><th>Terminal</th><th>NMOS Convention</th><th>PMOS Convention</th><th>Why</th></tr>
+    <tr><td><strong>Source (S)</strong></td><td>Connected to GND (0V)</td><td>Connected to VDD</td><td>Source is where the carrier originates</td></tr>
+    <tr><td><strong>Drain (D)</strong></td><td>Connected to VDD or load</td><td>Connected to load or GND</td><td>Drain is where the carrier goes</td></tr>
+    <tr><td><strong>Current direction</strong></td><td>Conventional: D→S</td><td>Conventional: S→D</td><td>Follows conventional current (opposite to electrons)</td></tr>
+  </table>
+
+  <!-- ── CONSTRUCTION STEP BY STEP ── -->
+  <h3>Layer-by-Layer Construction Explained</h3>
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">P-type Silicon Substrate — The Foundation</div>
+        <p>Pure silicon doped with Boron. Has excess holes (⊕) as majority carriers. The P-type body separates the two N+ regions. At rest, the N+–P–N+ structure forms two back-to-back PN junctions that block any current flow.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">N+ Drain and N+ Source — Heavily Doped Electron Reservoirs</div>
+        <p>Two heavily doped N-type islands diffused into the P-substrate. They are electron-rich reservoirs. The gap between them across the P-substrate surface is where the channel will form. Without the channel, these two N+ regions are disconnected — separated by the P-type body creating two back-to-back diodes.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Gate Oxide (SiO₂) — The Insulating Magic Layer</div>
+        <p>An extremely thin layer of silicon dioxide (glass) grown thermally on the silicon surface above the channel region. It is only 5–10 nanometers thick — about 40 silicon atoms wide. This layer is a perfect DC insulator, so no gate current ever flows. But an electric field passes right through it. This is what makes MOSFET draw near-zero gate current.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Gate Electrode — The Control Terminal</div>
+        <p>A conductive layer (polysilicon or metal) deposited on top of the oxide. Applying voltage here creates a vertical electric field that penetrates through the oxide into the silicon below. This field controls whether a channel forms or not.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HOW GATE VOLTAGE CREATES AN ELECTRIC FIELD ── -->
+  <h3>❓ How Does Applying Voltage to the Gate Create an Electric Field?</h3>
+
+  <div class="why-box">
+    <div class="why-label">💡 The Physics of Electric Field Creation</div>
+    <p style="margin:0;margin-bottom:12px">When you connect a battery between Gate and Source:</p>
+    <ul style="padding-left:20px;margin:0;line-height:2.2;font-size:14px;color:var(--text-muted)">
+      <li>Positive charges (holes) accumulate on the <strong>top surface of the Gate metal</strong> (since it's connected to the positive terminal of the battery).</li>
+      <li>These positive charges on the gate create an <strong>electric field pointing downward</strong> — from the Gate metal, through the oxide, into the P-silicon below. The field lines point from positive to negative (from Gate toward the grounded body).</li>
+      <li>The SiO₂ oxide layer does not allow any <em>current</em> to flow — but it does <strong>not block electric fields</strong>. The field passes right through the glass like light through a window.</li>
+      <li>Inside the P-silicon, this downward-pointing field exerts forces: it <strong>pushes holes (⊕) away</strong> (same direction as field = force on positive charges downward, away from surface) and <strong>pulls electrons (⊖) upward</strong> toward the surface (opposite to field direction = force on negative charges upward).</li>
+    </ul>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Electric Field Through Gate Oxide — How It Controls the Channel</div>
+    <svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="efield" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#f7c34f"/>
+        </marker>
+        <marker id="holearr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#f74f6e"/>
+        </marker>
+        <marker id="elarr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#4f8ef7"/>
+        </marker>
+      </defs>
+
+      <!-- Gate metal -->
+      <rect x="140" y="20" width="300" height="35" rx="3" fill="#d97706" opacity="0.85"/>
+      <text x="290" y="40" font-family="IBM Plex Mono,monospace" font-size="12" fill="#000" text-anchor="middle" font-weight="700">Gate (+Vgs applied)</text>
+      <text x="290" y="52" font-family="IBM Plex Mono,monospace" font-size="9" fill="#000" text-anchor="middle">Positive charges accumulate here (+)</text>
+
+      <!-- Oxide -->
+      <rect x="140" y="55" width="300" height="22" rx="2" fill="#334155" stroke="#94a3b8" stroke-width="1"/>
+      <text x="290" y="70" font-family="IBM Plex Mono,monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">SiO₂ Oxide — blocks current, NOT field</text>
+
+      <!-- E-field arrows through oxide and into silicon -->
+      <g stroke="#f7c34f" stroke-width="1.5">
+        <line x1="185" y1="55" x2="185" y2="145" marker-end="url(#efield)"/>
+        <line x1="220" y1="55" x2="220" y2="145" marker-end="url(#efield)"/>
+        <line x1="255" y1="55" x2="255" y2="145" marker-end="url(#efield)"/>
+        <line x1="290" y1="55" x2="290" y2="145" marker-end="url(#efield)"/>
+        <line x1="325" y1="55" x2="325" y2="145" marker-end="url(#efield)"/>
+        <line x1="360" y1="55" x2="360" y2="145" marker-end="url(#efield)"/>
+        <line x1="395" y1="55" x2="395" y2="145" marker-end="url(#efield)"/>
+      </g>
+      <text x="450" y="105" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f7c34f">E-field</text>
+      <text x="450" y="118" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f7c34f">↓ downward</text>
+
+      <!-- P-silicon surface -->
+      <rect x="80" y="77" width="420" height="140" rx="3" fill="#1a1e2a" stroke="#f74f6e" stroke-width="1" opacity="0.8"/>
+      <text x="290" y="97" font-family="IBM Plex Mono,monospace" font-size="11" fill="#f74f6e" text-anchor="middle">P-type silicon substrate</text>
+
+      <!-- Holes being pushed DOWN -->
+      <g font-family="Arial" font-size="13" fill="#f74f6e">
+        <text x="105" y="138">⊕</text><text x="135" y="148">⊕</text>
+        <text x="428" y="138">⊕</text><text x="455" y="148">⊕</text>
+      </g>
+      <line x1="118" y1="138" x2="118" y2="165" stroke="#f74f6e" stroke-width="1.2" marker-end="url(#holearr)"/>
+      <line x1="148" y1="148" x2="148" y2="175" stroke="#f74f6e" stroke-width="1.2" marker-end="url(#holearr)"/>
+      <line x1="441" y1="138" x2="441" y2="165" stroke="#f74f6e" stroke-width="1.2" marker-end="url(#holearr)"/>
+      <line x1="468" y1="148" x2="468" y2="175" stroke="#f74f6e" stroke-width="1.2" marker-end="url(#holearr)"/>
+      <text x="90" y="190" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e">Holes pushed</text>
+      <text x="90" y="202" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e">away (⊕)</text>
+
+      <!-- Electrons accumulating at surface -->
+      <rect x="140" y="77" width="300" height="22" rx="2" fill="rgba(79,142,247,0.45)" stroke="#4f8ef7" stroke-width="1.5"/>
+      <g font-family="Arial" font-size="11" fill="#bfdbfe">
+        <text x="150" y="92">⊖</text><text x="172" y="92">⊖</text><text x="194" y="92">⊖</text>
+        <text x="216" y="92">⊖</text><text x="238" y="92">⊖</text><text x="260" y="92">⊖</text>
+        <text x="282" y="92">⊖</text><text x="304" y="92">⊖</text><text x="326" y="92">⊖</text>
+        <text x="348" y="92">⊖</text><text x="370" y="92">⊖</text><text x="392" y="92">⊖</text>
+        <text x="414" y="92">⊖</text>
+      </g>
+
+      <!-- Electron arrows going UP -->
+      <line x1="200" y1="145" x2="200" y2="102" stroke="#4f8ef7" stroke-width="1.2" marker-end="url(#elarr)"/>
+      <line x1="290" y1="155" x2="290" y2="102" stroke="#4f8ef7" stroke-width="1.2" marker-end="url(#elarr)"/>
+      <line x1="380" y1="145" x2="380" y2="102" stroke="#4f8ef7" stroke-width="1.2" marker-end="url(#elarr)"/>
+      <text x="170" y="170" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4f8ef7" text-anchor="middle">Electrons</text>
+      <text x="170" y="182" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4f8ef7" text-anchor="middle">attracted up (⊖)</text>
+
+      <text x="290" y="252" font-family="Source Serif 4,serif" font-size="12" fill="#7a8099" text-anchor="middle">
+        Field pushes ⊕ holes away · Field attracts ⊖ electrons to surface → inversion layer = channel
+      </text>
+    </svg>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- WORKING — HOW THE CHANNEL IS CREATED                          -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <h3>Working — How the Channel is Created</h3>
+  <p>Let's trace exactly what happens as we increase Vgs from zero.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Three Stages of Gate Voltage — OFF → Depletion → ON</div>
+    <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ps2" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+          <rect width="8" height="8" fill="#1a1e2a"/>
+          <circle cx="4" cy="4" r="1.2" fill="#f74f6e" opacity="0.35"/>
+        </pattern>
+        <pattern id="np2" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#0f1624"/>
+          <rect x="1.5" y="1.5" width="3" height="3" fill="#4f8ef7" opacity="0.5" rx="0.5"/>
+        </pattern>
+        <marker id="ca" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#4ff79a"/>
+        </marker>
+      </defs>
+
+      <!-- Stage 1 -->
+      <text x="115" y="18" font-family="IBM Plex Mono,monospace" font-size="11" fill="#f74f6e" text-anchor="middle">① Vgs = 0 — OFF</text>
+      <rect x="25" y="130" width="180" height="50" rx="3" fill="url(#ps2)" stroke="#f74f6e" stroke-width="1" opacity="0.7"/>
+      <rect x="30" y="100" width="55" height="40" rx="2" fill="url(#np2)" stroke="#4ff79a" stroke-width="1.5"/>
+      <text x="57" y="124" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">N+</text>
+      <rect x="145" y="100" width="55" height="40" rx="2" fill="url(#np2)" stroke="#c084fc" stroke-width="1.5"/>
+      <text x="172" y="124" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">N+</text>
+      <rect x="93" y="110" width="44" height="15" rx="1" fill="#334155" stroke="#94a3b8" stroke-width="0.8"/>
+      <rect x="93" y="82" width="44" height="26" rx="2" fill="#444" stroke="#555" stroke-width="0.8"/>
+      <text x="115" y="99" font-family="IBM Plex Mono,monospace" font-size="8" fill="#666" text-anchor="middle">Gate 0V</text>
+      <g font-family="Arial" font-size="10" fill="#f74f6e" opacity="0.55">
+        <text x="98" y="145">⊕</text><text x="112" y="152">⊕</text><text x="126" y="144">⊕</text>
+      </g>
+      <rect x="90" y="155" width="50" height="12" rx="2" fill="rgba(247,79,110,0.15)" stroke="#f74f6e" stroke-width="0.8" stroke-dasharray="3,2"/>
+      <text x="115" y="165" font-family="IBM Plex Mono,monospace" font-size="7" fill="#f74f6e" text-anchor="middle">no channel</text>
+      <text x="115" y="205" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f74f6e" text-anchor="middle">Id = 0</text>
+      <text x="50" y="230" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">D</text>
+      <text x="172" y="230" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">S</text>
+
+      <!-- Arrow -->
+      <text x="228" y="140" font-family="Arial" font-size="22" fill="#3d4255">→</text>
+
+      <!-- Stage 2 -->
+      <text x="373" y="18" font-family="IBM Plex Mono,monospace" font-size="11" fill="#f7c34f" text-anchor="middle">② 0 &lt; Vgs &lt; Vth</text>
+      <rect x="280" y="130" width="185" height="50" rx="3" fill="url(#ps2)" stroke="#f74f6e" stroke-width="1" opacity="0.7"/>
+      <rect x="285" y="100" width="55" height="40" rx="2" fill="url(#np2)" stroke="#4ff79a" stroke-width="1.5"/>
+      <text x="312" y="124" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">N+</text>
+      <rect x="400" y="100" width="55" height="40" rx="2" fill="url(#np2)" stroke="#c084fc" stroke-width="1.5"/>
+      <text x="427" y="124" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">N+</text>
+      <rect x="348" y="110" width="49" height="14" rx="1" fill="#334155" stroke="#94a3b8" stroke-width="0.8"/>
+      <rect x="348" y="82" width="49" height="26" rx="2" fill="#78580a" stroke="#f7c34f" stroke-width="1"/>
+      <text x="372" y="99" font-family="IBM Plex Mono,monospace" font-size="8" fill="#f7c34f" text-anchor="middle">Gate +</text>
+      <rect x="345" y="124" width="55" height="18" rx="2" fill="rgba(79,142,247,0.06)" stroke="rgba(79,142,247,0.2)" stroke-width="0.8" stroke-dasharray="3,2"/>
+      <text x="372" y="136" font-family="IBM Plex Mono,monospace" font-size="7" fill="#4f8ef7" text-anchor="middle">depletion zone</text>
+      <text x="372" y="150" font-family="Arial" font-size="9" fill="#f74f6e" text-anchor="middle">↓⊕ ↓⊕ ↓⊕</text>
+      <text x="372" y="205" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f7c34f" text-anchor="middle">Id ≈ 0 (still OFF)</text>
+      <text x="305" y="230" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">D</text>
+      <text x="427" y="230" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">S</text>
+
+      <!-- Arrow -->
+      <text x="483" y="140" font-family="Arial" font-size="22" fill="#3d4255">→</text>
+
+      <!-- Stage 3 -->
+      <text x="600" y="18" font-family="IBM Plex Mono,monospace" font-size="11" fill="#4ff79a" text-anchor="middle">③ Vgs ≥ Vth — ON!</text>
+      <rect x="508" y="130" width="185" height="50" rx="3" fill="url(#ps2)" stroke="#f74f6e" stroke-width="1" opacity="0.7"/>
+      <rect x="513" y="100" width="55" height="40" rx="2" fill="url(#np2)" stroke="#4ff79a" stroke-width="2"/>
+      <text x="540" y="124" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">N+</text>
+      <rect x="628" y="100" width="55" height="40" rx="2" fill="url(#np2)" stroke="#c084fc" stroke-width="2"/>
+      <text x="655" y="124" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">N+</text>
+      <rect x="576" y="110" width="49" height="14" rx="1" fill="#334155" stroke="#94a3b8" stroke-width="0.8"/>
+      <rect x="576" y="82" width="49" height="26" rx="2" fill="#d97706" opacity="0.95"/>
+      <text x="600" y="99" font-family="IBM Plex Mono,monospace" font-size="8" fill="#000" text-anchor="middle" font-weight="600">Gate ++</text>
+      <!-- Channel (inversion layer) -->
+      <rect x="568" y="124" width="65" height="15" rx="3" fill="rgba(79,142,247,0.55)" stroke="#4f8ef7" stroke-width="1.5"/>
+      <g font-family="Arial" font-size="10" fill="#bfdbfe">
+        <text x="574" y="135">⊖</text><text x="588" y="135">⊖</text><text x="602" y="135">⊖</text><text x="616" y="135">⊖</text>
+      </g>
+      <text x="600" y="156" font-family="IBM Plex Mono,monospace" font-size="8" fill="#4f8ef7" text-anchor="middle">N-channel (inversion)</text>
+      <line x1="568" y1="113" x2="633" y2="113" stroke="#4ff79a" stroke-width="1.8" marker-end="url(#ca)" stroke-dasharray="4,2"/>
+      <text x="600" y="205" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle">Id flows! ✓</text>
+      <text x="540" y="230" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">D</text>
+      <text x="655" y="230" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">S</text>
+
+      <text x="350" y="285" font-family="Source Serif 4,serif" font-size="12" fill="#7a8099" text-anchor="middle">
+        ① Holes fill surface → blocks current.  ② Gate repels holes → depletion.  ③ Electrons accumulate → inversion channel → current flows!
+      </text>
+    </svg>
+  </div>
+
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-num">①</div>
+      <div class="step-content">
+        <div class="step-title">Vgs = 0 — Device OFF (Two reverse-biased PN junctions)</div>
+        <p>The P-substrate surface between Drain and Source is full of holes. The N+–P junction at the Drain side and P–N+ junction at the Source side form two PN junctions facing opposite directions — like two diodes back-to-back. No matter what Vds you apply, one of those junctions is always reverse-biased and blocks current. Id = 0.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">②</div>
+      <div class="step-content">
+        <div class="step-title">0 &lt; Vgs &lt; Vth — Depletion Stage (Field repels holes)</div>
+        <p>The positive Gate voltage creates a downward electric field. This field repels the positive holes in the P-substrate away from the surface. A depletion region forms — a zone stripped of mobile charges. But not enough electrons have yet been attracted to form a conducting path. Current still cannot flow.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">③</div>
+      <div class="step-content">
+        <div class="step-title">Vgs ≥ Vth — Inversion! Channel Forms!</div>
+        <p>Now the electric field is strong enough to attract minority electrons from the P-substrate (and from the adjacent N+ Source region). These electrons accumulate in a thin layer just below the oxide, effectively converting the surface to N-type behavior. This is the <strong>inversion layer</strong> — it IS the channel. Drain and Source are now linked by N-type material → current flows.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WHY ELECTRONS FLOW SOURCE TO DRAIN ── -->
+  <h3>❓ Why Do Electrons Flow from Source to Drain (Not the Other Way)?</h3>
+
+  <div class="why-box">
+    <div class="why-label">💡 The Driving Force — Electric Potential</div>
+    <p style="margin:0;margin-bottom:12px">Once the channel forms, there are free electrons in it. But <em>why</em> do they move from Source to Drain? There are two forces at work:</p>
+    <ul style="padding-left:20px;margin:0;line-height:2.4;font-size:14px;color:var(--text-muted)">
+      <li><strong style="color:var(--text)">Electric potential difference (Vds):</strong> The Drain is connected to a positive voltage (VDD) and Source is at 0V (GND). This creates an electric field <em>along</em> the channel, pointing from Drain to Source (from high potential to low). Electrons have negative charge, so the force on them is <strong>opposite to the field direction</strong> — they are pulled <em>toward the Drain</em> (from Source → Drain).</li>
+      <li><strong style="color:var(--text)">Intuitive version:</strong> The Drain has positive voltage. Electrons are negatively charged. Opposite charges attract. So electrons in the channel are attracted toward the positive Drain terminal. They flow from Source → through channel → into Drain → out into the circuit.</li>
+      <li><strong style="color:var(--text)">Conventional current direction:</strong> By convention, current direction is <em>opposite</em> to electron flow. So conventional current flows from Drain → Source (D to S), even though electrons physically move Source → Drain.</li>
+    </ul>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Electron Flow vs Conventional Current Direction in the Channel</div>
+    <svg viewBox="0 0 580 160" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="earr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 Z" fill="#4f8ef7"/>
+        </marker>
+        <marker id="iarr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 Z" fill="#4ff79a"/>
+        </marker>
+      </defs>
+
+      <!-- Drain block -->
+      <rect x="30" y="55" width="80" height="50" rx="3" fill="#0f1624" stroke="#4ff79a" stroke-width="2"/>
+      <text x="70" y="78" font-family="IBM Plex Mono,monospace" font-size="11" fill="#4ff79a" text-anchor="middle" font-weight="600">DRAIN</text>
+      <text x="70" y="92" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle">+VDD</text>
+      <text x="70" y="105" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">(positive)</text>
+
+      <!-- Channel -->
+      <rect x="120" y="62" width="340" height="36" rx="4" fill="rgba(79,142,247,0.35)" stroke="#4f8ef7" stroke-width="1.5"/>
+      <text x="290" y="84" font-family="IBM Plex Mono,monospace" font-size="11" fill="#fff" text-anchor="middle">N-channel (inversion layer)</text>
+
+      <!-- Source block -->
+      <rect x="470" y="55" width="80" height="50" rx="3" fill="#0f1624" stroke="#c084fc" stroke-width="2"/>
+      <text x="510" y="78" font-family="IBM Plex Mono,monospace" font-size="11" fill="#c084fc" text-anchor="middle" font-weight="600">SOURCE</text>
+      <text x="510" y="92" font-family="IBM Plex Mono,monospace" font-size="10" fill="#c084fc" text-anchor="middle">GND (0V)</text>
+
+      <!-- Electron flow arrow: Source → Drain (right to left) -->
+      <line x1="460" y1="72" x2="120" y2="72" stroke="#4f8ef7" stroke-width="2.5" marker-end="url(#earr)"/>
+      <text x="290" y="65" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4f8ef7" text-anchor="middle">← Electrons flow: Source → Drain</text>
+      <text x="290" y="52" font-family="Source Serif 4,serif" font-size="11" fill="#4f8ef7" text-anchor="middle">(attracted by positive Drain voltage)</text>
+
+      <!-- Conventional current arrow: Drain → Source (left to right) -->
+      <line x1="120" y1="94" x2="460" y2="94" stroke="#4ff79a" stroke-width="2.5" marker-end="url(#iarr)"/>
+      <text x="290" y="108" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle">→ Conventional current Id: Drain → Source</text>
+      <text x="290" y="120" font-family="Source Serif 4,serif" font-size="11" fill="#4ff79a" text-anchor="middle">(opposite direction to electron flow)</text>
+
+      <text x="290" y="150" font-family="Source Serif 4,serif" font-size="12" fill="#7a8099" text-anchor="middle">
+        Electrons (⊖) are attracted to positive Drain → they move toward it from Source
+      </text>
+    </svg>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- WHY CHANNEL IS NOT UNIFORM WIDTH                              -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <h3>❓ Why Is the Channel Width NOT Uniform Along Its Length?</h3>
+  <p>This is a concept most textbooks mention but never truly explain. Let's build the complete physical picture step by step.</p>
+
+  <div class="why-box">
+    <div class="why-label">💡 The Key Insight — Effective Gate Voltage Varies Along the Channel</div>
+    <p style="margin:0;margin-bottom:14px">The channel thickness at any point depends on the <strong>local electric field from the Gate</strong>. And that field depends on the <strong>voltage difference between the Gate and that exact point in the channel</strong>.</p>
+    <p style="margin:0;margin-bottom:10px;font-size:14px;color:var(--text-muted)">The channel is not a fixed conductor — it is a region that is induced by the gate field. The stronger the field at a point, the more electrons are attracted there, the thicker the channel. The weaker the field, the fewer electrons, the thinner the channel.</p>
+    <p style="margin:0;font-size:14px;color:var(--text-muted)">Now here is the critical physics: <strong>the voltage in the channel itself increases from Source to Drain</strong>. At the Source end, channel voltage ≈ 0V. At the Drain end, channel voltage ≈ Vds. The effective gate-to-channel voltage at any point along the channel is:</p>
+  </div>
+
+  <div class="formula-block">
+    <div class="formula-label">Effective Gate-to-Channel Voltage at any point x along channel</div>
+    <div class="formula">V<sub>eff</sub>(x) = Vgs − V(x)</div>
+    <div class="formula-explain">
+      Where V(x) = voltage at point x in the channel.<br>
+      At Source end: V(x) = 0 → V<sub>eff</sub> = Vgs (maximum → thickest channel)<br>
+      At Drain end: V(x) = Vds → V<sub>eff</sub> = Vgs − Vds (minimum → thinnest channel)
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Channel Width vs Position — Linear Region vs Saturation</div>
+    <svg viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ps3" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+          <rect width="8" height="8" fill="#1a1e2a"/>
+          <circle cx="4" cy="4" r="1.1" fill="#f74f6e" opacity="0.3"/>
+        </pattern>
+        <marker id="thinkarr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#f7c34f"/>
+        </marker>
+      </defs>
+
+      <!-- LEFT: Linear region -->
+      <text x="160" y="18" font-family="IBM Plex Mono,monospace" font-size="11" fill="#f7c34f" text-anchor="middle">Linear Region — Vds small</text>
+      <rect x="20" y="150" width="280" height="65" rx="3" fill="url(#ps3)" stroke="#f74f6e" stroke-width="1" opacity="0.7"/>
+      <rect x="25" y="110" width="70" height="50" rx="2" fill="#0f1624" stroke="#4ff79a" stroke-width="1.5"/>
+      <text x="60" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle">N+ Drain</text>
+      <text x="60" y="125" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">+VDD</text>
+      <rect x="225" y="110" width="70" height="50" rx="2" fill="#0f1624" stroke="#c084fc" stroke-width="1.5"/>
+      <text x="260" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#c084fc" text-anchor="middle">N+ Source</text>
+      <text x="260" y="125" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">0V GND</text>
+      <rect x="105" y="138" width="110" height="12" rx="1" fill="#334155" stroke="#94a3b8" stroke-width="0.8"/>
+      <rect x="105" y="108" width="110" height="28" rx="2" fill="#d97706" opacity="0.85"/>
+      <text x="160" y="126" font-family="IBM Plex Mono,monospace" font-size="10" fill="#000" text-anchor="middle" font-weight="600">Gate +Vgs</text>
+      <!-- Roughly uniform channel -->
+      <rect x="95" y="150" width="130" height="20" rx="4" fill="rgba(79,142,247,0.55)" stroke="#4f8ef7" stroke-width="1.5"/>
+      <text x="160" y="164" font-family="IBM Plex Mono,monospace" font-size="9" fill="#fff" text-anchor="middle">roughly uniform</text>
+      <!-- Veff annotations -->
+      <text x="60" y="248" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">Vgs−Vds≈Vgs</text>
+      <text x="60" y="260" font-family="Source Serif 4,serif" font-size="10" fill="#7a8099" text-anchor="middle">(Vds small)</text>
+      <text x="60" y="272" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">Strong field</text>
+      <text x="260" y="248" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">Vgs−0=Vgs</text>
+      <text x="260" y="260" font-family="Source Serif 4,serif" font-size="10" fill="#7a8099" text-anchor="middle">(source end)</text>
+      <text x="260" y="272" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">Strong field</text>
+      <text x="160" y="285" font-family="Source Serif 4,serif" font-size="12" fill="#f7c34f" text-anchor="middle">Both ends strong → uniform channel</text>
+
+      <!-- DIVIDER -->
+      <line x1="345" y1="10" x2="345" y2="280" stroke="#252a38" stroke-width="1" stroke-dasharray="5,4"/>
+
+      <!-- RIGHT: Saturation -->
+      <text x="515" y="18" font-family="IBM Plex Mono,monospace" font-size="11" fill="#4ff79a" text-anchor="middle">Saturation — Vds = Vgs−Vth</text>
+      <rect x="365" y="150" width="285" height="65" rx="3" fill="url(#ps3)" stroke="#f74f6e" stroke-width="1" opacity="0.7"/>
+      <rect x="370" y="110" width="70" height="50" rx="2" fill="#0f1624" stroke="#4ff79a" stroke-width="1.5"/>
+      <text x="405" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle">N+ Drain</text>
+      <text x="405" y="125" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">+VDD</text>
+      <rect x="575" y="110" width="70" height="50" rx="2" fill="#0f1624" stroke="#c084fc" stroke-width="1.5"/>
+      <text x="610" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#c084fc" text-anchor="middle">N+ Source</text>
+      <text x="610" y="125" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">0V GND</text>
+      <rect x="455" y="138" width="110" height="12" rx="1" fill="#334155" stroke="#94a3b8" stroke-width="0.8"/>
+      <rect x="455" y="108" width="110" height="28" rx="2" fill="#d97706" opacity="0.85"/>
+      <text x="510" y="126" font-family="IBM Plex Mono,monospace" font-size="10" fill="#000" text-anchor="middle" font-weight="600">Gate +Vgs</text>
+      <!-- Tapered channel: thick at Source, pinched at Drain -->
+      <path d="M 610 150 L 610 170 Q 580 167 540 163 Q 500 160 460 155 Q 442 152 440 160 Q 438 155 440 150 Q 460 148 500 150 Q 540 152 580 152 L 610 150 Z" fill="rgba(79,142,247,0.5)" stroke="#4f8ef7" stroke-width="1.5"/>
+      <!-- Pinch-off dot at Drain -->
+      <circle cx="440" cy="155" r="5" fill="#f74f6e" stroke="#fff" stroke-width="1"/>
+      <!-- Width labels -->
+      <text x="430" y="135" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">Pinch-off</text>
+      <line x1="440" y1="138" x2="441" y2="150" stroke="#f74f6e" stroke-width="1"/>
+      <line x1="612" y1="150" x2="655" y2="150" stroke="#4f8ef7" stroke-width="0.8" stroke-dasharray="2,2"/>
+      <line x1="612" y1="170" x2="655" y2="170" stroke="#4f8ef7" stroke-width="0.8" stroke-dasharray="2,2"/>
+      <line x1="652" y1="148" x2="652" y2="172" stroke="#4f8ef7" stroke-width="1"/>
+      <text x="660" y="164" font-family="IBM Plex Mono,monospace" font-size="8" fill="#4f8ef7">thick</text>
+      <!-- Veff annotations -->
+      <text x="405" y="248" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">Vgs−Vds≈Vth</text>
+      <text x="405" y="260" font-family="Source Serif 4,serif" font-size="10" fill="#7a8099" text-anchor="middle">(near zero)</text>
+      <text x="405" y="272" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">Weakest field!</text>
+      <text x="610" y="248" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">Vgs−0=Vgs</text>
+      <text x="610" y="260" font-family="Source Serif 4,serif" font-size="10" fill="#7a8099" text-anchor="middle">(still strong)</text>
+      <text x="610" y="272" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">Max field</text>
+      <text x="510" y="285" font-family="Source Serif 4,serif" font-size="12" fill="#4ff79a" text-anchor="middle">Drain end weak → channel tapers to zero → pinch-off!</text>
+    </svg>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- PINCH-OFF DEEP EXPLANATION                                    -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <h3>❓ The Pinch-Off Phenomenon — Fully Explained Step by Step</h3>
+  <p>This is the concept that separates students who truly understand MOSFETs from those who just memorize. Let's walk through it carefully.</p>
+
+  <div class="why-box">
+    <div class="why-label">💡 Step-by-Step: How Increasing Vds Leads to Pinch-Off</div>
+    <div class="step-flow" style="margin-top:12px">
+      <div class="step-item">
+        <div class="step-num">①</div>
+        <div class="step-content">
+          <div class="step-title">Start: Vgs fixed above Vth. Vds = 0.</div>
+          <p style="font-size:14px">Both Drain and Source are at 0V. No voltage difference along channel. Effective gate voltage is uniform everywhere = Vgs. Channel is uniform in thickness. No current yet (no Vds to drive it).</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">②</div>
+        <div class="step-content">
+          <div class="step-title">Increase Vds slightly (Linear Region)</div>
+          <p style="font-size:14px">Now the Drain is at a positive voltage. Voltage in the channel rises from 0 at Source to Vds at Drain. The effective gate-to-channel voltage at the Drain end becomes <strong>Vgs − Vds</strong> (less than at Source). The channel is slightly thinner at the Drain end. But overall, channel is still intact — current increases linearly with Vds. This is the <strong>Linear (Ohmic) Region.</strong></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">③</div>
+        <div class="step-content">
+          <div class="step-title">Keep increasing Vds — Channel tapers more</div>
+          <p style="font-size:14px">As Vds increases more, the effective gate voltage at the Drain end (= Vgs − Vds) keeps falling. The channel gets progressively thinner at the Drain end. Current still increases, but more slowly now because the channel is thinning.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">④</div>
+        <div class="step-content">
+          <div class="step-title">Vds = Vgs − Vth → Pinch-Off Point!</div>
+          <p style="font-size:14px">At this exact moment: effective gate voltage at Drain end = <strong>Vgs − Vds = Vgs − (Vgs − Vth) = Vth</strong>. At Vth, the channel just barely disappears. The channel has been reduced to zero thickness at the Drain end. This is called <strong>pinch-off.</strong> The channel is NOT gone everywhere — it's still thick at the Source end. It just tapers to zero at the Drain end.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">⑤</div>
+        <div class="step-content">
+          <div class="step-title">Vds &gt; Vgs − Vth → Saturation (But why doesn't current stop?!)</div>
+          <p style="font-size:14px">Here's the part that surprises everyone. The channel pinches off at the Drain end — but current does NOT stop! Why? Because the pinch-off point is not a wall — it's the <em>edge of a depletion region</em>. Electrons that reach the pinch-off point are swept across this depletion region by the strong electric field there (the field is very strong because Drain has high voltage pulling electrons in). Think of it like a waterfall — the river narrows at the edge, but water doesn't stop; it accelerates over the edge. The <em>rate</em> of current is now determined only by how fast the channel can supply electrons — which depends only on <strong>Vgs − Vth</strong> (channel strength). Since Vgs is fixed, current is fixed. That's why Id becomes <strong>constant</strong> in saturation — independent of Vds.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Pinch-Off — The Complete Picture at Vds = Vgs − Vth</div>
+    <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ps4" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+          <rect width="8" height="8" fill="#1a1e2a"/>
+          <circle cx="4" cy="4" r="1" fill="#f74f6e" opacity="0.3"/>
+        </pattern>
+        <marker id="sweeparr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 Z" fill="#4f8ef7"/>
+        </marker>
+        <marker id="currarr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 Z" fill="#4ff79a"/>
+        </marker>
+      </defs>
+
+      <!-- Substrate -->
+      <rect x="40" y="130" width="600" height="70" rx="3" fill="url(#ps4)" stroke="#f74f6e" stroke-width="1" opacity="0.7"/>
+      <!-- N+ Drain (left) -->
+      <rect x="50" y="90" width="100" height="50" rx="3" fill="#0f1624" stroke="#4ff79a" stroke-width="2"/>
+      <text x="100" y="113" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle" font-weight="600">N+ Drain</text>
+      <text x="100" y="127" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">+VDS</text>
+      <!-- N+ Source (right) -->
+      <rect x="530" y="90" width="100" height="50" rx="3" fill="#0f1624" stroke="#c084fc" stroke-width="2"/>
+      <text x="580" y="113" font-family="IBM Plex Mono,monospace" font-size="10" fill="#c084fc" text-anchor="middle" font-weight="600">N+ Source</text>
+      <text x="580" y="127" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">0V</text>
+      <!-- Oxide -->
+      <rect x="175" y="118" width="310" height="14" rx="1" fill="#334155" stroke="#94a3b8" stroke-width="0.8"/>
+      <!-- Gate -->
+      <rect x="175" y="82" width="310" height="34" rx="2" fill="#d97706" opacity="0.85"/>
+      <text x="330" y="101" font-family="IBM Plex Mono,monospace" font-size="11" fill="#000" text-anchor="middle" font-weight="700">Gate (+Vgs fixed)</text>
+      <!-- Tapered channel: thick at Source, zero at Drain -->
+      <path d="M 580 130 L 580 148 Q 550 145 510 143 Q 460 140 420 137 Q 380 134 340 132 Q 300 131 260 130 Q 230 130 200 130 Q 185 130 180 130 L 180 130 Q 185 130 200 130 Q 230 130 260 130 L 580 130 Z" fill="rgba(79,142,247,0.5)" stroke="#4f8ef7" stroke-width="1.5"/>
+      <!-- Depletion region at Drain -->
+      <rect x="150" y="118" width="30" height="50" rx="2" fill="rgba(247,79,110,0.15)" stroke="#f74f6e" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="165" y="135" font-family="IBM Plex Mono,monospace" font-size="7" fill="#f74f6e" text-anchor="middle">Depl.</text>
+      <text x="165" y="145" font-family="IBM Plex Mono,monospace" font-size="7" fill="#f74f6e" text-anchor="middle">region</text>
+      <!-- Pinch-off dot -->
+      <circle cx="180" cy="130" r="5" fill="#f74f6e" stroke="#fff" stroke-width="1"/>
+      <text x="180" y="72" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f74f6e" text-anchor="middle">Pinch-off point</text>
+      <line x1="180" y1="76" x2="180" y2="125" stroke="#f74f6e" stroke-width="0.8" stroke-dasharray="3,2"/>
+      <!-- Electron flow arrows in channel + sweep across depletion -->
+      <line x1="560" y1="138" x2="400" y2="136" stroke="#4f8ef7" stroke-width="2" marker-end="url(#sweeparr)"/>
+      <line x1="400" y1="136" x2="240" y2="133" stroke="#4f8ef7" stroke-width="2" marker-end="url(#sweeparr)"/>
+      <line x1="230" y1="133" x2="165" y2="130" stroke="#4f8ef7" stroke-width="2.5" marker-end="url(#sweeparr)"/>
+      <text x="380" y="128" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4f8ef7" text-anchor="middle">⊖ electrons flow ←</text>
+      <!-- Sweep arrow -->
+      <line x1="165" y1="118" x2="105" y2="105" stroke="#4f8ef7" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#sweeparr)"/>
+      <text x="108" y="95" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4f8ef7" text-anchor="middle">swept into Drain</text>
+      <text x="108" y="82" font-family="Source Serif 4,serif" font-size="10" fill="#4f8ef7" text-anchor="middle">by strong E-field</text>
+      <!-- Conventional current arrow (opposite) -->
+      <line x1="100" y1="68" x2="570" y2="68" stroke="#4ff79a" stroke-width="2" marker-end="url(#currarr)"/>
+      <text x="340" y="61" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle">→ Conventional current Id (D→S) — CONSTANT in saturation</text>
+
+      <!-- Veff labels below -->
+      <text x="165" y="215" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">Vgs−Vds=Vth</text>
+      <text x="165" y="228" font-family="Source Serif 4,serif" font-size="10" fill="#7a8099" text-anchor="middle">(min, pinch-off)</text>
+      <text x="580" y="215" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">Vgs−0=Vgs</text>
+      <text x="580" y="228" font-family="Source Serif 4,serif" font-size="10" fill="#7a8099" text-anchor="middle">(max, thick)</text>
+    </svg>
+  </div>
+
+  <div class="analogy-box">
+    <div class="analogy-label">🌊 The Waterfall Analogy — Why Current Doesn't Stop at Pinch-Off</div>
+    <p style="margin:0">Imagine the channel as a river flowing from a lake (Source) toward a cliff (Drain). As Vds increases, the cliff gets higher, and the river narrows near the edge. When the river reaches "pinch-off width" at the cliff edge, the water doesn't stop — it accelerates off the cliff. The amount of water flowing over depends on how much the lake (Source) can supply — which depends on the channel width (set by Vgs). Increasing the cliff height (Vds) doesn't increase flow once the river is at the edge — the rate is limited by the lake's supply rate alone. That's why current saturates.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- WORKING — OPERATION (like Boylestad's textbook)               -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <h3>Working — Operation (Complete Voltage Analysis)</h3>
+  <p>Now let's go through the full operational analysis — with both Vgs and Vds applied simultaneously — exactly as covered in Boylestad's textbook.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">N-Channel E-MOSFET — Complete Operating Circuit (Boylestad FIG 6.33 style)</div>
+    <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="psub-op" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+          <rect width="10" height="10" fill="#1a1e2a"/>
+          <circle cx="5" cy="5" r="1.5" fill="#f74f6e" opacity="0.4"/>
+        </pattern>
+        <pattern id="np-op" x="0" y="0" width="7" height="7" patternUnits="userSpaceOnUse">
+          <rect width="7" height="7" fill="#0f1624"/>
+          <rect x="1.5" y="1.5" width="4" height="4" fill="#4f8ef7" opacity="0.5" rx="0.5"/>
+        </pattern>
+        <marker id="id-arr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#4ff79a"/>
+        </marker>
+        <marker id="is-arr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#c084fc"/>
+        </marker>
+        <marker id="vds-arr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#f7c34f"/>
+        </marker>
+      </defs>
+
+      <!-- ── Device cross-section ── -->
+      <!-- P-substrate -->
+      <rect x="130" y="195" width="360" height="80" rx="4" fill="url(#psub-op)" stroke="#f74f6e" stroke-width="1.5"/>
+      <text x="310" y="238" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e" text-anchor="middle">p-type substrate</text>
+      <!-- holes pushed away label -->
+      <text x="435" y="220" font-family="IBM Plex Mono,monospace" font-size="8" fill="#f74f6e" text-anchor="middle">holes</text>
+      <text x="435" y="232" font-family="IBM Plex Mono,monospace" font-size="8" fill="#f74f6e" text-anchor="middle">repelled</text>
+      <g font-family="Arial" font-size="10" fill="#f74f6e" opacity="0.45">
+        <text x="155" y="255">⊕</text><text x="175" y="265">⊕</text><text x="210" y="255">⊕</text>
+        <text x="380" y="255">⊕</text><text x="415" y="265">⊕</text><text x="450" y="255">⊕</text>
+      </g>
+      <!-- N+ Drain (left) -->
+      <rect x="145" y="152" width="95" height="58" rx="3" fill="url(#np-op)" stroke="#4ff79a" stroke-width="2"/>
+      <text x="192" y="178" font-family="IBM Plex Mono,monospace" font-size="11" fill="#4ff79a" text-anchor="middle" font-weight="600">N+</text>
+      <text x="192" y="192" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">n-region</text>
+      <!-- N+ Source (right) -->
+      <rect x="385" y="152" width="95" height="58" rx="3" fill="url(#np-op)" stroke="#c084fc" stroke-width="2"/>
+      <text x="432" y="178" font-family="IBM Plex Mono,monospace" font-size="11" fill="#c084fc" text-anchor="middle" font-weight="600">N+</text>
+      <text x="432" y="192" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">n-region</text>
+      <!-- Gate oxide -->
+      <rect x="258" y="162" width="110" height="16" rx="2" fill="#334155" stroke="#94a3b8" stroke-width="1"/>
+      <text x="313" y="174" font-family="IBM Plex Mono,monospace" font-size="8" fill="#cbd5e1" text-anchor="middle">SiO₂</text>
+      <!-- Gate metal -->
+      <rect x="258" y="128" width="110" height="32" rx="2" fill="#444" stroke="#666" stroke-width="1"/>
+      <text x="313" y="147" font-family="IBM Plex Mono,monospace" font-size="11" fill="#ddd" text-anchor="middle" font-weight="600">G</text>
+      <!-- Induced n-channel -->
+      <rect x="240" y="178" width="145" height="22" rx="4" fill="rgba(79,142,247,0.5)" stroke="#4f8ef7" stroke-width="1.5"/>
+      <g font-family="Arial" font-size="10" fill="#bfdbfe">
+        <text x="252" y="192">⊖</text><text x="268" y="192">⊖</text><text x="284" y="192">⊖</text>
+        <text x="300" y="192">⊖</text><text x="316" y="192">⊖</text><text x="332" y="192">⊖</text>
+        <text x="348" y="192">⊖</text><text x="364" y="192">⊖</text>
+      </g>
+      <text x="180" y="199" font-family="IBM Plex Mono,monospace" font-size="8" fill="#4f8ef7">induced</text>
+      <text x="180" y="210" font-family="IBM Plex Mono,monospace" font-size="8" fill="#4f8ef7">n-channel</text>
+      <line x1="220" y1="207" x2="240" y2="196" stroke="#4f8ef7" stroke-width="0.8" stroke-dasharray="2,2"/>
+      <!-- Depletion region label -->
+      <text x="500" y="175" font-family="IBM Plex Mono,monospace" font-size="8" fill="#7a8099" text-anchor="middle">Region depleted</text>
+      <text x="500" y="186" font-family="IBM Plex Mono,monospace" font-size="8" fill="#7a8099" text-anchor="middle">of p-type carriers</text>
+      <line x1="490" y1="190" x2="483" y2="198" stroke="#7a8099" stroke-width="0.8" stroke-dasharray="2,2"/>
+      <!-- Electrons attracted label -->
+      <text x="313" y="118" font-family="IBM Plex Mono,monospace" font-size="8" fill="#4f8ef7" text-anchor="middle">Electrons attracted to</text>
+      <text x="313" y="108" font-family="IBM Plex Mono,monospace" font-size="8" fill="#4f8ef7" text-anchor="middle">positive gate (induced n-channel)</text>
+
+      <!-- ── EXTERNAL CIRCUIT ── -->
+      <!-- Drain terminal wire -->
+      <line x1="192" y1="152" x2="192" y2="60" stroke="#4ff79a" stroke-width="2"/>
+      <!-- ID current arrow going DOWN into Drain -->
+      <line x1="192" y1="110" x2="192" y2="152" stroke="#4ff79a" stroke-width="2.5" marker-end="url(#id-arr)"/>
+      <text x="162" y="130" font-family="IBM Plex Mono,monospace" font-size="12" fill="#4ff79a">ID</text>
+      <text x="162" y="145" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a">(↓ into D)</text>
+      <!-- VDS battery (right side) -->
+      <line x1="192" y1="60" x2="530" y2="60" stroke="#f7c34f" stroke-width="1.5"/>
+      <line x1="530" y1="60" x2="530" y2="152" stroke="#f7c34f" stroke-width="1.5"/>
+      <line x1="530" y1="152" x2="432" y2="152" stroke="#f7c34f" stroke-width="1.5"/>
+      <!-- VDS battery symbol -->
+      <line x1="524" y1="100" x2="536" y2="100" stroke="#f7c34f" stroke-width="3"/>
+      <line x1="527" y1="112" x2="533" y2="112" stroke="#f7c34f" stroke-width="1.5"/>
+      <text x="550" y="105" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f7c34f">+</text>
+      <text x="550" y="118" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f7c34f">−</text>
+      <text x="575" y="110" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f7c34f">VDS</text>
+      <!-- IS arrow at Source -->
+      <line x1="432" y1="210" x2="432" y2="280" stroke="#c084fc" stroke-width="2"/>
+      <line x1="432" y1="240" x2="432" y2="280" stroke="#c084fc" stroke-width="2.5" marker-end="url(#is-arr)"/>
+      <text x="452" y="255" font-family="IBM Plex Mono,monospace" font-size="12" fill="#c084fc">IS</text>
+      <text x="452" y="268" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc">(IS=ID)</text>
+      <!-- GND line at bottom -->
+      <line x1="432" y1="280" x2="192" y2="280" stroke="#7a8099" stroke-width="1.5"/>
+      <line x1="192" y1="280" x2="192" y2="60" stroke="#7a8099" stroke-width="0" opacity="0"/>
+      <!-- GND symbol -->
+      <line x1="290" y1="280" x2="350" y2="280" stroke="#7a8099" stroke-width="2"/>
+      <line x1="300" y1="288" x2="340" y2="288" stroke="#7a8099" stroke-width="1.5"/>
+      <line x1="310" y1="296" x2="330" y2="296" stroke="#7a8099" stroke-width="1"/>
+
+      <!-- VGS battery (left side) -->
+      <line x1="70" y1="145" x2="70" y2="280" stroke="#f7c34f" stroke-width="1.5"/>
+      <line x1="70" y1="280" x2="290" y2="280" stroke="#f7c34f" stroke-width="1"/>
+      <line x1="70" y1="145" x2="130" y2="145" stroke="#f7c34f" stroke-width="1.5"/>
+      <line x1="130" y1="145" x2="258" y2="145" stroke="#f7c34f" stroke-width="1.5"/>
+      <!-- VGS battery symbol -->
+      <line x1="64" y1="178" x2="76" y2="178" stroke="#f7c34f" stroke-width="3"/>
+      <line x1="67" y1="192" x2="73" y2="192" stroke="#f7c34f" stroke-width="1.5"/>
+      <text x="42" y="182" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f7c34f">+</text>
+      <text x="42" y="196" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f7c34f">−</text>
+      <!-- IG = 0A label -->
+      <text x="160" y="138" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7a8099">IG = 0A</text>
+      <line x1="195" y1="140" x2="258" y2="140" stroke="#7a8099" stroke-width="1" stroke-dasharray="3,2"/>
+      <!-- VGS label -->
+      <text x="30" y="220" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f7c34f">VGS</text>
+
+      <!-- Insulating layer label -->
+      <text x="313" y="360" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7a8099" text-anchor="middle">Insulating layer (SiO₂)</text>
+      <line x1="313" y1="353" x2="313" y2="178" stroke="#7a8099" stroke-width="0.6" stroke-dasharray="2,3"/>
+    </svg>
+  </div>
+
+  <!-- Operation bullet points like Boylestad -->
+  <div class="key-box">
+    <div class="key-label">🔑 Operation — Key Points (as in Boylestad's Textbook)</div>
+    <ul style="margin:0;padding-left:22px;line-height:2.5;font-size:15px;color:var(--text-muted)">
+      <li>When <strong style="color:var(--text)">Vgs = 0V and Vds &gt; 0</strong>: Absence of an n-channel results in <strong style="color:var(--accent4)">Id = 0A</strong>. There are two reverse-biased p–n junctions between Drain and Source that oppose any current flow.</li>
+      <li>When both <strong style="color:var(--text)">Vgs and Vds are set positive</strong>: The positive gate potential pressures the holes in the p-substrate away from the oxide surface and attracts electrons toward the gate. The SiO₂ layer prevents these electrons from being absorbed at the gate terminal — they accumulate at the surface.</li>
+      <li>As <strong style="color:var(--text)">Vgs increases in magnitude</strong>: The concentration of electrons near the SiO₂ surface increases until the induced n-type region can support measurable current flow between Drain and Source.</li>
+      <li>The level of Vgs that results in significant increase in drain current is called the <strong style="color:var(--text)">threshold voltage (VT)</strong>.</li>
+      <li>Since the channel is nonexistent at Vgs = 0V and is "enhanced" by positive Vgs, this device is called an <strong style="color:var(--text)">enhancement-type MOSFET</strong>. Note: Gate current IG = 0A always — the SiO₂ insulates the gate completely.</li>
+      <li>As Vgs increases beyond VT, drain current increases, and the device works as a <strong style="color:var(--text)">voltage-controlled current source</strong>.</li>
+    </ul>
+  </div>
+
+  <!-- CHARACTERISTICS CURVES — referencing Boylestad figures -->
+  <h3>Characteristics — Drain &amp; Transfer Curves (Boylestad FIG 6.35 style)</h3>
+
+  <p>As Vgs is increased beyond the threshold level, the density of free carriers in the induced channel increases, resulting in an increased level of drain current (Id). If Vgs is kept constant and Vds is increased, the drain current will eventually reach a saturation level as occurred for the JFET and depletion-type MOSFET.</p>
+
+  <p>The leveling off of Id is due to a <strong>pinching-off process</strong> — the narrower channel at the Drain end of the induced channel. Applying Kirchhoff's voltage law: <strong>VDG = VDS − VGS</strong>. If Vgs is held fixed at 8V and Vds is increased from 2V to 5V, the voltage VDG increases from −6V to −3V, and the gate becomes less and less positive with respect to the Drain — reducing the field strength at the Drain end of the channel.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">N-Ch E-MOSFET — Drain Characteristics &amp; Transfer Characteristics</div>
+    <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ax3" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#7a8099"/>
+        </marker>
+      </defs>
+
+      <!-- ═══ DRAIN CHARACTERISTICS (left) ═══ -->
+      <text x="185" y="18" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7a8099" text-anchor="middle">Drain Characteristics — Id vs Vds</text>
+      <line x1="50" y1="265" x2="325" y2="265" stroke="#7a8099" stroke-width="1.5" marker-end="url(#ax3)"/>
+      <line x1="50" y1="265" x2="50" y2="30" stroke="#7a8099" stroke-width="1.5" marker-end="url(#ax3)"/>
+      <text x="190" y="290" font-family="IBM Plex Mono,monospace" font-size="11" fill="#7a8099" text-anchor="middle">VDS (V) →</text>
+      <text x="20" y="148" font-family="IBM Plex Mono,monospace" font-size="11" fill="#7a8099" text-anchor="middle" transform="rotate(-90,20,148)">ID (mA) →</text>
+      <!-- Y axis labels -->
+      <text x="44" y="270" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="end">0</text>
+      <text x="44" y="220" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="end">2</text>
+      <text x="44" y="170" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="end">5</text>
+      <text x="44" y="120" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="end">8</text>
+      <text x="44" y="70" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="end">11</text>
+      <!-- X axis labels -->
+      <text x="112" y="278" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">5</text>
+      <text x="112" y="290" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">6V</text>
+      <text x="175" y="278" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">10</text>
+      <text x="238" y="278" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">15</text>
+      <text x="300" y="278" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">20</text>
+      <!-- Saturation boundary locus (dashed) -->
+      <path d="M 50 265 Q 125 130 315 40" stroke="#3d4255" stroke-width="1.2" stroke-dasharray="5,4" fill="none"/>
+      <text x="248" y="72" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4f8ef7" transform="rotate(-20,248,72)">Locus of VDS(sat)</text>
+      <!-- Curve VGS=VT=2V (barely any current) -->
+      <path d="M 50 265 C 80 263 105 262 130 261 L 315 260" stroke="#3d4255" stroke-width="1.5" fill="none"/>
+      <text x="318" y="264" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099">VGS=VT=2V</text>
+      <!-- Curve VGS=+3V -->
+      <path d="M 50 265 C 78 246 108 235 140 233 L 315 231" stroke="#f74f6e" stroke-width="2" fill="none"/>
+      <text x="318" y="235" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e">+3V</text>
+      <!-- Curve VGS=+4V -->
+      <path d="M 50 265 C 82 236 118 216 155 213 L 315 211" stroke="#f7c34f" stroke-width="2" fill="none"/>
+      <text x="318" y="215" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f7c34f">+4V</text>
+      <!-- Curve VGS=+5V -->
+      <path d="M 50 265 C 85 226 128 196 170 192 L 315 190" stroke="#4f8ef7" stroke-width="2" fill="none"/>
+      <text x="318" y="194" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4f8ef7">+5V</text>
+      <!-- Curve VGS=+6V -->
+      <path d="M 50 265 C 88 214 138 172 186 167 L 315 165" stroke="#c084fc" stroke-width="2" fill="none"/>
+      <text x="318" y="169" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc">+6V</text>
+      <!-- Curve VGS=+7V -->
+      <path d="M 50 265 C 90 200 148 145 200 138 L 315 135" stroke="#4ff79a" stroke-width="2" fill="none"/>
+      <text x="318" y="139" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a">+7V</text>
+      <!-- Curve VGS=+8V (highest) -->
+      <path d="M 50 265 C 92 188 158 118 214 110 L 315 107" stroke="#fff" stroke-width="2.5" fill="none"/>
+      <text x="318" y="111" font-family="IBM Plex Mono,monospace" font-size="9" fill="#fff">+8V</text>
+      <!-- Region labels -->
+      <rect x="58" y="200" width="52" height="18" rx="3" fill="rgba(247,195,79,0.1)" stroke="rgba(247,195,79,0.3)" stroke-width="0.8"/>
+      <text x="84" y="213" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f7c34f" text-anchor="middle">Non-sat.</text>
+      <rect x="215" y="48" width="68" height="18" rx="3" fill="rgba(79,247,154,0.1)" stroke="rgba(79,247,154,0.3)" stroke-width="0.8"/>
+      <text x="249" y="61" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">Saturation</text>
+
+      <!-- ═══ TRANSFER CHARACTERISTICS (right) ═══ -->
+      <text x="540" y="18" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7a8099" text-anchor="middle">Transfer Characteristics — Id vs Vgs</text>
+      <line x1="390" y1="265" x2="665" y2="265" stroke="#7a8099" stroke-width="1.5" marker-end="url(#ax3)"/>
+      <line x1="390" y1="265" x2="390" y2="30" stroke="#7a8099" stroke-width="1.5" marker-end="url(#ax3)"/>
+      <text x="530" y="290" font-family="IBM Plex Mono,monospace" font-size="11" fill="#7a8099" text-anchor="middle">VGS (V) →</text>
+      <text x="365" y="148" font-family="IBM Plex Mono,monospace" font-size="11" fill="#7a8099" text-anchor="middle" transform="rotate(-90,365,148)">ID (mA) →</text>
+      <text x="384" y="270" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="end">0</text>
+      <!-- VT marker -->
+      <line x1="435" y1="261" x2="435" y2="270" stroke="#f74f6e" stroke-width="1.2"/>
+      <text x="435" y="282" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">VT</text>
+      <text x="435" y="295" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">(2V)</text>
+      <!-- Vgs x-axis markers -->
+      <text x="480" y="278" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">4</text>
+      <text x="525" y="278" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">6</text>
+      <text x="572" y="278" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">8</text>
+      <text x="617" y="278" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">10</text>
+      <!-- Transfer curve: 0 until VT, then parabolic rise -->
+      <path d="M 390 265 L 435 265 Q 460 264 480 248 Q 508 222 536 188 Q 564 152 590 108 Q 612 72 635 42" stroke="#4ff79a" stroke-width="2.5" fill="none"/>
+      <!-- Zero until VT label -->
+      <text x="412" y="255" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">ID=0</text>
+      <!-- Formula box -->
+      <rect x="535" y="185" width="120" height="42" rx="4" fill="rgba(79,247,154,0.07)" stroke="rgba(79,247,154,0.3)" stroke-width="1"/>
+      <text x="595" y="201" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">Saturation region:</text>
+      <text x="595" y="220" font-family="IBM Plex Mono,monospace" font-size="11" fill="#f7c34f" text-anchor="middle">ID = K(VGS−VT)²</text>
+    </svg>
+  </div>
+
+  <!-- K formula box -->
+  <div class="formula-block">
+    <div class="formula-label">E-MOSFET Transfer Equation (Saturation)</div>
+    <div class="formula">ID = K(VGS − VGS(th))²</div>
+    <div class="formula-explain">
+      K can be determined from datasheet using a known operating point:<br>
+      K = ID(on) / (VGS(on) − VT)²<br><br>
+      Where ID(on) and VGS(on) are values given at a specified operating point on the datasheet.<br>
+      Also: VDS(sat) = VGS − VT — the Vds at which saturation begins for a given Vgs.
+    </div>
+  </div>
+
+  <div class="why-box">
+    <div class="why-label">💡 Why is the Transfer Curve a Square Law (not linear)?</div>
+    <p style="margin:0">The channel width is proportional to (Vgs − Vth). Current is proportional to channel width AND the number of carriers per unit length, which is also proportional to (Vgs − Vth). Multiplying these two proportional quantities together gives a (Vgs − Vth)² relationship — a square law. So doubling the overdrive voltage (Vgs − Vth) gives <em>four times</em> the current, not twice. This nonlinearity is fundamental to MOSFET amplifier design.</p>
+  </div>
+
+  <!-- SYMBOL — BOYLESTAD STYLE -->
+  <h3>Circuit Symbol — N-Channel E-MOSFET (Boylestad Style)</h3>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">N-Channel E-MOSFET Symbol — As Drawn in Boylestad's Book</div>
+    <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- ── Boylestad-style NMOS Enhancement symbol ── -->
+      <!-- The body is shown as a vertical bar on the right -->
+      <!-- D is top, S is bottom, G comes in from left with a gap -->
+      <!-- Arrow on body points INTO the device (N-channel) -->
+      <!-- Broken line between D-stub and S-stub -->
+
+      <!-- Vertical body line -->
+      <line x1="300" y1="65" x2="300" y2="215" stroke="#4f8ef7" stroke-width="4"/>
+
+      <!-- Gate bar (separated from body line by oxide gap) -->
+      <line x1="268" y1="75" x2="268" y2="205" stroke="#f7c34f" stroke-width="4"/>
+
+      <!-- Gate lead going left -->
+      <line x1="210" y1="140" x2="268" y2="140" stroke="#f7c34f" stroke-width="2.5"/>
+
+      <!-- Drain horizontal stub (top) -->
+      <line x1="300" y1="90" x2="360" y2="90" stroke="#4ff79a" stroke-width="2.5"/>
+      <!-- Drain vertical wire going up -->
+      <line x1="360" y1="90" x2="360" y2="40" stroke="#4ff79a" stroke-width="2.5"/>
+
+      <!-- Source horizontal stub (bottom) -->
+      <line x1="300" y1="190" x2="360" y2="190" stroke="#c084fc" stroke-width="2.5"/>
+      <!-- Source vertical wire going down -->
+      <line x1="360" y1="190" x2="360" y2="240" stroke="#c084fc" stroke-width="2.5"/>
+
+      <!-- BROKEN inner channel line (3 segments with gaps = normally OFF) -->
+      <line x1="300" y1="65" x2="300" y2="82" stroke="#4f8ef7" stroke-width="4"/>
+      <line x1="300" y1="91" x2="300" y2="112" stroke="#4f8ef7" stroke-width="4"/>
+      <line x1="300" y1="121" x2="300" y2="142" stroke="#4f8ef7" stroke-width="4"/>
+      <line x1="300" y1="151" x2="300" y2="172" stroke="#4f8ef7" stroke-width="4"/>
+      <line x1="300" y1="181" x2="300" y2="215" stroke="#4f8ef7" stroke-width="4"/>
+      <!-- Erase gaps -->
+      <rect x="297" y="82" width="6" height="9" fill="#13161e"/>
+      <rect x="297" y="112" width="6" height="9" fill="#13161e"/>
+      <rect x="297" y="142" width="6" height="9" fill="#13161e"/>
+      <rect x="297" y="172" width="6" height="9" fill="#13161e"/>
+
+      <!-- Arrow pointing INTO body (N-channel, Boylestad style) -->
+      <!-- Arrow on the body, pointing from substrate side toward channel -->
+      <polygon points="300,128 286,140 300,152" fill="#7a8099"/>
+
+      <!-- Body-to-Source connection (in Boylestad, body tied to source internally via a short line) -->
+      <line x1="300" y1="190" x2="330" y2="190" stroke="#4f8ef7" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5"/>
+
+      <!-- Terminal labels -->
+      <text x="196" y="145" font-family="IBM Plex Mono,monospace" font-size="18" fill="#f7c34f" font-weight="700">G</text>
+      <text x="373" y="93" font-family="IBM Plex Mono,monospace" font-size="18" fill="#4ff79a" font-weight="700">D</text>
+      <text x="373" y="194" font-family="IBM Plex Mono,monospace" font-size="18" fill="#c084fc" font-weight="700">S</text>
+
+      <!-- Annotation callouts -->
+      <!-- Gap between gate and body -->
+      <line x1="285" y1="140" x2="215" y2="190" stroke="#f7c34f" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <rect x="20" y="175" width="198" height="48" rx="4" fill="rgba(247,195,79,0.07)" stroke="rgba(247,195,79,0.3)" stroke-width="0.8"/>
+      <text x="119" y="194" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f7c34f" text-anchor="middle">Space between gate bar</text>
+      <text x="119" y="208" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f7c34f" text-anchor="middle">and body = SiO₂ oxide</text>
+
+      <!-- Broken line callout -->
+      <line x1="304" y1="130" x2="390" y2="100" stroke="#4f8ef7" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <rect x="388" y="78" width="188" height="48" rx="4" fill="rgba(79,142,247,0.07)" stroke="rgba(79,142,247,0.3)" stroke-width="0.8"/>
+      <text x="482" y="97" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4f8ef7" text-anchor="middle">Broken/dashed line</text>
+      <text x="482" y="111" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7a8099" text-anchor="middle">= No built-in channel (E-mode)</text>
+
+      <!-- Arrow callout -->
+      <line x1="286" y1="140" x2="200" y2="95" stroke="#7a8099" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <rect x="20" y="68" width="182" height="48" rx="4" fill="rgba(122,128,153,0.07)" stroke="rgba(122,128,153,0.3)" stroke-width="0.8"/>
+      <text x="111" y="87" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7a8099" text-anchor="middle">Arrow points INTO body</text>
+      <text x="111" y="101" font-family="Source Serif 4,serif" font-size="10" fill="#7a8099" text-anchor="middle">= N-channel (NMOS)</text>
+
+      <text x="300" y="268" font-family="Source Serif 4,serif" font-size="13" fill="#7a8099" text-anchor="middle">
+        N-Channel Enhancement MOSFET (Boylestad convention)
+      </text>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 5.3 — P-CHANNEL ENHANCEMENT MOSFET                               -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="p-emosfet">
+  <div class="section-header">
+    <span class="section-num">5.3</span>
+    <h2>P-Channel Enhancement MOSFET (PMOS)</h2>
+  </div>
+
+  <p>PMOS is the <strong>mirror image</strong> of NMOS. Everything is reversed: substrate type, carrier type, voltage polarities. Instead of electrons as carriers, PMOS uses <strong>holes</strong>. Instead of positive gate voltage, it needs <strong>negative gate voltage.</strong></p>
+
+  <div class="analogy-box">
+    <div class="analogy-label">🪞 The Mirror Analogy</div>
+    <p style="margin:0">If you took an NMOS and flipped all doping types (N→P, P→N) and reversed all voltage polarities, you get PMOS. Same physics, same principles — just mirrored. Why N+ instead of N? Same reason — heavy doping gives ohmic contacts and a good hole reservoir. The P+ regions are the hole sources instead of electron sources.</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">P-Channel E-MOSFET — Cross-Section and Symbol (Boylestad Style)</div>
+    <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="nsub-p" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+          <rect width="10" height="10" fill="#1a1e2a"/>
+          <rect x="3" y="3" width="4" height="4" fill="#4f8ef7" opacity="0.4" rx="0.5"/>
+        </pattern>
+        <pattern id="pplus" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+          <rect width="8" height="8" fill="#1a0f1a"/>
+          <circle cx="4" cy="4" r="1.5" fill="#f74f6e" opacity="0.6"/>
+        </pattern>
+      </defs>
+
+      <!-- ── STRUCTURE (left) ── -->
+      <text x="210" y="18" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7a8099" text-anchor="middle">Physical Cross-Section</text>
+      <!-- N-substrate -->
+      <rect x="30" y="185" width="360" height="80" rx="4" fill="url(#nsub-p)" stroke="#4f8ef7" stroke-width="1.5"/>
+      <text x="210" y="228" font-family="IBM Plex Mono,monospace" font-size="12" fill="#4f8ef7" text-anchor="middle">N-type Substrate</text>
+      <text x="210" y="246" font-family="Source Serif 4,serif" font-size="11" fill="#7a8099" text-anchor="middle">Majority carriers = Electrons (⊖)</text>
+      <!-- P+ Drain -->
+      <rect x="50" y="135" width="110" height="65" rx="3" fill="url(#pplus)" stroke="#f74f6e" stroke-width="2"/>
+      <text x="105" y="162" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e" text-anchor="middle" font-weight="600">P+</text>
+      <text x="105" y="177" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f74f6e" text-anchor="middle">Drain</text>
+      <!-- P+ Source -->
+      <rect x="260" y="135" width="110" height="65" rx="3" fill="url(#pplus)" stroke="#f74f6e" stroke-width="2"/>
+      <text x="315" y="162" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e" text-anchor="middle" font-weight="600">P+</text>
+      <text x="315" y="177" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f74f6e" text-anchor="middle">Source</text>
+      <!-- No channel -->
+      <rect x="180" y="170" width="62" height="25" rx="2" fill="rgba(79,142,247,0.07)" stroke="#4f8ef7" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="211" y="186" font-family="IBM Plex Mono,monospace" font-size="8" fill="#4f8ef7" text-anchor="middle">No P-channel</text>
+      <!-- Gate oxide -->
+      <rect x="178" y="125" width="65" height="18" rx="2" fill="#334155" stroke="#94a3b8" stroke-width="1"/>
+      <!-- Gate metal -->
+      <rect x="178" y="88" width="65" height="35" rx="2" fill="#be185d" opacity="0.85"/>
+      <text x="210" y="107" font-family="IBM Plex Mono,monospace" font-size="11" fill="#fff" text-anchor="middle" font-weight="600">Gate (G)</text>
+      <text x="210" y="118" font-family="Source Serif 4,serif" font-size="10" fill="#fce7f3" text-anchor="middle">needs −Vgs</text>
+      <!-- Contacts -->
+      <rect x="62" y="85" width="86" height="48" rx="3" fill="#be123c" opacity="0.85"/>
+      <text x="105" y="108" font-family="IBM Plex Mono,monospace" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">DRAIN</text>
+      <text x="105" y="123" font-family="IBM Plex Mono,monospace" font-size="9" fill="#fde8ef" text-anchor="middle">lower V side</text>
+      <rect x="272" y="85" width="86" height="48" rx="3" fill="#be123c" opacity="0.85"/>
+      <text x="315" y="108" font-family="IBM Plex Mono,monospace" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">SOURCE</text>
+      <text x="315" y="123" font-family="IBM Plex Mono,monospace" font-size="9" fill="#fde8ef" text-anchor="middle">+VDD side</text>
+      <text x="210" y="298" font-family="Source Serif 4,serif" font-size="12" fill="#f74f6e" text-anchor="middle">Apply −Vgs → P-channel (holes) forms</text>
+
+      <!-- ── SYMBOL (right) — Boylestad style ── -->
+      <text x="565" y="18" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7a8099" text-anchor="middle">Symbol (Boylestad)</text>
+      <!-- Vertical body line -->
+      <line x1="560" y1="65" x2="560" y2="215" stroke="#f74f6e" stroke-width="4"/>
+      <!-- Gate bar with bubble -->
+      <line x1="527" y1="75" x2="527" y2="205" stroke="#f74f6e" stroke-width="4"/>
+      <line x1="470" y1="140" x2="521" y2="140" stroke="#f74f6e" stroke-width="2.5"/>
+      <circle cx="524" cy="140" r="5" fill="none" stroke="#f74f6e" stroke-width="2"/>
+      <!-- Drain top -->
+      <line x1="560" y1="90" x2="615" y2="90" stroke="#f74f6e" stroke-width="2.5"/>
+      <line x1="615" y1="90" x2="615" y2="40" stroke="#f74f6e" stroke-width="2.5"/>
+      <!-- Source bottom -->
+      <line x1="560" y1="190" x2="615" y2="190" stroke="#f74f6e" stroke-width="2.5"/>
+      <line x1="615" y1="190" x2="615" y2="240" stroke="#f74f6e" stroke-width="2.5"/>
+      <!-- BROKEN line -->
+      <line x1="560" y1="65" x2="560" y2="82" stroke="#f74f6e" stroke-width="4"/>
+      <line x1="560" y1="91" x2="560" y2="112" stroke="#f74f6e" stroke-width="4"/>
+      <line x1="560" y1="121" x2="560" y2="142" stroke="#f74f6e" stroke-width="4"/>
+      <line x1="560" y1="151" x2="560" y2="172" stroke="#f74f6e" stroke-width="4"/>
+      <line x1="560" y1="181" x2="560" y2="215" stroke="#f74f6e" stroke-width="4"/>
+      <rect x="557" y="82" width="6" height="9" fill="#13161e"/>
+      <rect x="557" y="112" width="6" height="9" fill="#13161e"/>
+      <rect x="557" y="142" width="6" height="9" fill="#13161e"/>
+      <rect x="557" y="172" width="6" height="9" fill="#13161e"/>
+      <!-- Arrow pointing OUT (PMOS) -->
+      <polygon points="560,128 574,140 560,152" fill="#7a8099"/>
+      <!-- Labels -->
+      <text x="456" y="145" font-family="IBM Plex Mono,monospace" font-size="16" fill="#f74f6e" font-weight="700">G</text>
+      <text x="625" y="93" font-family="IBM Plex Mono,monospace" font-size="16" fill="#f74f6e" font-weight="700">D</text>
+      <text x="625" y="194" font-family="IBM Plex Mono,monospace" font-size="16" fill="#f74f6e" font-weight="700">S</text>
+      <!-- Bubble note -->
+      <text x="524" y="108" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">○ bubble</text>
+      <text x="524" y="120" font-family="Source Serif 4,serif" font-size="9" fill="#7a8099" text-anchor="middle">= P-channel</text>
+      <text x="560" y="268" font-family="Source Serif 4,serif" font-size="12" fill="#f74f6e" text-anchor="middle">P-Ch Enhancement (Boylestad)</text>
+    </svg>
+  </div>
+
+  <table class="comp-table">
+    <tr>
+      <th>Property</th>
+      <th><span class="tag-n">N-Ch E-MOSFET</span></th>
+      <th><span class="tag-p">P-Ch E-MOSFET</span></th>
+    </tr>
+    <tr><td>Substrate</td><td>P-type (⊕ holes)</td><td>N-type (⊖ electrons)</td></tr>
+    <tr><td>Channel regions (heavy doped)</td><td>N+ (electron reservoir)</td><td>P+ (hole reservoir)</td></tr>
+    <tr><td>Channel carriers</td><td>Electrons — fast (μₙ ≈ 1400)</td><td>Holes — slow (μₚ ≈ 450)</td></tr>
+    <tr><td>Gate to turn ON</td><td>+Vgs &gt; +Vth</td><td>Vgs &lt; −|Vth| (negative)</td></tr>
+    <tr><td>Source location</td><td>GND side (0V)</td><td>VDD side (high V)</td></tr>
+    <tr><td>Symbol distinction</td><td>No bubble, arrow IN</td><td>Bubble ○ on gate, arrow OUT</td></tr>
+    <tr><td>Speed</td><td>Faster (μₙ ≈ 2–3× μₚ)</td><td>Slower</td></tr>
+  </table>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- PART B — DEPLETION MOSFETs                                        -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="chapter-divider" id="dmosfet">
+  <div class="ch-num" style="font-size:56px;color:var(--accent4)">D</div>
+  <div class="ch-info">
+    <div class="ch-label">Part B · Depletion Mode</div>
+    <h2>D-MOSFET — The Normally ON Transistor</h2>
+  </div>
+</div>
+
+<section class="section" id="dmosfet-theory">
+  <div class="section-header">
+    <span class="section-num">5.4</span>
+    <h2>Depletion Mode — The Built-In Channel</h2>
+  </div>
+
+  <p>In Depletion mode, the channel is <em>physically doped into the device during manufacturing</em> — it exists even with Vgs = 0. To turn it OFF, you must apply a gate voltage that <strong>depletes (destroys) the channel carriers</strong>.</p>
+
+  <div class="analogy-box">
+    <div class="analogy-label">🚪 Analogy — The Normally Open Door</div>
+    <p style="margin:0">A door that is <strong>always open by default</strong> — people (current) walk through freely. To close it, you must actively push it shut (apply negative Vgs to repel channel electrons). Stop pushing → springs back open. This is D-MOSFET: effort needed to turn it OFF, not ON.</p>
+  </div>
+
+  <div class="key-box">
+    <div class="key-label">🔑 How the Built-In Channel is Made</div>
+    <p style="margin:0">During manufacturing, the channel region between Drain and Source is deliberately <strong>doped with N-type impurities</strong> (for N-channel). This creates a permanent N-type strip. It conducts at Vgs = 0. The gate oxide is still present — but instead of needing to induce a channel, the voltage now controls the width of this pre-existing one. Apply negative Vgs → electrons are repelled away → channel narrows → current decreases. Apply positive Vgs → more electrons attracted → channel widens → more current.</p>
+  </div>
+</section>
+
+<section class="section" id="n-dmosfet">
+  <div class="section-header">
+    <span class="section-num">5.5</span>
+    <h2>N-Channel Depletion MOSFET</h2>
+  </div>
+
+  <h3>Construction &amp; Symbol (Boylestad Style)</h3>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">N-Channel D-MOSFET — Construction and Boylestad Symbol</div>
+    <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ps-d" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+          <rect width="10" height="10" fill="#1a1e2a"/>
+          <circle cx="5" cy="5" r="1.3" fill="#f74f6e" opacity="0.38"/>
+        </pattern>
+        <pattern id="np-d" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+          <rect width="8" height="8" fill="#0f1624"/>
+          <rect x="2" y="2" width="4" height="4" fill="#4f8ef7" opacity="0.52" rx="0.5"/>
+        </pattern>
+        <pattern id="nchan-built" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#0f1a2a"/>
+          <rect x="1" y="1" width="4" height="4" fill="#4f8ef7" opacity="0.35" rx="0.5"/>
+        </pattern>
+      </defs>
+
+      <!-- ── Structure (left) ── -->
+      <text x="210" y="18" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7a8099" text-anchor="middle">Physical Cross-Section</text>
+      <rect x="30" y="190" width="360" height="80" rx="4" fill="url(#ps-d)" stroke="#f74f6e" stroke-width="1.5"/>
+      <text x="210" y="235" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e" text-anchor="middle">P-type Substrate</text>
+      <!-- N+ Drain -->
+      <rect x="48" y="138" width="108" height="65" rx="3" fill="url(#np-d)" stroke="#4ff79a" stroke-width="2"/>
+      <text x="102" y="165" font-family="IBM Plex Mono,monospace" font-size="11" fill="#4ff79a" text-anchor="middle" font-weight="600">N+</text>
+      <text x="102" y="179" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">Drain</text>
+      <!-- N+ Source -->
+      <rect x="262" y="138" width="108" height="65" rx="3" fill="url(#np-d)" stroke="#c084fc" stroke-width="2"/>
+      <text x="316" y="165" font-family="IBM Plex Mono,monospace" font-size="11" fill="#c084fc" text-anchor="middle" font-weight="600">N+</text>
+      <text x="316" y="179" font-family="IBM Plex Mono,monospace" font-size="9" fill="#c084fc" text-anchor="middle">Source</text>
+      <!-- ★ BUILT-IN N-channel ★ -->
+      <rect x="156" y="160" width="107" height="30" rx="3" fill="url(#nchan-built)" stroke="#4f8ef7" stroke-width="2.5"/>
+      <g font-family="Arial" font-size="10" fill="#7dd3fc">
+        <text x="165" y="179">⊖</text><text x="183" y="179">⊖</text><text x="201" y="179">⊖</text>
+        <text x="219" y="179">⊖</text><text x="237" y="179">⊖</text>
+      </g>
+      <text x="210" y="152" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4f8ef7" text-anchor="middle">★ Built-in N-channel ★</text>
+      <!-- Oxide -->
+      <rect x="168" y="128" width="83" height="16" rx="2" fill="#334155" stroke="#94a3b8" stroke-width="1"/>
+      <!-- Gate -->
+      <rect x="168" y="88" width="83" height="38" rx="2" fill="#d97706" opacity="0.9"/>
+      <text x="210" y="108" font-family="IBM Plex Mono,monospace" font-size="11" fill="#000" text-anchor="middle" font-weight="700">Gate (G)</text>
+      <text x="210" y="120" font-family="Source Serif 4,serif" font-size="10" fill="#000" text-anchor="middle">ON at Vgs=0!</text>
+      <!-- Contacts -->
+      <rect x="60" y="85" width="84" height="50" rx="3" fill="#059669" opacity="0.9"/>
+      <text x="102" y="108" font-family="IBM Plex Mono,monospace" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">DRAIN</text>
+      <rect x="274" y="85" width="84" height="50" rx="3" fill="#7c3aed" opacity="0.9"/>
+      <text x="316" y="108" font-family="IBM Plex Mono,monospace" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">SOURCE</text>
+      <!-- Current arrow at Vgs=0 -->
+      <defs>
+        <marker id="currblt" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#4ff79a"/>
+        </marker>
+      </defs>
+      <line x1="155" y1="68" x2="264" y2="68" stroke="#4ff79a" stroke-width="2" marker-end="url(#currblt)"/>
+      <text x="210" y="60" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle">Flows even at Vgs=0</text>
+      <text x="210" y="310" font-family="Source Serif 4,serif" font-size="11" fill="#4f8ef7" text-anchor="middle">Structural diff from E-MOSFET: the built-in N-channel strip</text>
+
+      <!-- ── Boylestad SYMBOL (right) ── -->
+      <text x="565" y="18" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7a8099" text-anchor="middle">Symbol (Boylestad)</text>
+      <!-- Vertical body line -->
+      <line x1="560" y1="65" x2="560" y2="215" stroke="#4f8ef7" stroke-width="4"/>
+      <!-- Gate bar (no bubble = N-channel) -->
+      <line x1="527" y1="75" x2="527" y2="205" stroke="#f7c34f" stroke-width="4"/>
+      <line x1="468" y1="140" x2="527" y2="140" stroke="#f7c34f" stroke-width="2.5"/>
+      <!-- Drain and Source -->
+      <line x1="560" y1="90" x2="615" y2="90" stroke="#4ff79a" stroke-width="2.5"/>
+      <line x1="615" y1="90" x2="615" y2="40" stroke="#4ff79a" stroke-width="2.5"/>
+      <line x1="560" y1="190" x2="615" y2="190" stroke="#c084fc" stroke-width="2.5"/>
+      <line x1="615" y1="190" x2="615" y2="240" stroke="#c084fc" stroke-width="2.5"/>
+      <!-- ★ SOLID line = built-in channel ★ -->
+      <line x1="560" y1="65" x2="560" y2="215" stroke="#4f8ef7" stroke-width="6"/>
+      <!-- Arrow pointing IN (N-channel) -->
+      <polygon points="560,128 546,140 560,152" fill="#7a8099"/>
+      <!-- Labels -->
+      <text x="452" y="145" font-family="IBM Plex Mono,monospace" font-size="16" fill="#f7c34f" font-weight="700">G</text>
+      <text x="625" y="93" font-family="IBM Plex Mono,monospace" font-size="16" fill="#4ff79a" font-weight="700">D</text>
+      <text x="625" y="194" font-family="IBM Plex Mono,monospace" font-size="16" fill="#c084fc" font-weight="700">S</text>
+      <!-- Solid line callout -->
+      <line x1="563" y1="130" x2="620" y2="95" stroke="#4ff79a" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <rect x="445" y="228" width="165" height="36" rx="4" fill="rgba(79,247,154,0.08)" stroke="rgba(79,247,154,0.3)" stroke-width="0.8"/>
+      <text x="527" y="245" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="middle">SOLID line (not broken)</text>
+      <text x="527" y="258" font-family="Source Serif 4,serif" font-size="10" fill="#7a8099" text-anchor="middle">= Built-in channel (D-mode)</text>
+      <text x="560" y="296" font-family="Source Serif 4,serif" font-size="12" fill="#4ff79a" text-anchor="middle">N-Ch Depletion (Boylestad)</text>
+    </svg>
+  </div>
+
+  <h3>Three Operating Modes of the D-MOSFET</h3>
+  <div class="region-grid">
+    <div class="region-card">
+      <div class="r-num">MODE 01</div>
+      <div class="r-name" style="color:var(--accent4)">Depletion Mode</div>
+      <div class="r-condition">Vgs &lt; 0 (negative)</div>
+      <p>Negative gate voltage repels electrons from the built-in N-channel, reducing its width and current. At Vgs = −|Vp| (pinch-off voltage), channel is fully depleted, Id = 0.</p>
+    </div>
+    <div class="region-card">
+      <div class="r-num">MODE 02</div>
+      <div class="r-name" style="color:var(--accent3)">Zero Bias (Idss)</div>
+      <div class="r-condition">Vgs = 0</div>
+      <p>Built-in channel fully open. Significant Id = Idss flows with no gate bias. <strong>This is the default ON state.</strong> Device conducts freely at rest.</p>
+    </div>
+    <div class="region-card">
+      <div class="r-num">MODE 03</div>
+      <div class="r-name" style="color:var(--nmos)">Enhancement Mode</div>
+      <div class="r-condition">Vgs &gt; 0 (positive)</div>
+      <p>Positive gate voltage attracts more electrons → channel widens → more current than Idss. D-MOSFET can operate in enhancement mode too — unlike JFET.</p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">N-Channel D-MOSFET — Transfer Characteristic (All 3 Modes)</div>
+    <svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ax4" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#7a8099"/>
+        </marker>
+      </defs>
+      <!-- Axes -->
+      <line x1="290" y1="240" x2="545" y2="240" stroke="#7a8099" stroke-width="1.5" marker-end="url(#ax4)"/>
+      <line x1="50" y1="240" x2="290" y2="240" stroke="#7a8099" stroke-width="1.5"/>
+      <line x1="290" y1="245" x2="290" y2="30" stroke="#7a8099" stroke-width="1.5" marker-end="url(#ax4)"/>
+      <text x="545" y="253" font-family="IBM Plex Mono,monospace" font-size="11" fill="#7a8099" text-anchor="middle">Vgs →</text>
+      <text x="25" y="135" font-family="IBM Plex Mono,monospace" font-size="11" fill="#7a8099" text-anchor="middle" transform="rotate(-90,25,135)">Id →</text>
+      <text x="290" y="258" font-family="IBM Plex Mono,monospace" font-size="11" fill="#7a8099" text-anchor="middle">0</text>
+      <!-- Vp marker (left) -->
+      <line x1="130" y1="236" x2="130" y2="246" stroke="#f74f6e" stroke-width="1.2"/>
+      <text x="130" y="260" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f74f6e" text-anchor="middle">−|Vp|</text>
+      <text x="102" y="272" font-family="Source Serif 4,serif" font-size="10" fill="#7a8099" text-anchor="middle">(pinch-off)</text>
+      <!-- Transfer curve -->
+      <path d="M 130 240 Q 200 238 250 215 Q 268 200 290 178 Q 350 130 390 90 Q 430 55 470 40" stroke="#4f8ef7" stroke-width="3" fill="none"/>
+      <!-- Idss dot at Vgs=0 -->
+      <circle cx="290" cy="178" r="5" fill="#4ff79a"/>
+      <line x1="285" y1="178" x2="50" y2="178" stroke="#4ff79a" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="45" y="182" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4ff79a" text-anchor="end">IDSS</text>
+      <text x="295" y="176" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a">← Vgs=0</text>
+      <!-- Region labels -->
+      <rect x="55" y="32" width="100" height="22" rx="4" fill="rgba(247,79,110,0.12)" stroke="rgba(247,79,110,0.4)" stroke-width="0.8"/>
+      <text x="105" y="47" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f74f6e" text-anchor="middle">Depletion Mode</text>
+      <text x="105" y="70" font-family="Source Serif 4,serif" font-size="11" fill="#7a8099" text-anchor="middle">Vgs &lt; 0 · channel shrinks</text>
+      <rect x="400" y="32" width="125" height="22" rx="4" fill="rgba(79,142,247,0.12)" stroke="rgba(79,142,247,0.4)" stroke-width="0.8"/>
+      <text x="462" y="47" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4f8ef7" text-anchor="middle">Enhancement Mode</text>
+      <text x="462" y="70" font-family="Source Serif 4,serif" font-size="11" fill="#7a8099" text-anchor="middle">Vgs &gt; 0 · channel widens</text>
+    </svg>
+  </div>
+</section>
+
+<section class="section" id="p-dmosfet">
+  <div class="section-header">
+    <span class="section-num">5.6</span>
+    <h2>P-Channel Depletion MOSFET</h2>
+  </div>
+  <p>Mirror image of N-channel D-MOSFET: <strong>P-type built-in channel</strong> in N-type substrate. Conducts at Vgs = 0 via holes. Apply <strong>positive Vgs</strong> to deplete holes and turn OFF. Apply <strong>negative Vgs</strong> to enhance and get more current.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">P-Channel D-MOSFET — Construction and Boylestad Symbol</div>
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="nsub-d" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+          <rect width="10" height="10" fill="#1a1e2a"/>
+          <rect x="3" y="3" width="4" height="4" fill="#4f8ef7" opacity="0.38" rx="0.5"/>
+        </pattern>
+        <pattern id="pp-d" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+          <rect width="8" height="8" fill="#1a0f1a"/>
+          <circle cx="4" cy="4" r="1.5" fill="#f74f6e" opacity="0.55"/>
+        </pattern>
+        <pattern id="pchan-built" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#1a0f10"/>
+          <circle cx="3" cy="3" r="1.2" fill="#f74f6e" opacity="0.38"/>
+        </pattern>
+      </defs>
+
+      <!-- Structure left -->
+      <text x="210" y="18" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7a8099" text-anchor="middle">Physical Cross-Section</text>
+      <rect x="30" y="188" width="360" height="72" rx="4" fill="url(#nsub-d)" stroke="#4f8ef7" stroke-width="1.5"/>
+      <text x="210" y="228" font-family="IBM Plex Mono,monospace" font-size="12" fill="#4f8ef7" text-anchor="middle">N-type Substrate</text>
+      <rect x="48" y="138" width="108" height="60" rx="3" fill="url(#pp-d)" stroke="#f74f6e" stroke-width="2"/>
+      <text x="102" y="163" font-family="IBM Plex Mono,monospace" font-size="11" fill="#f74f6e" text-anchor="middle" font-weight="600">P+</text>
+      <text x="102" y="177" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">Drain</text>
+      <rect x="262" y="138" width="108" height="60" rx="3" fill="url(#pp-d)" stroke="#f74f6e" stroke-width="2"/>
+      <text x="316" y="163" font-family="IBM Plex Mono,monospace" font-size="11" fill="#f74f6e" text-anchor="middle" font-weight="600">P+</text>
+      <text x="316" y="177" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">Source</text>
+      <!-- Built-in P-channel -->
+      <rect x="156" y="158" width="107" height="30" rx="3" fill="url(#pchan-built)" stroke="#f74f6e" stroke-width="2.5"/>
+      <g font-family="Arial" font-size="10" fill="#fca5a5">
+        <text x="165" y="177">⊕</text><text x="183" y="177">⊕</text><text x="201" y="177">⊕</text>
+        <text x="219" y="177">⊕</text><text x="237" y="177">⊕</text>
+      </g>
+      <text x="210" y="150" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">★ Built-in P-channel (holes) ★</text>
+      <!-- Oxide and Gate -->
+      <rect x="168" y="128" width="83" height="16" rx="2" fill="#334155" stroke="#94a3b8" stroke-width="1"/>
+      <rect x="168" y="88" width="83" height="38" rx="2" fill="#be185d" opacity="0.85"/>
+      <text x="210" y="108" font-family="IBM Plex Mono,monospace" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">Gate (G)</text>
+      <text x="210" y="120" font-family="Source Serif 4,serif" font-size="10" fill="#fce7f3" text-anchor="middle">+Vgs turns OFF</text>
+      <rect x="60" y="85" width="84" height="50" rx="3" fill="#be123c" opacity="0.85"/>
+      <text x="102" y="108" font-family="IBM Plex Mono,monospace" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">DRAIN</text>
+      <rect x="274" y="85" width="84" height="50" rx="3" fill="#be123c" opacity="0.85"/>
+      <text x="316" y="108" font-family="IBM Plex Mono,monospace" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">SOURCE</text>
+      <text x="210" y="290" font-family="Source Serif 4,serif" font-size="11" fill="#7a8099" text-anchor="middle">Everything mirrored: N-sub, P+ regions, holes as carriers</text>
+
+      <!-- Symbol right — Boylestad -->
+      <text x="565" y="18" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7a8099" text-anchor="middle">Symbol (Boylestad)</text>
+      <line x1="560" y1="65" x2="560" y2="215" stroke="#f74f6e" stroke-width="4"/>
+      <!-- Gate bar with bubble (P-channel) -->
+      <line x1="527" y1="75" x2="527" y2="205" stroke="#f74f6e" stroke-width="4"/>
+      <line x1="468" y1="140" x2="521" y2="140" stroke="#f74f6e" stroke-width="2.5"/>
+      <circle cx="524" cy="140" r="5" fill="none" stroke="#f74f6e" stroke-width="2"/>
+      <!-- D and S wires -->
+      <line x1="560" y1="90" x2="615" y2="90" stroke="#f74f6e" stroke-width="2.5"/>
+      <line x1="615" y1="90" x2="615" y2="40" stroke="#f74f6e" stroke-width="2.5"/>
+      <line x1="560" y1="190" x2="615" y2="190" stroke="#f74f6e" stroke-width="2.5"/>
+      <line x1="615" y1="190" x2="615" y2="240" stroke="#f74f6e" stroke-width="2.5"/>
+      <!-- SOLID line = built-in channel -->
+      <line x1="560" y1="65" x2="560" y2="215" stroke="#f74f6e" stroke-width="6"/>
+      <!-- Arrow OUT (P-channel) -->
+      <polygon points="560,128 574,140 560,152" fill="#7a8099"/>
+      <!-- Labels -->
+      <text x="452" y="145" font-family="IBM Plex Mono,monospace" font-size="16" fill="#f74f6e" font-weight="700">G</text>
+      <text x="625" y="93" font-family="IBM Plex Mono,monospace" font-size="16" fill="#f74f6e" font-weight="700">D</text>
+      <text x="625" y="194" font-family="IBM Plex Mono,monospace" font-size="16" fill="#f74f6e" font-weight="700">S</text>
+      <text x="560" y="276" font-family="Source Serif 4,serif" font-size="12" fill="#f74f6e" text-anchor="middle">P-Ch Depletion (Boylestad)</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 5.7 — ALL 4 SYMBOLS TOGETHER + MASTER TABLE                      -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="all4-compare">
+  <div class="section-header">
+    <span class="section-num">5.7</span>
+    <h2>All 4 Types — The Ultimate Comparison</h2>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">All 4 MOSFET Symbols (Boylestad Convention) — Spot the 3 Key Differences</div>
+    <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- ─── SYMBOL 1: N-Ch Enhancement ─── -->
+      <text x="90" y="18" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4f8ef7" text-anchor="middle">N-Ch Enhancement</text>
+      <!-- body -->
+      <line x1="90" y1="45" x2="90" y2="175" stroke="#4f8ef7" stroke-width="3.5"/>
+      <!-- gate bar + lead -->
+      <line x1="60" y1="68"  x2="60" y2="158" stroke="#f7c34f" stroke-width="3.5"/>
+      <line x1="30" y1="110" x2="60" y2="110" stroke="#f7c34f" stroke-width="2"/>
+      <!-- D stub + wire -->
+      <line x1="90" y1="62"  x2="128" y2="62"  stroke="#4ff79a" stroke-width="2"/>
+      <line x1="128" y1="62"  x2="128" y2="28"  stroke="#4ff79a" stroke-width="2"/>
+      <!-- S stub + wire -->
+      <line x1="90" y1="158" x2="128" y2="158" stroke="#c084fc" stroke-width="2"/>
+      <line x1="128" y1="158" x2="128" y2="192" stroke="#c084fc" stroke-width="2"/>
+      <!-- BROKEN line segments -->
+      <line x1="90" y1="45"  x2="90" y2="56"  stroke="#4f8ef7" stroke-width="3.5"/>
+      <line x1="90" y1="64"  x2="90" y2="84"  stroke="#4f8ef7" stroke-width="3.5"/>
+      <line x1="90" y1="92"  x2="90" y2="112" stroke="#4f8ef7" stroke-width="3.5"/>
+      <line x1="90" y1="120" x2="90" y2="140" stroke="#4f8ef7" stroke-width="3.5"/>
+      <line x1="90" y1="148" x2="90" y2="175" stroke="#4f8ef7" stroke-width="3.5"/>
+      <rect x="88" y="56" width="4" height="8" fill="#13161e"/>
+      <rect x="88" y="84" width="4" height="8" fill="#13161e"/>
+      <rect x="88" y="112" width="4" height="8" fill="#13161e"/>
+      <rect x="88" y="140" width="4" height="8" fill="#13161e"/>
+      <!-- Arrow IN -->
+      <polygon points="90,102 78,110 90,118" fill="#7a8099"/>
+      <text x="16" y="113" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f7c34f">G</text>
+      <text x="134" y="65"  font-family="IBM Plex Mono,monospace" font-size="12" fill="#4ff79a">D</text>
+      <text x="134" y="162" font-family="IBM Plex Mono,monospace" font-size="12" fill="#c084fc">S</text>
+      <rect x="38" y="207" width="104" height="36" rx="4" fill="rgba(79,142,247,0.08)" stroke="#4f8ef7" stroke-width="0.8"/>
+      <text x="90" y="221" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">Broken line</text>
+      <text x="90" y="234" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">No bubble · Arrow IN</text>
+
+      <!-- ─── SYMBOL 2: P-Ch Enhancement ─── -->
+      <text x="270" y="18" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f74f6e" text-anchor="middle">P-Ch Enhancement</text>
+      <line x1="270" y1="45" x2="270" y2="175" stroke="#f74f6e" stroke-width="3.5"/>
+      <line x1="238" y1="68"  x2="238" y2="158" stroke="#f74f6e" stroke-width="3.5"/>
+      <line x1="200" y1="110" x2="232" y2="110" stroke="#f74f6e" stroke-width="2"/>
+      <circle cx="235" cy="110" r="4" fill="none" stroke="#f74f6e" stroke-width="1.8"/>
+      <line x1="270" y1="62"  x2="308" y2="62"  stroke="#f74f6e" stroke-width="2"/>
+      <line x1="308" y1="62"  x2="308" y2="28"  stroke="#f74f6e" stroke-width="2"/>
+      <line x1="270" y1="158" x2="308" y2="158" stroke="#f74f6e" stroke-width="2"/>
+      <line x1="308" y1="158" x2="308" y2="192" stroke="#f74f6e" stroke-width="2"/>
+      <!-- BROKEN -->
+      <line x1="270" y1="45"  x2="270" y2="56"  stroke="#f74f6e" stroke-width="3.5"/>
+      <line x1="270" y1="64"  x2="270" y2="84"  stroke="#f74f6e" stroke-width="3.5"/>
+      <line x1="270" y1="92"  x2="270" y2="112" stroke="#f74f6e" stroke-width="3.5"/>
+      <line x1="270" y1="120" x2="270" y2="140" stroke="#f74f6e" stroke-width="3.5"/>
+      <line x1="270" y1="148" x2="270" y2="175" stroke="#f74f6e" stroke-width="3.5"/>
+      <rect x="268" y="56" width="4" height="8" fill="#13161e"/>
+      <rect x="268" y="84" width="4" height="8" fill="#13161e"/>
+      <rect x="268" y="112" width="4" height="8" fill="#13161e"/>
+      <rect x="268" y="140" width="4" height="8" fill="#13161e"/>
+      <!-- Arrow OUT -->
+      <polygon points="256,102 268,110 256,118" fill="#7a8099"/>
+      <text x="186" y="113" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e">G</text>
+      <text x="314" y="65"  font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e">D</text>
+      <text x="314" y="162" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e">S</text>
+      <rect x="212" y="207" width="116" height="36" rx="4" fill="rgba(247,79,110,0.08)" stroke="#f74f6e" stroke-width="0.8"/>
+      <text x="270" y="221" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">Broken · Bubble ○</text>
+      <text x="270" y="234" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">Arrow OUT</text>
+
+      <!-- ─── SYMBOL 3: N-Ch Depletion ─── -->
+      <text x="450" y="18" font-family="IBM Plex Mono,monospace" font-size="10" fill="#4f8ef7" text-anchor="middle">N-Ch Depletion</text>
+      <line x1="450" y1="45" x2="450" y2="175" stroke="#4f8ef7" stroke-width="3.5"/>
+      <line x1="418" y1="68"  x2="418" y2="158" stroke="#f7c34f" stroke-width="3.5"/>
+      <line x1="380" y1="110" x2="418" y2="110" stroke="#f7c34f" stroke-width="2"/>
+      <line x1="450" y1="62"  x2="488" y2="62"  stroke="#4ff79a" stroke-width="2"/>
+      <line x1="488" y1="62"  x2="488" y2="28"  stroke="#4ff79a" stroke-width="2"/>
+      <line x1="450" y1="158" x2="488" y2="158" stroke="#c084fc" stroke-width="2"/>
+      <line x1="488" y1="158" x2="488" y2="192" stroke="#c084fc" stroke-width="2"/>
+      <!-- ★ SOLID line ★ -->
+      <line x1="450" y1="45" x2="450" y2="175" stroke="#4f8ef7" stroke-width="6"/>
+      <!-- Arrow IN -->
+      <polygon points="450,102 438,110 450,118" fill="#7a8099"/>
+      <text x="365" y="113" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f7c34f">G</text>
+      <text x="494" y="65"  font-family="IBM Plex Mono,monospace" font-size="12" fill="#4ff79a">D</text>
+      <text x="494" y="162" font-family="IBM Plex Mono,monospace" font-size="12" fill="#c084fc">S</text>
+      <rect x="390" y="207" width="120" height="36" rx="4" fill="rgba(79,247,154,0.08)" stroke="#4ff79a" stroke-width="0.8"/>
+      <text x="450" y="221" font-family="IBM Plex Mono,monospace" font-size="9" fill="#4ff79a" text-anchor="middle">SOLID line</text>
+      <text x="450" y="234" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">No bubble · Arrow IN</text>
+
+      <!-- ─── SYMBOL 4: P-Ch Depletion ─── -->
+      <text x="630" y="18" font-family="IBM Plex Mono,monospace" font-size="10" fill="#f74f6e" text-anchor="middle">P-Ch Depletion</text>
+      <line x1="630" y1="45" x2="630" y2="175" stroke="#f74f6e" stroke-width="3.5"/>
+      <line x1="597" y1="68"  x2="597" y2="158" stroke="#f74f6e" stroke-width="3.5"/>
+      <line x1="558" y1="110" x2="591" y2="110" stroke="#f74f6e" stroke-width="2"/>
+      <circle cx="594" cy="110" r="4" fill="none" stroke="#f74f6e" stroke-width="1.8"/>
+      <line x1="630" y1="62"  x2="668" y2="62"  stroke="#f74f6e" stroke-width="2"/>
+      <line x1="668" y1="62"  x2="668" y2="28"  stroke="#f74f6e" stroke-width="2"/>
+      <line x1="630" y1="158" x2="668" y2="158" stroke="#f74f6e" stroke-width="2"/>
+      <line x1="668" y1="158" x2="668" y2="192" stroke="#f74f6e" stroke-width="2"/>
+      <!-- SOLID -->
+      <line x1="630" y1="45" x2="630" y2="175" stroke="#f74f6e" stroke-width="6"/>
+      <!-- Arrow OUT -->
+      <polygon points="618,102 630,110 618,118" fill="#7a8099"/>
+      <text x="543" y="113" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e">G</text>
+      <text x="675" y="65"  font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e">D</text>
+      <text x="675" y="162" font-family="IBM Plex Mono,monospace" font-size="12" fill="#f74f6e">S</text>
+      <rect x="568" y="207" width="124" height="36" rx="4" fill="rgba(247,79,110,0.08)" stroke="#f74f6e" stroke-width="0.8"/>
+      <text x="630" y="221" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f74f6e" text-anchor="middle">SOLID · Bubble ○</text>
+      <text x="630" y="234" font-family="IBM Plex Mono,monospace" font-size="9" fill="#7a8099" text-anchor="middle">Arrow OUT</text>
+    </svg>
+  </div>
+
+  <div class="key-box">
+    <div class="key-label">🔑 Symbol Reading Rules — Memorize Just 3 Things</div>
+    <ul style="margin:0;padding-left:22px;line-height:2.6;font-size:15px;color:var(--text-muted)">
+      <li><strong style="color:var(--text)">Broken line</strong> between D and S stubs = <strong style="color:var(--accent3)">Enhancement mode</strong> (no built-in channel, normally OFF)</li>
+      <li><strong style="color:var(--text)">Solid (thick) line</strong> between D and S stubs = <strong style="color:var(--accent4)">Depletion mode</strong> (built-in channel, normally ON)</li>
+      <li><strong style="color:var(--text)">No bubble on gate</strong> = N-channel (positive gate turns ON). <strong style="color:var(--text)">Bubble ○ on gate</strong> = P-channel (negative gate turns ON)</li>
+      <li><strong style="color:var(--text)">Arrow pointing IN</strong> to body = N-channel. <strong style="color:var(--text)">Arrow pointing OUT</strong> = P-channel</li>
+    </ul>
+  </div>
+
+  <table class="comp-table">
+    <tr>
+      <th>Property</th>
+      <th><span class="tag-n">N-Ch E-MOSFET</span></th>
+      <th><span class="tag-p">P-Ch E-MOSFET</span></th>
+      <th><span class="tag-n">N-Ch D-MOSFET</span></th>
+      <th><span class="tag-p">P-Ch D-MOSFET</span></th>
+    </tr>
+    <tr><td>Substrate</td><td>P-type</td><td>N-type</td><td>P-type</td><td>N-type</td></tr>
+    <tr><td>D/S Regions</td><td>N+ (electron reservoir)</td><td>P+ (hole reservoir)</td><td>N+</td><td>P+</td></tr>
+    <tr><td>Why N+ / P+?</td><td colspan="4" style="text-align:center;color:var(--text-muted)">Heavy doping → ohmic contacts (no rectifying junction) + large carrier reservoir for channel supply</td></tr>
+    <tr><td>Built-in channel?</td><td>❌ No</td><td>❌ No</td><td>✅ Yes (N)</td><td>✅ Yes (P)</td></tr>
+    <tr><td>At Vgs = 0</td><td>OFF (Id=0)</td><td>OFF (Id=0)</td><td>ON (Id=Idss)</td><td>ON (Id=Idss)</td></tr>
+    <tr><td>To turn ON</td><td>+Vgs &gt; +Vth</td><td>−Vgs &lt; −Vth</td><td>Already ON; +Vgs for more</td><td>Already ON; −Vgs for more</td></tr>
+    <tr><td>To turn OFF</td><td>Remove gate voltage</td><td>Remove gate voltage</td><td>Apply −Vgs to pinch-off</td><td>Apply +Vgs to pinch-off</td></tr>
+    <tr><td>Symbol D-S line</td><td>Broken (- - -)</td><td>Broken (- - -)</td><td>Solid (———)</td><td>Solid (———)</td></tr>
+    <tr><td>Gate bubble?</td><td>No</td><td>Yes ○</td><td>No</td><td>Yes ○</td></tr>
+    <tr><td>Body arrow</td><td>Pointing IN</td><td>Pointing OUT</td><td>Pointing IN</td><td>Pointing OUT</td></tr>
+    <tr><td>Drain position</td><td>High V (VDD side)</td><td>Low V (load side)</td><td>High V</td><td>Low V</td></tr>
+    <tr><td>Source position</td><td>GND side (0V)</td><td>VDD side</td><td>GND side</td><td>VDD side</td></tr>
+    <tr><td>Common use</td><td>Digital logic, switches, amps</td><td>CMOS pull-up</td><td>RF, analog constant-current</td><td>Rare, specialized</td></tr>
+  </table>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠ Two Common Mistakes</div>
+    <p style="margin:0;margin-bottom:10px"><strong>Mistake 1:</strong> Confusing <em>mode</em> (Enhancement vs Depletion) with <em>operating region</em> (Saturation vs Linear). Mode = whether a built-in channel exists. Operating region = how the channel behaves under different Vds. An Enhancement MOSFET in saturation is still an Enhancement-mode device.</p>
+    <p style="margin:0"><strong>Mistake 2:</strong> Assuming Drain is always at VDD. In PMOS, Source is at VDD and Drain is at the lower voltage. Always identify the carrier type first, then determine which terminal is at higher potential based on which direction the carriers need to flow.</p>
+  </div>
+</section>
+<!-- ═══════════════════════════════ END CHAPTER 5 ═══════════════════ -->
