@@ -78,6 +78,24 @@ const DRIVE_DATA = {
               "url": "materials/digital-signal-processing-i/FSK_Study_Notes.html"
             }
           ]
+        },
+        {
+          "id": "filter",
+          "name": "Filter",
+          "files": [
+            {
+              "id": "f1775846651383",
+              "name": "Butterworth Filter (Finding Poles)",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/butterworth_study_note.pdf"
+            },
+            {
+              "id": "f1775846748988",
+              "name": "Butterworth Filter",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/butterworth_complete_study_notes.pdf"
+            }
+          ]
         }
       ],
       "files": []
