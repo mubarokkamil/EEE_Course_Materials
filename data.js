@@ -120,6 +120,18 @@ const DRIVE_DATA = {
               "url": "materials/digital-signal-processing-i/Example_Kaiser_Band_Pass_Filter.pdf"
             }
           ]
+        },
+        {
+          "id": "dft-idft",
+          "name": "DFT & IDFT",
+          "files": [
+            {
+              "id": "f1775948774927",
+              "name": "DFT & IDFT  using Matrix Method",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/DFT_IDFT_Matrix_Method.pdf"
+            }
+          ]
         }
       ],
       "files": []
