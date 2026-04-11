@@ -130,6 +130,12 @@ const DRIVE_DATA = {
               "name": "DFT & IDFT  using Matrix Method",
               "type": "pdf",
               "url": "materials/digital-signal-processing-i/DFT_IDFT_Matrix_Method.pdf"
+            },
+            {
+              "id": "f1775949003398",
+              "name": "Understanding the Matrix Rule",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/Understanding the Matrix Rule.pdf"
             }
           ]
         }
