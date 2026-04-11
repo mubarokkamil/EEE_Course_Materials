@@ -96,6 +96,30 @@ const DRIVE_DATA = {
               "url": "materials/digital-signal-processing-i/butterworth_complete_study_notes.pdf"
             }
           ]
+        },
+        {
+          "id": "fir-filter-design",
+          "name": "Digital Filter Design (FIR Filter)",
+          "files": [
+            {
+              "id": "f1775917838111",
+              "name": "1. Decoding Filter Graphs",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/Decoding_Filter_Graphs.pdf"
+            },
+            {
+              "id": "f1775917881185",
+              "name": "2. Kaiser Window Method",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/Kaiser_Window_Method.pdf"
+            },
+            {
+              "id": "f1775919154507",
+              "name": "3. Example: Design an FIR Band-Pass Filter using a Kaiser Window",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/Example_Kaiser_Band_Pass_Filter.pdf"
+            }
+          ]
         }
       ],
       "files": []
