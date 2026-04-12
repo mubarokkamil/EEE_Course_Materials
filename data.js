@@ -138,6 +138,24 @@ const DRIVE_DATA = {
               "url": "materials/digital-signal-processing-i/Understanding the Matrix Rule.pdf"
             }
           ]
+        },
+        {
+          "id": "circular-convolution",
+          "name": "Circular Convolution",
+          "files": [
+            {
+              "id": "f1775996485657",
+              "name": "Circular Convolution using Matrix (Shifting) Method",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/Circular_Convolution_Matrix_Method.pdf"
+            },
+            {
+              "id": "f1775996848318",
+              "name": "Circular Convolution using DFT & IDFT Method",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/DFT_Method_circular_convolution.pdf"
+            }
+          ]
         }
       ],
       "files": []
