@@ -154,6 +154,12 @@ const DRIVE_DATA = {
               "name": "Circular Convolution using DFT & IDFT Method",
               "type": "pdf",
               "url": "materials/digital-signal-processing-i/DFT_Method_circular_convolution.pdf"
+            },
+            {
+              "id": "f1776359843197",
+              "name": "Circular Deconvolution",
+              "type": "pdf",
+              "url": "materials/digital-signal-processing-i/Circular Deconvolution.pdf"
             }
           ]
         }
