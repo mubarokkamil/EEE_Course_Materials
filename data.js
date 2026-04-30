@@ -197,7 +197,14 @@ const DRIVE_DATA = {
           ]
         }
       ],
-      "files": []
+      "files": [
+        {
+          "id": "f1777590122139",
+          "name": "Construct Z_bus Matrix from zero sequence network",
+          "type": "pdf",
+          "url": "materials/power-system-i/Z_bus Matrix from zero sequence network.pdf"
+        }
+      ]
     },
     {
       "id": "important-drive-link",
