@@ -222,58 +222,6 @@ const DRIVE_DATA = {
       "topics": []
     },
     {
-      "id": "ipe",
-      "name": "IPE",
-      "code": "IPE 0413 3105E",
-      "desc": "",
-      "files": [
-        {
-          "id": "f1774803695335",
-          "name": "1_Managerial Functions",
-          "type": "link",
-          "url": "materials/ipe/1_Mgt Functions.html"
-        },
-        {
-          "id": "f1774803735249",
-          "name": "2_Evolution of Management & Development of Organization Theories",
-          "type": "link",
-          "url": "materials/ipe/2_Evolution_Development_of_Org_Theory_Notes.html"
-        },
-        {
-          "id": "f1774803771364",
-          "name": "3_Organization Structure & Types",
-          "type": "link",
-          "url": "materials/ipe/3_Organization_Structure_Notes.html"
-        },
-        {
-          "id": "f1774803805761",
-          "name": "4_Personnel Management",
-          "type": "link",
-          "url": "materials/ipe/4_Personnel_Management_Notes.html"
-        },
-        {
-          "id": "f1774803834523",
-          "name": "5_Marketing Management",
-          "type": "link",
-          "url": "materials/ipe/5_Marketing_Management_Notes.html"
-        }
-      ],
-      "topics": [
-        {
-          "id": "important-questions-for-quiz",
-          "name": "Important Questions for Quiz",
-          "files": [
-            {
-              "id": "f1774797456259",
-              "name": "Quiz Suggestions",
-              "type": "link",
-              "url": "materials/ipe/Exam_Question_Bank_Full.html"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "electronics-i-ii",
       "name": "Electronics I & II",
       "code": "EEE 0714 1221 & EEE 0714 2127",
