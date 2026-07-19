@@ -253,6 +253,14 @@ const DRIVE_DATA = {
           ]
         }
       ]
+    },
+    {
+      "id": "communication-engineering",
+      "name": "Communication Engineering",
+      "code": "EEE 0714 3229",
+      "desc": "",
+      "files": [],
+      "topics": []
     }
   ]
 };
