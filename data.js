@@ -261,6 +261,27 @@ const DRIVE_DATA = {
       "desc": "",
       "files": [],
       "topics": []
+    },
+    {
+      "id": "power-electronics-lab-matlab",
+      "name": "Power Electronics Lab ( Matlab)",
+      "code": "EEE 0713 3240",
+      "desc": "",
+      "files": [
+        {
+          "id": "f1790632195009",
+          "name": "PE Lab Manual ( Matlab tutorial)",
+          "type": "pdf",
+          "url": "materials/power-electronics-lab-matlab/PE_Lab_StepByStep_Manual.pdf"
+        },
+        {
+          "id": "f1790632250080",
+          "name": "PE Lab Example Circuit ( Matlab)",
+          "type": "pdf",
+          "url": "materials/power-electronics-lab-matlab/PE_Lab_Circuit_Sheets.pdf"
+        }
+      ],
+      "topics": []
     }
   ]
 };
