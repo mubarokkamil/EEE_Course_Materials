@@ -279,6 +279,12 @@ const DRIVE_DATA = {
           "name": "PE Lab Example Circuit ( Matlab)",
           "type": "pdf",
           "url": "materials/power-electronics-lab-matlab/PE_Lab_Circuit_Sheets.pdf"
+        },
+        {
+          "id": "f1790646296660",
+          "name": "Components Library ( 3 simplest method)",
+          "type": "pdf",
+          "url": "materials/power-electronics-lab-matlab/PE_Where_Every_Block_Is.pdf"
         }
       ],
       "topics": []
