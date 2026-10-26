@@ -25,6 +25,11 @@ const DRIVE_DATA = {
               "url": "materials/power-system-ii/13_Mehta_Ch8_Derivations_and_Theory.pdf"
             }
           ]
+        },
+        {
+          "id": "chapter-11",
+          "name": "Chapter 11",
+          "files": []
         }
       ]
     }
