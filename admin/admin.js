@@ -58,8 +58,19 @@ async function doLogin() {
     btn.textContent = 'Sign in'; btn.disabled = false; return;
   }
 
-  // Verified — allow access
+  // Load the latest data.js straight from the repo (the Pages copy can be
+  // stale or fail to load, and saving that would wipe the other courses)
   S = { pat, user, repo };
+  const latest = await fetchRepoData();
+  if (!latest) {
+    S = { pat: null, user: null, repo: null };
+    err.textContent = '✗ Could not load data.js from the repository. Try again.';
+    err.classList.remove('hidden');
+    btn.textContent = 'Sign in'; btn.disabled = false; return;
+  }
+  D = latest;
+
+  // Verified — allow access
   document.getElementById('login-screen').classList.add('hidden');
   document.getElementById('admin-screen').classList.remove('hidden');
   document.getElementById('session-info').textContent = `${user}/${repo}`;
@@ -460,6 +471,13 @@ async function saveToGitHub() {
 // ── GitHub API ─────────────────────────────────────────────────
 async function pushData() {
   setStatus('info', '<span class="spin">⟳</span> Saving to GitHub…');
+  const latest = await fetchRepoData();
+  if (!latest) { setStatus('error', '✗ Could not read current data.js from GitHub. Nothing saved.'); return; }
+  const ids = new Set(D.courses.map(c => c.id));
+  const dropped = latest.courses.filter(c => !ids.has(c.id)).map(c => c.name);
+  if (dropped.length && !confirm(`This save will REMOVE these courses from the website:\n\n• ${dropped.join('\n• ')}\n\nContinue?`)) {
+    setStatus('error', '✗ Save cancelled. Reload the admin page to get the latest data.'); return;
+  }
   const content = `// Auto-managed by Admin panel.\nconst DRIVE_DATA = ${JSON.stringify(D, null, 2)};\n`;
   const ok = await putFile('data.js', content, 'Admin: update course data');
   if (ok) { setStatus('success', '✓ All changes saved to GitHub in one commit.'); markSaved(); }
@@ -488,6 +506,18 @@ async function putFile(path, textContent, message, base64Content) {
     const res = await ghFetch(`contents/${path}`, 'PUT', body);
     return res.ok;
   } catch { return false; }
+}
+
+// Read and parse the current data.js from the repo via the API (always up to date)
+async function fetchRepoData() {
+  try {
+    const res = await ghFetch('contents/data.js', 'GET');
+    if (!res.ok) return null;
+    const j = await res.json();
+    const text = decodeURIComponent(escape(atob(j.content.replace(/\n/g, ''))));
+    const data = JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1));
+    return Array.isArray(data.courses) ? data : null;
+  } catch { return null; }
 }
 
 async function getSha(path) {
