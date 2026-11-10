@@ -259,7 +259,14 @@ const DRIVE_DATA = {
       "name": "Communication Engineering",
       "code": "EEE 0714 3229",
       "desc": "",
-      "files": [],
+      "files": [
+        {
+          "id": "f1794291290216",
+          "name": "PartB_Question_Bank",
+          "type": "pdf",
+          "url": "materials/communication-engineering/PartB_Question_Bank.pdf"
+        }
+      ],
       "topics": []
     },
     {
